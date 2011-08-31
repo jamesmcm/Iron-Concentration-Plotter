@@ -1,0 +1,155 @@
+* Complete
+** DONE Converting Resistivity in to P-Doping concentration for Silicon
+** DONE Work out way of reading both Excel data sheets (OpenPyXL)
+** DONE Plot and display both graphs of delta n against tau (matplotlib or pyx)
+** DONE Work out calculation for C constant for iron concentration calculations - note this must be re-evaluated for every point as it depends on delta n, get constant values from Excel sheet, equations from p48 of Alex's thesis
+** DONE Stop graphs infinite redrawing
+** DONE Add way of setting axes and view to the GUI (perhaps with a button and dialog window)
+** DONE Use either interpolating or fitting to create lines between points so all points may be compared (as they will never match up perfectly) - this might be hard, maybe use some sort of module for it like Octave
+** DONE Add error handling
+** DONE Calculate iron concentration for a lot of points to produce plottable curves (deal with infinity at crossover point somehow)
+** DONE Plot these points and display and save the plot
+** DONE Check resistivity is the same in both files, if not give warning
+** DONE Find theoretical calculation of COP from doping concentration - JAPL 97, 103708 (2005)
+** DONE Add way of viewing and saving data from iron plot
+** DONE Fix bug where one delta n value can have multiple time values - interp wrong maybe?
+** DONE Correct all errors and possible confusion by lists initially being descending
+** DONE Calculate estimate for crossover value from the discontinuity on the graph, i.e. great change between positive and negative
+** DONE Make saving plots use current scaling options
+** DONE Make scale boxes assume exponential according to original scale if not specified
+** DONE could make scale boxes check for "E" or "e" in string rather than arbitrary limit
+** DONE Add plot of C factor
+** DONE Add dialog box to show constants and sources used
+** DONE Cut extreme values from plot
+** DONE Add average between non-extreme values for iron concentration
+** DONE Add tabbed windows so can display actual data and details in another tab
+** DONE Make constant text boxes actually have effect i.e. be used 
+** DONE Make reset to default values button work
+** DONE Find and display average iron concentration (or just some sort of end value to fix display)
+** DONE Find units for constants
+** DONE Make Doping Concentration editable
+** DONE Remove extreme values from PL plots
+** DONE Plot lifetime before, after illumination and iron concentration
+** DONE Add PL Imaging viewer
+** DONE Add warning when flipping the plot i.e. minimum is greater than maximum
+** DONE Make my own toolbar
+** DONE Write zooming function
+** DONE Write panning function
+** DONE Enable reset view
+** DONE Add graphs and toolbars for PL images
+** DONE Add plot all sensitivity
+** DONE Ensure PL before/after are on same scale
+** DONE Make zooming on one PL image zoom the others as well (one big toolbar) - use subplots to share x and y axes
+** DONE Fix thing where closing plot quits program
+** DONE Make it so constants can be adjusted
+** DONE Fix redrawing for plplots
+** DONE Add save function for iron concentration map
+** DONE Fix bug where saving plot kills it
+** DONE Append PNG to file save if none given
+** DONE Add keyboard focus for save dialogs
+** DONE Fix bug where cancelling then prevents future saving
+** DONE Add overwrite warning for save dialogs - must get response
+** DONE Fix black bar on label on iron map
+** DONE Label lines on graphs
+** DONE Add units for injection level, etc.
+** DONE Add TXT filters for opening log files
+** DONE Make scale boxes accept numbers only
+** DONE Display used injection level - maybe allow editing
+** DONE Disable PL Imaging until excel files loaded - maybe add a choice to just image without other stuff?
+** DONE After loading first Pl file ask for generation level used, then look up delta n value in before qsspc file, then look in the after qsspc file and find the closest generation level corresponding to this injection level and tell the user to open this cooresponding pl data.
+** DONE Add error handling for opneing log files
+** DONE Fix doping text cut off on window open
+** DONE Fix Iron concentration calculations should all be above 1E10
+** DONE set default yaxis to begin at 1E10 for iron concentration plot
+** DONE Add in box to give deltan value and get iron concentration from interpolation but only do it on the right of the COP otherwise it doesnt work
+** DONE Combine and fix buttons
+** DONE Make subplots square
+** DONE Make file save dialog cahnge title with aim
+** DONE Add dialog which chooses which plot you wish to save
+** DONE Add dialog to change color bar scales
+** DONE Truncat values in boxes and limit box size based on this character limit for uneditable ones
+** DONE Add choice of colormaps
+** DONE Add saving iron map data
+** DONE Finish C stuff
+** DONE Print some sort of average C factor value as well - can change label text
+** DONE Use logarithmic colorbar- make optional, log axis doesnt seem to work well with small change
+** DONE Fix bug where resetting scale doesnt work for prefactor - cannot be the same as just replotting iron
+** DONE Make graph labels vertical - had to use FigureCanvasGTKAgg
+** DONE Fix label cut off on iron map
+** DONE Make doping concentration editable for QSSPC plot
+** DONE Add logarithmic plot for ion map
+** DONE Image matching - warning if images are too different, may be able to do this from txt files
+** DONE Add ability to hover over graph and read iron concentration - be wary of NoneType objects
+** DONE Make it so that hovering over point on any plot gives the values of x, y,taub, taua and ironconc
+** DONE Fix 0.2e13 scale bug
+** DONE Mail py2exe mailing list
+** DONE Fix loading of old excel files
+** DONE Fix wrong units, i.e. atoms cm^-3
+** DONE Allow editing of one scale at a time
+** DONE Implement image matching
+** DONE Add way of saving adjusted lifetime data
+** DONE Limit top values on qsspc iron plot
+** DONE Make negative iron values a different color to those on the map
+** DONE Fix overzealous limiting on plots
+** DONE Fix bar through plots - it is saved with the iron data so 
+** DONE Take abs of iron concentration to fix values
+** DONE Display offlimit colors on colorbar
+** DONE Add ability to change resistivity and make it change the doping concentration
+** DONE if resistivity doesn't match make dialog where it can be entered whilst showing both resistivity values
+* Critical
+** TODO Add ability to set C value for normal iron plot
+** TODO Add warning if fitting results in worse plot
+** TODO Make fits from SRH theory to QSSPC lifetime plots
+** TODO Change limit for drawing interpolation lines as doesn't work with old files
+** TODO Fix status bar in exectuable - is this status bar or matplotlib canvas?
+** TODO Get C factor for every point in iron map calculation by looking at QSSPC fits backwards to get the injection level from the lifetime
+** TODO Print warning if injection level difference is high between the lifetimes for the same point at many ponits
+** TODO Make this another option for plotting the iron map
+** TODO Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
+** TODO Allow editing of entered gen level from main window
+** TODO Reduce compiled size (below 20MB ideally)
+** TODO Make standalone executable
+** TODO Find units for prefactor
+** TODO Add warning if it appears that before and after file are swapped for excel too
+** TODO Remove 1000x1000 arbitrary scale, instead read size of array
+** TODO Add proper error handling to file saving - use try except in case file is in use etc.
+* Necessary
+** TODO Add ticks to colorbars to remove rare values shown
+** TODO Fix numbify bugs for filled text boxes - or add error handling - could maybe do this by storing previous string and comparing
+** TODO Add specific error messages
+** TODO Try to enable keyboard navigation somehow
+** TODO Try to add more Mouse based UI
+** TODO Make save dialogs defaultly have .png there
+** TODO Add temperature dependence and see how it changes estimate for COP
+** TODO ADd plot to zoom by mouse - use pylab instead
+** TODO Add documentation
+** TODO Comment and cleanup code - i.e. make signals standardised
+** TODO In save dialog ask to append PNG extension if none given
+** TODO Also ask if extension is other than PNG
+** TODO Could provide options for other filetypes too
+** TODO Add error handling for file saving
+** TODO Add way of finding Crossover point and centering view on it
+** TODO Maybe add figure clearing to early plots although not broken
+** TODO Make it so resistivty etc. is laoded with before file
+** TODO Make save function combine both plots and save them
+** TODO Add zooming rescale colors for PL images
+** TODO Make Resistivity editable
+** TODO Enable saving of C factor data
+* Optional
+** TODO With tabbed window allow way of selecting certain columns to save data
+** TODO Add menu bar - ability to load excel files and save plots
+** TODO Maybe add functioning status bar
+** TODO Make it so hovering voer graph shows values in status bar
+** TODO Make CLI versions for mass scripting and saving of data
+* Manual
+** TODO Screnshots
+** TODO QSSPC measurements
+** TODO PL Imaging
+** TODO Editing constants
+* Image Matching
+** transformation_berechnen(I, T, maxdelta=34, korrelationsgroesse=128, N=5)
+** returns list trafo: dx, dy, alpha, scale
+** transform(T, trafo, T_T)
+** T_T is transformed array, must first be created
+** 
+   
