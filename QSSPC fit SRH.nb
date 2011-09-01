@@ -1,0 +1,211 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7417,        202]
+NotebookOptionsPosition[      6858,        181]
+NotebookOutlinePosition[      7197,        196]
+CellTagsIndexPosition[      7154,        193]
+WindowFrame->Normal
+ContainsDynamic->True *)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"LogLogPlot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"10", "^", "etaun"}], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2.682", "*", 
+            RowBox[{"10", "^", "19"}], "*", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"-", "Et"}], "/", 
+              RowBox[{"(", 
+               RowBox[{"4.11", "*", 
+                RowBox[{"10", "^", 
+                 RowBox[{"-", "21"}]}]}], ")"}]}], "]"}]}], "+", "dn"}], 
+          ")"}]}], "+", 
+        RowBox[{
+         RowBox[{"10", "^", "etaup"}], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2.843", "*", 
+            RowBox[{"10", "^", "19"}], "*", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"-", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"1.14", "*", "1.6", "*", 
+                  RowBox[{"10", "^", 
+                   RowBox[{"-", "19"}]}]}], "-", "Et"}], ")"}]}], "/", 
+              RowBox[{"(", 
+               RowBox[{"4.11", "*", 
+                RowBox[{"10", "^", 
+                 RowBox[{"-", "21"}]}]}], ")"}]}], "]"}]}], "+", 
+           RowBox[{"8.225", "*", 
+            RowBox[{"10", "^", "15"}]}], "+", "dn"}], ")"}]}]}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"8.225", "*", 
+         RowBox[{"10", "^", "15"}]}], "+", "dn"}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"dn", ",", 
+       RowBox[{"5", "*", 
+        RowBox[{"10", "^", "14"}]}], ",", 
+       RowBox[{"3", "*", 
+        RowBox[{"10", "^", "15"}]}]}], "}"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"6", "*", 
+         RowBox[{"10", "^", 
+          RowBox[{"-", "6"}]}]}], ",", 
+        RowBox[{"2", "*", 
+         RowBox[{"10", "^", 
+          RowBox[{"-", "5"}]}]}]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"etaun", ",", 
+     RowBox[{"-", "12"}], ",", 
+     RowBox[{"-", "2"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"etaup", ",", 
+     RowBox[{"-", "20"}], ",", 
+     RowBox[{"-", "2"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Et", ",", "0", ",", 
+     RowBox[{"1.14", "*", "1.6", "*", 
+      RowBox[{"10", "^", 
+       RowBox[{"-", "19"}]}]}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5237861493177385`*^9, 3.5237861633685417`*^9}, {
+  3.5237861938032827`*^9, 3.5237862222249084`*^9}, {3.5237862732828283`*^9, 
+  3.5237862918898926`*^9}, {3.523786404800351*^9, 3.523786536306873*^9}, {
+  3.523786597849393*^9, 3.5237867363693156`*^9}, {3.523786807283372*^9, 
+  3.523786858219285*^9}, {3.523786933796608*^9, 3.5237869368357816`*^9}, {
+  3.523874337327125*^9, 3.523874341874*^9}, {3.523874442608375*^9, 
+  3.52387447921775*^9}, {3.52387455478025*^9, 3.5238745785615*^9}, {
+  3.523875056264625*^9, 3.523875056499*^9}, {3.52387515084275*^9, 
+  3.523875152749*^9}, {3.52387573315525*^9, 3.5238757488115*^9}, {
+  3.5238757795615*^9, 3.5238758265615*^9}, {3.523875862358375*^9, 
+  3.523875910514625*^9}, {3.5238762005615*^9, 3.523876214608375*^9}, {
+  3.523876259889625*^9, 3.523876260764625*^9}, {3.52387826859275*^9, 
+  3.523878282452125*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`Et$$ = 
+    1.316*^-19, $CellContext`etaun$$ = -4.16, $CellContext`etaup$$ = -20., 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`etaun$$], -12, -2}, {
+      Hold[$CellContext`etaup$$], -20, -2}, {
+      Hold[$CellContext`Et$$], 0, 1.8240000000000001`*^-19}}, 
+    Typeset`size$$ = {360., {105., 110.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`etaun$305491$$ = 0, $CellContext`etaup$305492$$ = 
+    0, $CellContext`Et$305493$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`Et$$ = 
+        0, $CellContext`etaun$$ = -12, $CellContext`etaup$$ = -20}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`etaun$$, $CellContext`etaun$305491$$, 0], 
+        Hold[$CellContext`etaup$$, $CellContext`etaup$305492$$, 0], 
+        Hold[$CellContext`Et$$, $CellContext`Et$305493$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      LogLogPlot[(
+         10^$CellContext`etaun$$ (
+           2.682 10^19 
+            Exp[(-$CellContext`Et$$)/(4.11 10^(-21))] + $CellContext`dn) + 
+         10^$CellContext`etaup$$ (
+           2.843 10^19 
+            Exp[(-(1.14 1.6 10^(-19) - $CellContext`Et$$))/(4.11 10^(-21))] + 
+           8.225 10^15 + $CellContext`dn))/(
+        8.225 10^15 + $CellContext`dn), {$CellContext`dn, 5 10^14, 3 10^15}, 
+        PlotRange -> {6 10^(-6), 2 10^(-5)}], 
+      "Specifications" :> {{$CellContext`etaun$$, -12, -2}, \
+{$CellContext`etaup$$, -20, -2}, {$CellContext`Et$$, 0, 
+         1.8240000000000001`*^-19}}, "Options" :> {}, "DefaultOptions" :> {}],
+     
+     ImageSizeCache->{404., {212., 217.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.523878284358375*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.52387827371775*^9, 3.523878273733375*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.523876221858375*^9, 3.523876249170875*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.523876247389625*^9, 3.52387624740525*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.523874484499*^9, 3.523876244264625*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5238750010615*^9, 3.523875001077125*^9}}]
+},
+WindowSize->{1384, 915},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 3281, 86, 52, "Input"],
+Cell[3874, 111, 2502, 52, 446, "Output"]
+}, Open  ]],
+Cell[6391, 166, 91, 1, 31, InheritFromParent],
+Cell[6485, 169, 92, 1, 31, InheritFromParent],
+Cell[6580, 172, 91, 1, 31, InheritFromParent],
+Cell[6674, 175, 87, 1, 31, InheritFromParent],
+Cell[6764, 178, 90, 1, 31, InheritFromParent]
+}
+]
+*)
+
+(* End of internal cache information *)
