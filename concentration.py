@@ -30,7 +30,8 @@ def calcFeConc(constants, NA, deltaN, tB, ti):
     C=calcPrefactor(constants, NA, deltaN)
     #print C
     FeConc=C*((1/ti)-(1/tB))
-    return FeConc
+    #abs hack
+    return abs(FeConc)
 
 def interpolation(beforelist, afterlist):
     #perhaps use truncated list
