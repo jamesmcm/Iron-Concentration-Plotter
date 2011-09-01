@@ -202,7 +202,7 @@ class MyApp(object):
 		self.builder.get_object("crossovertheory").set_text("%.4g" % concentration.COPcalc(self.constants, self.dope))		
 		self.builder.get_object("reswindow").hide()
 
-	def resmyvalbtnclicked(self, widget)
+	def resmyvalbtnclicked(self, widget):
 		myres=float(self.builder.get_object("myrestxt").get_text())
 		self.oldres=myres
 		self.dope=doping.calcDoping(myres)
@@ -682,6 +682,8 @@ class MyApp(object):
 			self.tauafter=1E6*afterraw
 			a=1E6*afterraw
 			plafterfile.close()
+		else:
+			a=np.copy(self.tauafter)
 		#accounts for some files using already microseconds
 		if self.taubefore.mean()>1000:
 			self.taubefore=self.taubefore/1E6
@@ -729,7 +731,8 @@ class MyApp(object):
 
 		if self.adjusted==0:
 		#cross-correlation - ignored until can fix Mirco's program
-			self.oldcc=((self.tauafter-self.tauafter.mean()) * (self.taubefore - self.taubefore.mean())).mean() / (self.taubefore.std() * self.tauafter.std())
+#			self.oldcc=((self.tauafter-self.tauafter.mean()) * (self.taubefore - self.taubefore.mean())).mean() / (self.taubefore.std() * self.tauafter.std())
+			self.oldcc=bildreg.correlation(self.taubefore[100:-100,100:-100], self.tauafter[100:-100,100:-100])
 			#if cc<0.95:
 			#	self.builder.get_object("correlationwarning").set_property("secondary-text", "There was a significant difference between the loaded PL images, this means there may have been a change in the position of the sample between the taking of the images.\nCross-correlation value: %.4g (anything below 0.95 is considered anomalous)" % cc)
 			#	self.builder.get_object("correlationwarning").show()
@@ -747,7 +750,8 @@ class MyApp(object):
 		self.adjusted=1
 		self.builder.get_object("imagematchingwindow").hide()
 		self.plcalcbtnclicked(widget)
-		self.newcc=((self.tauafter-self.tauafter.mean()) * (self.taubefore - self.taubefore.mean())).mean() / (self.taubefore.std() * self.tauafter.std())
+		self.newcc=bildreg.correlation(self.taubefore[100:-100,100:-100], self.tauafter[100:-100,100:-100])
+#((self.tauafter-self.tauafter.mean()) * (self.taubefore - self.taubefore.mean())).mean() / (self.taubefore.std() * self.tauafter.std())
 		self.builder.get_object("matchingcomplete").set_property("secondary-text", "The lifetime map after illumination was translated on to the lifetime map before illumination. The new cross-correlation value is %.4g, compared to the old one of %.4g" % (self.newcc, self.oldcc))
 		self.builder.get_object("matchingcomplete").show()
 		
