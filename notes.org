@@ -98,6 +98,7 @@
 ** DONE if resistivity doesn't match make dialog where it can be entered whilst showing both resistivity values
 * Critical
 ** TODO Add ability to set C value for normal iron plot
+** Could create own bundle by including binary for python interpreter and bat file to run the script
 ** TODO Add warning if fitting results in worse plot
 ** TODO Make fits from SRH theory to QSSPC lifetime plots
 ** TODO Change limit for drawing interpolation lines as doesn't work with old files

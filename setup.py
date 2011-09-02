@@ -5,6 +5,8 @@ import py2exe
 import glib
 import gobject
 import warnings
+from email.header import Header
+import email
 warnings.simplefilter('ignore')
 
 mydata=[]
@@ -20,7 +22,7 @@ setup(
 
     windows = [
                   {
-                      'script': 'myappfinal.pyw',
+                      'script': 'myappgtk.py',
                   }
               ],
 
@@ -30,7 +32,7 @@ setup(
                       'optimize':2,
                       'ascii':True,
                       'packages':'encodings',
-                      'includes': 'cairo, pango, pangocairo, atk, gobject, gio, glib',
+                      'includes': 'email, email.header, cairo, pango, pangocairo, atk, gobject, gio, glib',
                       'excludes': ['_backend_gdk', '_backend_gtk', '_tkagg,' '_cocoaagg', '_fltkagg','Qt', 'PyQt4','_qt', '_gdk', '_Tkinter', '_ssl', 'Tkinter', '_tcl', 'tcl', 'doctest', "_imagingtk", "PIL._imagingtk", "ImageTk", "PIL.ImageTk", "FixTk", "pydoc"],
                       #'bundle_files':1,
                   }

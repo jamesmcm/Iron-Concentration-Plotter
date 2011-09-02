@@ -403,22 +403,22 @@ class MyApp(object):
 		sortedbkeylist=sorted(dictlist[0].iterkeys())
 		sortedakeylist=sorted(dictlist[1].iterkeys())
 		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
-		fitvalues=[]
+		#fitvalues=[]
 		#remember the order of the constants
 		#vthermal sigmani p1i sigmapi sigmanb n1b sigmapb
-		p1b=94310.31142
+		#p1b=94310.31142
 
 		for bkey in sortedbkeylist:
 			iron=1E-6*(concentration.calcFeConc(self.constants, self.dope, bkey, dictlist[0][bkey], dictlist[1][bkey]))
 			ironvalues.append(iron)
-			tn0=1/((99.99/100)*iron*self.constants[4]*self.constants[0])
-			tp0=1/((99.99/100)*iron*self.constants[6]*self.constants[0])
+			#tn0=1/((99.99/100)*iron*self.constants[4]*self.constants[0])
+			#tp0=1/((99.99/100)*iron*self.constants[6]*self.constants[0])
 			print "iron: %.4g, tn0: %.4g, tp0: %.4g, doping: %.4g, tbefore: %.4g, tafter: %.4g, deltan: %.4g \n" % (iron, tn0, tp0, self.dope, dictlist[0][bkey], dictlist[1][bkey], bkey)
 
-			fitvalues.append(((tp0*(self.constants[5]+bkey))+(tn0*(self.dope+p1b+bkey)))/(self.dope+bkey))
+			#fitvalues.append(((tp0*(self.constants[5]+bkey))+(tn0*(self.dope+p1b+bkey)))/(self.dope+bkey))
 		xlim=self.axis1.get_xlim()
 		ylim=self.axis1.get_ylim()
-		self.axis1.plot(sortedbkeylist,fitvalues, "m-")
+		#self.axis1.plot(sortedbkeylist,fitvalues, "m-")
 		self.axis1.set_xlim(xlim)
 		self.axis1.set_ylim(ylim)
 		#plot ironvalues
@@ -1185,6 +1185,8 @@ class MyApp(object):
 				self.builder.get_object("statusbar").remove_message(self.plconid, self.curid)
 				
 			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, iron=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrix[int(round(event.ydata))][int(round(event.xdata))]))
+
+			print 'x=%d, y=%d, taub=%.3g, taua=%.3g, iron=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrix[int(round(event.ydata))][int(round(event.xdata))])
 
 
 if __name__ == "__main__":

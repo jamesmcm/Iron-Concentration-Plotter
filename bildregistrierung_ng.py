@@ -4,7 +4,7 @@ import numpy as np
 import sys
 
 
-import scipy.weave
+#import scipy.weave
 from scipy.weave import converters
 
 def build_extension():
