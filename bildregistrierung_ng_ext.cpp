@@ -719,18 +719,18 @@ static PyObject* correlation(PyObject*self, PyObject* args, PyObject* kywds)
                                   
     return return_val.disown();           
 }                                
-static PyObject* transform(PyObject*self, PyObject* args, PyObject* kywds)
+static PyObject* transform_part(PyObject*self, PyObject* args, PyObject* kywds)
 {
     py::object return_val;
     int exception_occured = 0;
     PyObject *py_local_dict = NULL;
-    static const char *kwlist[] = {"data","transformation","result","local_dict", NULL};
-    PyObject *py_data, *py_transformation, *py_result;
-    int data_used, transformation_used, result_used;
-    py_data = py_transformation = py_result = NULL;
-    data_used= transformation_used= result_used = 0;
+    static const char *kwlist[] = {"data","transformation","result","left","top","local_dict", NULL};
+    PyObject *py_data, *py_transformation, *py_result, *py_left, *py_top;
+    int data_used, transformation_used, result_used, left_used, top_used;
+    py_data = py_transformation = py_result = py_left = py_top = NULL;
+    data_used= transformation_used= result_used= left_used= top_used = 0;
     
-    if(!PyArg_ParseTupleAndKeywords(args,kywds,"OOO|O:transform",const_cast<char**>(kwlist),&py_data, &py_transformation, &py_result, &py_local_dict))
+    if(!PyArg_ParseTupleAndKeywords(args,kywds,"OOOOO|O:transform_part",const_cast<char**>(kwlist),&py_data, &py_transformation, &py_result, &py_left, &py_top, &py_local_dict))
        return NULL;
     try                              
     {                                
@@ -755,6 +755,12 @@ static PyObject* transform(PyObject*self, PyObject* args, PyObject* kywds)
         blitz::Array<double,2> result = convert_to_blitz<double,2>(result_array,"result");
         blitz::TinyVector<int,2> Nresult = result.shape();
         result_used = 1;
+        py_left = py_left;
+        int left = convert_to_int(py_left,"left");
+        left_used = 1;
+        py_top = py_top;
+        int top = convert_to_int(py_top,"top");
+        top_used = 1;
         /*<function call here>*/     
         
             # line 10047 "bildregistrierung-ng.py"
@@ -767,15 +773,21 @@ static PyObject* transform(PyObject*self, PyObject* args, PyObject* kywds)
             float c = cos(alpha);
             float s = sin(alpha);
         
-            int w = data.extent(1);
-            int h = data.extent(0);
+            int w  = data.extent(1);
+            int h  = data.extent(0);
+            int rw = result.extent(1);
+            int rh = result.extent(0);
         
-            for (int y = 0; y < h; y++){
-                for(int x = 0; x < w; x++){
+            for (int ry = 0; ry < rh; ry++){
+                for(int rx = 0; rx < rw; rx++){
+        
+                    int x = rx + left;
+                    int y = ry + top;
+        
                     // transform backwards
                     int tx = (int) w/2 + c * (x-w/2) + s * (y-h/2) - dx;
                     int ty = (int) h/2 - s * (x-w/2) + c * (y-h/2) - dy;
-                    result(y,x) = (tx >= 0 && tx < w && ty >= 0 && ty < h ?
+                    result(ry, rx) = (tx >= 0 && tx < w && ty >= 0 && ty < h ?
                                     data(ty, tx): -1);
                 }
             }
@@ -816,36 +828,36 @@ static PyObject* find_best_for_angle(PyObject*self, PyObject* args, PyObject* ky
     py::object return_val;
     int exception_occured = 0;
     PyObject *py_local_dict = NULL;
-    static const char *kwlist[] = {"x","y","w","h","kwerte","maxdelta","alpha","scale","translation_stepsize","result","local_dict", NULL};
-    PyObject *py_x, *py_y, *py_w, *py_h, *py_kwerte, *py_maxdelta, *py_alpha, *py_scale, *py_translation_stepsize, *py_result;
-    int x_used, y_used, w_used, h_used, kwerte_used, maxdelta_used, alpha_used, scale_used, translation_stepsize_used, result_used;
-    py_x = py_y = py_w = py_h = py_kwerte = py_maxdelta = py_alpha = py_scale = py_translation_stepsize = py_result = NULL;
-    x_used= y_used= w_used= h_used= kwerte_used= maxdelta_used= alpha_used= scale_used= translation_stepsize_used= result_used = 0;
+    static const char *kwlist[] = {"xr","yr","dx","dy","kwerte","maxdelta","alpha","scale","translation_stepsize","result","local_dict", NULL};
+    PyObject *py_xr, *py_yr, *py_dx, *py_dy, *py_kwerte, *py_maxdelta, *py_alpha, *py_scale, *py_translation_stepsize, *py_result;
+    int xr_used, yr_used, dx_used, dy_used, kwerte_used, maxdelta_used, alpha_used, scale_used, translation_stepsize_used, result_used;
+    py_xr = py_yr = py_dx = py_dy = py_kwerte = py_maxdelta = py_alpha = py_scale = py_translation_stepsize = py_result = NULL;
+    xr_used= yr_used= dx_used= dy_used= kwerte_used= maxdelta_used= alpha_used= scale_used= translation_stepsize_used= result_used = 0;
     
-    if(!PyArg_ParseTupleAndKeywords(args,kywds,"OOOOOOOOOO|O:find_best_for_angle",const_cast<char**>(kwlist),&py_x, &py_y, &py_w, &py_h, &py_kwerte, &py_maxdelta, &py_alpha, &py_scale, &py_translation_stepsize, &py_result, &py_local_dict))
+    if(!PyArg_ParseTupleAndKeywords(args,kywds,"OOOOOOOOOO|O:find_best_for_angle",const_cast<char**>(kwlist),&py_xr, &py_yr, &py_dx, &py_dy, &py_kwerte, &py_maxdelta, &py_alpha, &py_scale, &py_translation_stepsize, &py_result, &py_local_dict))
        return NULL;
     try                              
     {                                
-        py_x = py_x;
-        PyArrayObject* x_array = convert_to_numpy(py_x,"x");
-        conversion_numpy_check_type(x_array,PyArray_LONG,"x");
-        conversion_numpy_check_size(x_array,1,"x");
-        blitz::Array<long,1> x = convert_to_blitz<long,1>(x_array,"x");
-        blitz::TinyVector<int,1> Nx = x.shape();
-        x_used = 1;
-        py_y = py_y;
-        PyArrayObject* y_array = convert_to_numpy(py_y,"y");
-        conversion_numpy_check_type(y_array,PyArray_LONG,"y");
-        conversion_numpy_check_size(y_array,1,"y");
-        blitz::Array<long,1> y = convert_to_blitz<long,1>(y_array,"y");
-        blitz::TinyVector<int,1> Ny = y.shape();
-        y_used = 1;
-        py_w = py_w;
-        int w = convert_to_int(py_w,"w");
-        w_used = 1;
-        py_h = py_h;
-        int h = convert_to_int(py_h,"h");
-        h_used = 1;
+        py_xr = py_xr;
+        PyArrayObject* xr_array = convert_to_numpy(py_xr,"xr");
+        conversion_numpy_check_type(xr_array,PyArray_LONG,"xr");
+        conversion_numpy_check_size(xr_array,1,"xr");
+        blitz::Array<long,1> xr = convert_to_blitz<long,1>(xr_array,"xr");
+        blitz::TinyVector<int,1> Nxr = xr.shape();
+        xr_used = 1;
+        py_yr = py_yr;
+        PyArrayObject* yr_array = convert_to_numpy(py_yr,"yr");
+        conversion_numpy_check_type(yr_array,PyArray_LONG,"yr");
+        conversion_numpy_check_size(yr_array,1,"yr");
+        blitz::Array<long,1> yr = convert_to_blitz<long,1>(yr_array,"yr");
+        blitz::TinyVector<int,1> Nyr = yr.shape();
+        yr_used = 1;
+        py_dx = py_dx;
+        double dx = convert_to_float(py_dx,"dx");
+        dx_used = 1;
+        py_dy = py_dy;
+        double dy = convert_to_float(py_dy,"dy");
+        dy_used = 1;
         py_kwerte = py_kwerte;
         PyArrayObject* kwerte_array = convert_to_numpy(py_kwerte,"kwerte");
         conversion_numpy_check_type(kwerte_array,PyArray_DOUBLE,"kwerte");
@@ -874,16 +886,11 @@ static PyObject* find_best_for_angle(PyObject*self, PyObject* args, PyObject* ky
         result_used = 1;
         /*<function call here>*/     
         
-            #line 100034 "bildregistrierung-ng.py"
+            #line 100100 "bildregistrierung-ng.py"
             using namespace blitz;
         
             float c = cos(alpha) * scale;
             float s = sin(alpha) * scale;
-        
-            // x, y relativ zum zentrum 
-            Array<double,1> xr (x-w/2);
-            Array<double,1> yr (y-h/2);
-        
         
             // verschiebung der einzelnen Punkte durch rotation um das zentrum
             Array<double,1> rdx ((c-1) * xr  - s     * yr);
@@ -894,22 +901,25 @@ static PyObject* find_best_for_angle(PyObject*self, PyObject* args, PyObject* ky
             double max_rot_delta_x = max(abs(rdx));
             double max_rot_delta_y = max(abs(rdy));
         
-            double xstart = -maxdelta + max_rot_delta_x + 1;
-            double xend   =  maxdelta - max_rot_delta_x - 1;
-            double ystart = -maxdelta + max_rot_delta_y + 1;
-            double yend   =  maxdelta - max_rot_delta_y - 1;
+            const int kwerte_size = kwerte.extent(1);
+        
+            double xstart = max(-kwerte_size/2 + max_rot_delta_x + 1, dx - maxdelta);
+            double ystart = max(-kwerte_size/2 + max_rot_delta_y + 1, dy - maxdelta);
+            double xend   = min(+kwerte_size/2 - max_rot_delta_x - 1, dx + maxdelta);
+            double yend   = min(+kwerte_size/2 - max_rot_delta_x - 1, dx + maxdelta);
         
             //printf("minrdx = %f maxrdx = %f minrdy = %f maxrdy = %f, x: %f:%f y: %f:%f\n",
             //       (float)minrdx, (float) maxrdx, (float) minrdy, (float) maxrdy, 
             //       (float) xstart, (float)xend, (float)ystart, (float)yend);
             //printf("x: %lf:%lf, y: %lf:%lf\n", xstart, xend, ystart, yend);
+        
             for (double dx = xstart; dx < xend; dx+= translation_stepsize){
                 for (double dy = ystart; dy < yend; dy+= translation_stepsize){
                     double tmp = 1;
         
         
                     int size = kwerte.extent(1);
-                    for(int i = 0; i < x.extent(0); i++){
+                    for(int i = 0; i < rdx.extent(0); i++){
                         //           rotation  verschiebung  runden  relativ zur mitte der kwerte
                         int xi = (int) (rdx(i) + dx          +  0.5 + kwerte.extent(1)/2);
                         int yi = (int) (rdy(i) + dy          +  0.5 + kwerte.extent(2)/2);
@@ -938,13 +948,13 @@ static PyObject* find_best_for_angle(PyObject*self, PyObject* args, PyObject* ky
         exception_occured = 1;       
     }                                
     /*cleanup code*/                     
-    if(x_used)
+    if(xr_used)
     {
-        Py_XDECREF(py_x);
+        Py_XDECREF(py_xr);
     }
-    if(y_used)
+    if(yr_used)
     {
-        Py_XDECREF(py_y);
+        Py_XDECREF(py_yr);
     }
     if(kwerte_used)
     {
@@ -967,7 +977,7 @@ static PyObject* find_best_for_angle(PyObject*self, PyObject* args, PyObject* ky
 static PyMethodDef compiled_methods[] = 
 {
     {"correlation",(PyCFunction)correlation , METH_VARARGS|METH_KEYWORDS},
-    {"transform",(PyCFunction)transform , METH_VARARGS|METH_KEYWORDS},
+    {"transform_part",(PyCFunction)transform_part , METH_VARARGS|METH_KEYWORDS},
     {"find_best_for_angle",(PyCFunction)find_best_for_angle , METH_VARARGS|METH_KEYWORDS},
     {NULL,      NULL}        /* Sentinel */
 };

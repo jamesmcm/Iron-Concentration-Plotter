@@ -169,8 +169,8 @@ def build_extension():
     mod.add_function(func)
 
 
-    mod.compile(verbose=2)
-    #mod.compile(compiler="msvc", verbose=2)
+    #mod.compile(verbose=2)
+    mod.compile(compiler="gcc", verbose=2)
 
 
 if not main_is_frozen():
