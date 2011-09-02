@@ -1,16 +1,30 @@
 #encoding: utf-8
-
+import imp, os, sys
 import numpy as np
-import sys
 
 
-#import scipy.weave
+import scipy.weave
 from scipy.weave import converters
 
+def main_is_frozen():
+    return (hasattr(sys, "frozen") or # new py2exe
+            hasattr(sys, "importers") # old py2exe
+            or imp.is_frozen("__main__")) # tools/freeze
+ 
 def build_extension():
+
+    import scipy.weave.blitz_spec
+    # scipy.weave thinks that visual c++ does not work, it works allright for our code.
+    # patch it so that it does not throw an error.
+    scipy.weave.blitz_spec.array_info.check_compiler = (lambda self, compiler: None)
+    print "patched the check_compiler method"
+
     from scipy.weave import ext_tools
     mod = ext_tools.ext_module('bildregistrierung_ng_ext')
     
+
+
+
 
 # correlation of two arrays
 # arguments:
@@ -38,6 +52,7 @@ def build_extension():
     alpha = scale = 1.0
     transformation = np.ndarray((4,), np.float) # dx, dy, alpha, scale
     dx = dy = 0.0
+    top = left = 0
     data = result = np.ndarray((1,1), np.float)
     code = r"""
     # line 10047 "bildregistrierung-ng.py"
@@ -50,20 +65,26 @@ def build_extension():
     float c = cos(alpha);
     float s = sin(alpha);
 
-    int w = data.extent(1);
-    int h = data.extent(0);
+    int w  = data.extent(1);
+    int h  = data.extent(0);
+    int rw = result.extent(1);
+    int rh = result.extent(0);
 
-    for (int y = 0; y < h; y++){
-        for(int x = 0; x < w; x++){
+    for (int ry = 0; ry < rh; ry++){
+        for(int rx = 0; rx < rw; rx++){
+
+            int x = rx + left;
+            int y = ry + top;
+
             // transform backwards
             int tx = (int) w/2 + c * (x-w/2) + s * (y-h/2) - dx;
             int ty = (int) h/2 - s * (x-w/2) + c * (y-h/2) - dy;
-            result(y,x) = (tx >= 0 && tx < w && ty >= 0 && ty < h ?
+            result(ry, rx) = (tx >= 0 && tx < w && ty >= 0 && ty < h ?
                             data(ty, tx): -1);
         }
     }
     """
-    func = ext_tools.ext_function('transform', code, ["data","transformation","result"] ,
+    func = ext_tools.ext_function('transform_part', code, ["data","transformation","result", "left", "top"] ,
                                     type_converters=converters.blitz)
     func.customize.add_support_code("#include <cmath> \n")
     mod.add_function(func)
@@ -80,7 +101,8 @@ def build_extension():
 # scale: the scaling of the transformation
 # result: (best_kvalue, dx, dy, alpha, scale): if a result with a better k-value is found, it is stored into this array.
     w = h = 1
-    x = y = np.ndarray(1,np.int32)
+    xr = yr = np.ndarray(1,np.int32) # x and y values of the points relative to the centre
+    dx = dy = 0.0
     kwerte = np.ndarray((1,1,1),np.float)
     maxdelta  = 1
     alpha = scale = 1.0
@@ -89,16 +111,11 @@ def build_extension():
 
 
     code = r"""
-    #line 100034 "bildregistrierung-ng.py"
+    #line 100100 "bildregistrierung-ng.py"
     using namespace blitz;
 
     float c = cos(alpha) * scale;
     float s = sin(alpha) * scale;
-
-    // x, y relativ zum zentrum 
-    Array<double,1> xr (x-w/2);
-    Array<double,1> yr (y-h/2);
-
 
     // verschiebung der einzelnen Punkte durch rotation um das zentrum
     Array<double,1> rdx ((c-1) * xr  - s     * yr);
@@ -109,22 +126,25 @@ def build_extension():
     double max_rot_delta_x = max(abs(rdx));
     double max_rot_delta_y = max(abs(rdy));
 
-    double xstart = -maxdelta + max_rot_delta_x + 1;
-    double xend   =  maxdelta - max_rot_delta_x - 1;
-    double ystart = -maxdelta + max_rot_delta_y + 1;
-    double yend   =  maxdelta - max_rot_delta_y - 1;
+    const int kwerte_size = kwerte.extent(1);
+
+    double xstart = max(-kwerte_size/2 + max_rot_delta_x + 1, dx - maxdelta);
+    double ystart = max(-kwerte_size/2 + max_rot_delta_y + 1, dy - maxdelta);
+    double xend   = min(+kwerte_size/2 - max_rot_delta_x - 1, dx + maxdelta);
+    double yend   = min(+kwerte_size/2 - max_rot_delta_x - 1, dx + maxdelta);
 
     //printf("minrdx = %f maxrdx = %f minrdy = %f maxrdy = %f, x: %f:%f y: %f:%f\n",
     //       (float)minrdx, (float) maxrdx, (float) minrdy, (float) maxrdy, 
     //       (float) xstart, (float)xend, (float)ystart, (float)yend);
     //printf("x: %lf:%lf, y: %lf:%lf\n", xstart, xend, ystart, yend);
+
     for (double dx = xstart; dx < xend; dx+= translation_stepsize){
         for (double dy = ystart; dy < yend; dy+= translation_stepsize){
             double tmp = 1;
 
 
             int size = kwerte.extent(1);
-            for(int i = 0; i < x.extent(0); i++){
+            for(int i = 0; i < rdx.extent(0); i++){
                 //           rotation  verschiebung  runden  relativ zur mitte der kwerte
                 int xi = (int) (rdx(i) + dx          +  0.5 + kwerte.extent(1)/2);
                 int yi = (int) (rdy(i) + dy          +  0.5 + kwerte.extent(2)/2);
@@ -143,21 +163,31 @@ def build_extension():
 
     """
 
-    func = ext_tools.ext_function('find_best_for_angle', code, ["x","y","w","h","kwerte","maxdelta","alpha","scale", "translation_stepsize","result"] ,
+    func = ext_tools.ext_function('find_best_for_angle', code, ["xr","yr","dx", "dy","kwerte","maxdelta","alpha","scale", "translation_stepsize","result"] ,
                                     #headers=["<stdio.h>"],
                                     type_converters=converters.blitz)
     mod.add_function(func)
 
 
-    mod.compile(compiler="msvc", verbose=2)
+    mod.compile(verbose=2)
+    #mod.compile(compiler="msvc", verbose=2)
 
-import scipy.weave.blitz_spec
 
-scipy.weave.blitz_spec.array_info.check_compiler = (lambda self, compiler: None)
-print "patched the check_compiler method"
+if not main_is_frozen():
+    build_extension()
 
-build_extension()
-from  bildregistrierung_ng_ext import transform, correlation
+from  bildregistrierung_ng_ext import transform_part, correlation
+
+def transform(data, transformation, result):
+    assert(data.shape == result.shape)
+    transform_part(data, transformation, result, 0,0)
+
+
+
+
+
+
+
 
 def korrelationswert(I,T,x,y):
     h,w = T.shape
@@ -212,19 +242,19 @@ def transformation_berechnen(I, T,    korrelationsgroesse = 32, maxdelta = 128, 
 
 # rotation: +- delta_alpha
     alpha_max  =   np.arcsin(korrelationsgroesse * 1.0 / (h-border*2))
-    alpha_step =  np.arcsin(1.0 / (h-border*2)) / 5
+    alpha_step_1px =  np.arcsin(1.0 / (h-border*2))  # how much alpha has to change to translate approximately a pixel at the edge
 
-    print "alpha_max = %f, alpha_step = %f"%(alpha_max, alpha_step)
+    print "alpha_max = %f, alpha_step = %f"%(alpha_max, alpha_step_1px)
 
 
     
 # the positions for which the k-values are calculated
-    xpos = np.arange(N) * (w-border*2)/(N-1) + border
-    ypos = np.arange(N) * (h-border*2)/(N-1) + border
+    x = np.arange(N) * (w-border*2)/(N-1) + border
+    y = np.arange(N) * (h-border*2)/(N-1) + border
+    xr = x - w/2
+    yr = y - h/2
 
-    positionen = np.array([(x,y) for x in xpos for y in ypos])
-    x,y = positionen[:,0], positionen[:,1]
-    print "x, y",x,y
+    print "xr, yr",xr,yr
 
 
 
@@ -236,8 +266,9 @@ def transformation_berechnen(I, T,    korrelationsgroesse = 32, maxdelta = 128, 
         
     kwerte = np.array(kwerte, dtype=np.float)
     #for scale in np.arange(0.99, 1.01, 0.005):
+    print "correlation values calculated"
 
-    def alpha_durchgehen(alpha_values, scale_values,  translation_stepsize, callback_base, callback_multiplier):
+    def alpha_durchgehen(alpha_values, scale_values,  translation_stepsize, callback_base, callback_multiplier, dx = 0.0, dy = 0.0):
         n_count = len(scale_values) * len(alpha_values)
         count = 0
 
@@ -247,7 +278,7 @@ def transformation_berechnen(I, T,    korrelationsgroesse = 32, maxdelta = 128, 
 
                 from bildregistrierung_ng_ext import find_best_for_angle
 
-                find_best_for_angle(x,y,w,h,kwerte, maxdelta, alpha, scale, translation_stepsize, result)
+                find_best_for_angle(xr, yr, dx, dy, kwerte, maxdelta, alpha, scale, translation_stepsize, result)
                 #print "for angle ",alpha, "scale = ", scale ,"\n                                       result =",result
 
 
@@ -258,23 +289,29 @@ def transformation_berechnen(I, T,    korrelationsgroesse = 32, maxdelta = 128, 
     result=np.array([-10000,0,0,0,1],dtype=np.float)
 
     scale_values = [1.0]
-    alpha_values = np.arange(-alpha_max, alpha_max, alpha_step)
-    alpha_durchgehen(alpha_values, scale_values, 0.5, 0.0, 0.3)
+    alpha_values = np.arange(-alpha_max, alpha_max, alpha_step_1px)
+    alpha_durchgehen(alpha_values, scale_values, 2.0, 0.3, 0.2)
+    print "finished rough pass through transformations"
 
     print "result = ", result
     best_alpha = result[3]
-    alpha_values = np.arange(best_alpha-alpha_step*3, best_alpha+alpha_step*3, alpha_step/5)
-    alpha_durchgehen(alpha_values, scale_values, 0.5, 0.3, 0.2)
+    best_dx, best_dy = result[1:3]
+    alpha_values = np.arange(best_alpha-alpha_step_1px*3, best_alpha+alpha_step_1px*3, alpha_step_1px/5)
+    alpha_durchgehen(alpha_values, scale_values, 0.5, 0.5, 0.2, dx=best_dx, dy=best_dy)
+    print "finished fine pass through transformations"
+
 
     T_T = np.ndarray(T.shape, dtype=np.float)
     best_kwert = -100
     best_alpha = result[3]
 
-    alpha_values = np.arange(best_alpha-alpha_step, best_alpha+alpha_step, alpha_step/5)
+    alpha_values = np.arange(best_alpha-alpha_step_1px, best_alpha+alpha_step_1px, alpha_step_1px/5)
+
     best_dx = result[1]
     best_dy = result[2]
-    x_values = np.arange(best_dx - 4, best_dx+4, .5)
-    y_values = np.arange(best_dy-4, best_dy+4, .5)
+
+    x_values = np.arange(best_dx - 2, best_dx+2, .5)
+    y_values = np.arange(best_dy-2, best_dy+2, .5)
 
     count = 0
     n_count = len(x_values) * len(alpha_values)
@@ -292,6 +329,7 @@ def transformation_berechnen(I, T,    korrelationsgroesse = 32, maxdelta = 128, 
                         best_kwert = kwert
                         result[1:] = trafo
 
+    print "finished exact pass through transformations"
     print "result = ", result
 
     return result[1:]
