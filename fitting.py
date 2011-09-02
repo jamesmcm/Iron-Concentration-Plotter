@@ -4,30 +4,31 @@ from pylab import *
 
 def fitting(deltan, origtau):
 
-    def f(params):
-        lntaup=params[0]
-        lntaun=params[1]
-        Et=params[2]
-        Ev=0
-        Ec=1.14*1.6E-19
-        kT=4.11E-21
-        Nc=2.8430E19
-        Nv=2.6821E19
-        NA=8.26E15
-        
-        return (origtau) - (((((10**lntaup)*(Nc * np.exp((-1*(Ec-Et))/kT) + deltan)) + (10**lntaun)*((Nv*np.exp((-1*(Et-Ev))/kT)) + NA + deltan)))/(NA + deltan))
-
     # def f(params):
-    #     C1=params[0]
-    #     C2=params[1]
-    #     NA=params[2]
-    #     #NA=1E14
+    #     lntaup=params[0]
+    #     lntaun=params[1]
+    #     Et=params[2]
+    #     Ev=0.0
+    #     Ec=1.14*1.6E-19
+    #     kT=4.11E-21
+    #     Nc=2.8430E19
+    #     Nv=2.6821E19
+    #     NA=8.26E15
+        
+    #     return (origtau) - (((((10**lntaup)*(Nc * np.exp((-1*(Ec-Et))/kT) + deltan)) + (10**lntaun)*((Nv*np.exp((-1*(Et-Ev))/kT)) + NA + deltan)))/(NA + deltan))
 
-    #     return log(origtau) - log((C1+(C2*deltan))/(NA+deltan))
+    def f(params):
+        C1=params[0]
+        C2=params[1]
+        NA=params[2]
+        #NA=8.225E15
+
+        return (origtau) - ((C1+(C2*deltan))/(NA+deltan))
 
 
-    #startguess=np.array([1e-3,1e-2,2e15],np.float64)
-    startguess=np.array([-20,-4.16,1.316e-19],np.float64)
+    #startguess=np.array([1e-4,1e-5,8.225e15],np.float64)
+    startguess=np.array([1e-3,1e-2,2e15],np.float64)
+    #startguess=np.array([-3.76,-4,1.6e-20],np.float64)
     
     calculation=leastsq(f, startguess)
     return calculation
@@ -49,13 +50,14 @@ origtau=np.array([1.28E-05,1.27E-05,1.25E-05,1.24E-05,1.23E-05,1.21E-05,1.20E-05
 #origtau=np.array([5.08E-05,5.14E-05,5.19E-05,5.24E-05,5.28E-05,5.32E-05,5.36E-05,5.39E-05,5.43E-05,5.46E-05,5.49E-05,5.52E-05,5.54E-05,5.56E-05,5.58E-05,5.61E-05,5.62E-05,5.64E-05,5.65E-05,5.68E-05,5.69E-05,5.71E-05,5.72E-05,5.73E-05,5.75E-05,5.76E-05,5.78E-05,5.80E-05,5.81E-05,5.82E-05,5.82E-05,5.83E-05,5.85E-05,5.85E-05,5.86E-05,5.87E-05,5.88E-05,5.89E-05,5.90E-05,5.91E-05,5.92E-05,5.92E-05,5.95E-05,5.97E-05,5.96E-05,5.93E-05,5.98E-05,6.00E-05,6.02E-05,6.00E-05,6.01E-05,6.01E-05,6.05E-05,6.06E-05,6.02E-05,6.07E-05,6.06E-05,6.13E-05,6.11E-05,6.12E-05,6.20E-05,6.17E-05,6.25E-05,6.31E-05,6.28E-05,6.36E-05,6.31E-05,6.32E-05,6.33E-05,6.38E-05,6.49E-05,6.48E-05,6.49E-05,6.56E-05,6.54E-05,6.64E-05,6.67E-05,6.75E-05,6.73E-05,6.69E-05,6.79E-05,6.84E-05,6.85E-05,6.77E-05,6.82E-05,6.83E-05,6.81E-05,6.83E-05,6.87E-05,6.94E-05,7.01E-05,7.11E-05,7.25E-05,7.31E-05,7.43E-05,7.51E-05,7.77E-05,7.64E-05,7.79E-05,7.86E-05,8.07E-05,8.01E-05,7.91E-05,8.03E-05,8.47E-05,8.45E-05,8.45E-05,8.50E-05,8.57E-05,8.50E-05,8.72E-05,8.81E-05,8.93E-05,9.19E-05,9.02E-05,9.08E-05,9.36E-05], np.float64)
 
 
-indices=deltan>3.00E14
+indices=deltan>4.00E14
 NA=8.26E15
 fit=fitting(deltan[indices], origtau[indices])[0]
 
-plot(deltan[indices],origtau[indices], "bo")
-lntaup, lntaun, Et = fit
-#C1,C2,NA=fit
+plot(deltan,origtau, "bo")
+
+#lntaup, lntaun, Et = fit
+C1,C2,NA=fit
 print fit
 Ev=0
 Ec=1.14*1.6E-19
@@ -63,8 +65,9 @@ kT=4.11E-21
 Nc=2.8430E19
 Nv=2.6821E19
 #NA=8.26E15
-range1=np.arange(0,1e16,1e14)
-#plot(range1[2:], ((C1 + (C2 * range1[2:]))/(NA + range1[2:])), "ro")
-plot(((((10**lntaup)*(Nc * np.exp((-1*(Ec-Et))/kT) + deltan)) + ((10**lntaun)*((Nv*np.exp((-1*(Et-Ev))/kT)) + NA + deltan)))/(NA + deltan)), "ro")
+range1=np.arange(0,3.5e15,0.5e14)
+plot(range1[2:], ((C1 + (C2 * range1[2:]))/(NA + range1[2:])), "r-")
+plot(deltan[indices],origtau[indices], "go")
+#plot(((((10**lntaup)*(Nc * np.exp((-1*(Ec-Et))/kT) + deltan)) + ((10**lntaun)*((Nv*np.exp((-1*(Et-Ev))/kT)) + NA + deltan)))/(NA + deltan)), "r-")
 
 show()
