@@ -789,7 +789,7 @@ class MyApp(object):
 		self.builder.get_object("femaxtxt").set_text("%.4g" %self.ironmax)
 		self.plplotallbtnclicked(widget)
 		#random numbers chosen away from edges to avoid infinities
-		if self.ironconcmatrix[547:555].mean()<=0:
+		if self.ironconcmatrixgenlevel[547:555].mean()<=0:
 			self.builder.get_object("negiron").show()
 
 
@@ -1039,7 +1039,15 @@ class MyApp(object):
 			elif self.cursave=="feplotdata":
 				self.datatxtsave()
 			elif self.cursave=="femapdata":
-				savetxt(self.currentfilename, self.ironconcmatrix, fmt="%12.6G")
+				if self.ironplottypebox.get_active()==0:
+				#Individual C values
+					savetxt(self.currentfilename, self.ironconcmatrixindividual, fmt="%12.6G")
+				elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+					savetxt(self.currentfilename, self.ironconcmatrixgenlevel, fmt="%12.6G")
+				elif self.ironplottypebox.get_active()==2:
+					savetxt(self.currentfilename, self.ironconcmatrixmeanC, fmt="%12.6G")
+				#Use mean of last C values
 			elif self.cursave=="adjusteddata":
 				savetxt(self.currentfilename, self.tauafter, fmt="%12.6G")
 	def saveplmap(self):
