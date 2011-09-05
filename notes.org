@@ -97,6 +97,9 @@
 ** DONE Add ability to change resistivity and make it change the doping concentration
 ** DONE if resistivity doesn't match make dialog where it can be entered whilst showing both resistivity values
 * Critical
+** TODO Remember to edit save dialogs for different iron data save types too
+** TODO Fix boundary conditions onm getting injection level - need good test data
+** TODO Add ability to set initial guess value, maybe indepdendently
 ** TODO Add ability to set C value for normal iron plot
 ** Could create own bundle by including binary for python interpreter and bat file to run the script
 ** TODO Add warning if fitting results in worse plot

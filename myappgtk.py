@@ -17,7 +17,7 @@ from math import pow
 from matplotlib.axes import Subplot   
 from matplotlib.backends.backend_gtkagg import NavigationToolbar2GTKAgg as NavigationToolbar
 from matplotlib.backends.backend_gtkagg import FigureCanvasGTKAgg  
-
+import fitting
 import doping
 import bildregistrierung_ng as bildreg
 from openpyxl.reader.excel import load_workbook
@@ -62,6 +62,8 @@ class MyApp(object):
 	    self.plcounter=0
 	    self.cursave=""
 	    self.curid=None
+	    self.fitparams=[]
+	    self.startguess=np.array([1.72e-3,1e-2,1.22E2,9e1,2e15],np.float64)
 
 	    self.combobox = gtk.combo_box_new_text()
 	    self.builder.get_object("combospace").add(self.combobox)
@@ -70,7 +72,6 @@ class MyApp(object):
 	    self.combobox.append_text('Jet')
 	    self.combobox.append_text('Hot')
 	    self.combobox.set_active(0)
-
 
 	    self.linbutton = gtk.RadioButton(None, "Linear")
 	    self.linbutton.connect("toggled", self.buttontoggle, "linear")
@@ -84,6 +85,17 @@ class MyApp(object):
 	    #self.logbutton.set_active(False)
 	    self.lifemaptype="linear"
 	    self.templifemaptype="linear"
+
+	    #iron plot type: individual - individual C factor values, genlevel - Cfactor based on gen level, mean - Use mean of last Cfactor values
+	    self.ironplottype="individual"
+	    self.ironplottypebox = gtk.combo_box_new_text()
+	    self.builder.get_object("ironplottypespace").add(self.ironplottypebox)
+	    self.builder.get_object("ironplottypespace").show_all()
+	    self.ironplottypebox.append_text('Individual C values')
+	    self.ironplottypebox.append_text('C value from Generation Level')
+	    self.ironplottypebox.append_text('Use mean of high generation level C values')
+	    self.ironplottypebox.set_active(0)
+
 
 	    #iron radio buttons
 	    self.felinbutton = gtk.RadioButton(None, "Linear")
@@ -105,7 +117,7 @@ class MyApp(object):
 	    #cm.gray.set_bad('g')
 	    cm.jet.set_under('w') 
 	   #cm.jet.set_over('k')
-	    #cm.hot.set_under('b')
+	    cm.hot.set_under('b')
 	    #cm.hot.set_over('g')
 	    self.cmap=cm.gray
 	    
@@ -153,14 +165,33 @@ class MyApp(object):
 		filename=file1.get_filename()
 		fitpoints=[]
 		datalist=excel.getValues(filename)
+		tauvalues=datalist[1]
+		deltan=datalist[2]
 		if datalist==[0,0,0]:
 			self.errorshow(self)
 			return 1
 		limit = excel.getlocalmin(datalist[1])
-		self.axis1.plot(datalist[2],datalist[1], pointcol)
-		self.axis1.plot((datalist[2])[0:limit+1],(datalist[1])[0:limit+1], linecol, label=mylabel)
-		self.axis1.plot(datalist[2],datalist[1], pointcol)		
+		self.axis1.plot(deltan,tauvalues, pointcol, label=mylabel)
 		self.axis1.legend()
+		#self.axis1.plot((deltan)[0:limit+1],(tauvalues)[0:limit+1], linecol, label=mylabel)
+
+		#fitting
+		#indices=datalist[2]>1E14
+		#print (datalist[2])[indices]
+		#print tauvalues[0:limit+1]
+		#print deltan[0:limit+1]
+		range1=np.arange(0,5e15,0.5e14)
+		try:
+			if mylabel=="Before Illumination":
+				self.beforefitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguess)[0]
+				taup, taun, n1, p1, NA=self.beforefitparams
+				self.axis1.plot(range1[2:], (((taup*n1)+(taup*range1[2:])+(taun*p1)+(taun*NA)+(taun*range1[2:]))/(NA+range1[2:])), linecol)
+			elif mylabel=="After Illumination":
+				self.afterfitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguess)[0]
+				taup, taun, n1, p1, NA=self.afterfitparams
+				self.axis1.plot(range1[2:], (((taup*n1)+(taup*range1[2:])+(taun*p1)+(taun*NA)+(taun*range1[2:]))/(NA+range1[2:])), linecol)
+		except:
+			self.builder.get_object("fiterror").show()
 	def checkresistivity(self,widget):
 		#remember the order of the constants
 		#vthermal sigmani p1i sigmapi sigmanb n1b sigmapb
@@ -403,25 +434,20 @@ class MyApp(object):
 		sortedbkeylist=sorted(dictlist[0].iterkeys())
 		sortedakeylist=sorted(dictlist[1].iterkeys())
 		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
-		#fitvalues=[]
-		#remember the order of the constants
-		#vthermal sigmani p1i sigmapi sigmanb n1b sigmapb
-		#p1b=94310.31142
 
 		for bkey in sortedbkeylist:
-			iron=1E-6*(concentration.calcFeConc(self.constants, self.dope, bkey, dictlist[0][bkey], dictlist[1][bkey]))
+			C=concentration.calcPrefactor(self.constants, self.dope, bkey)
+			iron=1E-6*(concentration.calcFeConc(C, dictlist[0][bkey], dictlist[1][bkey]))
 			ironvalues.append(iron)
-			#tn0=1/((99.99/100)*iron*self.constants[4]*self.constants[0])
-			#tp0=1/((99.99/100)*iron*self.constants[6]*self.constants[0])
-			print "iron: %.4g, tn0: %.4g, tp0: %.4g, doping: %.4g, tbefore: %.4g, tafter: %.4g, deltan: %.4g \n" % (iron, tn0, tp0, self.dope, dictlist[0][bkey], dictlist[1][bkey], bkey)
+			#print "iron: %.4g, tn0: %.4g, tp0: %.4g, doping: %.4g, tbefore: %.4g, tafter: %.4g, deltan: %.4g \n" % (iron, tn0, tp0, self.dope, dictlist[0][bkey], dictlist[1][bkey], bkey)
 
-			#fitvalues.append(((tp0*(self.constants[5]+bkey))+(tn0*(self.dope+p1b+bkey)))/(self.dope+bkey))
+
 		xlim=self.axis1.get_xlim()
 		ylim=self.axis1.get_ylim()
-		#self.axis1.plot(sortedbkeylist,fitvalues, "m-")
+
 		self.axis1.set_xlim(xlim)
 		self.axis1.set_ylim(ylim)
-		#plot ironvalues
+
 		graphview = self.builder.get_object("irongraph")  
 		if self.ironcounter==0:
 			self.figure2 = Figure(figsize=(6,4), dpi=72)  
@@ -523,7 +549,16 @@ class MyApp(object):
 			if self.datasave=="plot":
 				self.datatxtsave()
 			elif self.datasave=="map":
-				savetxt(self.currentfilename, self.ironconcmatrix, fmt="%12.6G")
+				if self.ironplottypebox.get_active()==0:
+				#Individual C values
+					savetxt(self.currentfilename, self.ironconcmatrixindividual, fmt="%12.6G")
+				elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+					savetxt(self.currentfilename, self.ironconcmatrixgenlevel, fmt="%12.6G")
+			elif self.ironplottypebox.get_active()==2:
+					savetxt(self.currentfilename, self.ironconcmatrixmeanC, fmt="%12.6G")
+				#Use mean of last C values
+
 			elif self.datasave=="adjusteddata":
 				savetxt(self.currentfilename, self.tauafter, fmt="%12.6G")
 
@@ -608,8 +643,8 @@ class MyApp(object):
 		self.builder.get_object("getfebtnlabel").set_label("Get C")
 		self.builder.get_object("meanlabel").set_label("Mean of the Prefactor value from\nthe last 10 values: ")	
 
-		cmean= stats.mean(cvalues[-10:-1])
-		self.builder.get_object("meanconctxt").set_text("%.4g" % cmean)
+		self.cmean= stats.mean(cvalues[-10:-1])
+		self.builder.get_object("meanconctxt").set_text("%.4g" % self.cmean)
 		self.curplot="C"
 
 		self.cvalues=cvalues
@@ -619,13 +654,13 @@ class MyApp(object):
 		i=cvalues.index(max(cvalues))+1
 		
 		while i<len(cvalues):
-			if cvalues[i]> (cmean-(abs(cmean)*4)):
+			if cvalues[i]> (self.cmean-(abs(self.cmean)*4)):
 				self.axis2.set_ylim(bottom=cvalues[i])
 				break
 			else:
 				i+=1
 
-		self.axis2.set_ylim(top=cmean+(abs(cmean)*4))
+		self.axis2.set_ylim(top=self.cmean+(abs(self.cmean)*4))
 		self.builder.get_object("deltangettxt").set_text("")
 		self.builder.get_object("fegettxt").set_text("")
 		self.builder.get_object("scalebtn2").set_sensitive(True)
@@ -691,12 +726,45 @@ class MyApp(object):
 			self.tauafter=self.tauafter/1E6
 		# 1E6 factor is necessary to put in microseconds
 
-		#Need injection level
+		#Need injection level for genlevel iron values
 		injectionlevel=float(self.builder.get_object("injectionleveltxt").get_text())
 		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), injectionlevel)
-		self.ironconcmatrix = abs(C*(1/self.taubefore - 1/self.tauafter))
+		self.ironconcmatrixgenlevel = abs(C*(1/self.taubefore - 1/self.tauafter))
 		#HACK TO MAKE NEGATIVE VALUES POSITIVE
-		e=C*(1/self.taubefore - 1/self.tauafter)
+		e=abs(C*(1/self.taubefore - 1/self.tauafter))
+		#mean C value iron values:
+		self.cfactorbtnclicked(widget)
+		self.ironconcmatrixmeanC = abs(self.cmean*(1/self.taubefore - 1/self.tauafter))
+		self.ironconcmatrixindividual = np.ndarray(self.tauafter.shape, dtype=np.float)
+		taupb, taunb, n1b, p1b, NAb=self.beforefitparams
+		taupa, tauna, n1a, p1a, NAa=self.afterfitparams
+		i=0
+		j=0
+		while i<1000:
+			while j<1000:
+				nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore[i][j]/1E6)*NAb))/((self.taubefore[i][j]/1E6)-(taupb+taunb))
+				nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter[i][j]/1E6)*NAa))/((self.tauafter[i][j]/1E6)-(taupa+tauna))
+				#Fix boundary conditions later with good data
+				if nafter<0:
+					nafter=0
+				if nbefore<0:
+					nbefore=0
+
+				# if abs(nbefore-nafter)>1E13:
+				# 	print "Warning, high difference between lifetime deltan values, before was %.4g, after was %.4g\n" % (nbefore, nafter)
+
+				nmean=(nafter+nbefore)/2.0
+				C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
+				self.ironconcmatrixindividual[i][j]=abs(C*(1/self.taubefore[i][j] - 1/self.tauafter[i][j]))
+				#print "i : %i j: %i taubefore: %.6g tauafter: %.6g nbefore: %.4g nafter: %.4g C: %.4g iron: %.4g" % (i, j, self.taubefore[i][j], self.tauafter[i][j], nbefore, nafter, C, self.ironconcmatrixindividual[i][j])
+				j+=1
+			i+=1
+			j=0
+
+		
+		
+		
+
 		#throws errors on some values may need to fix for py2exe
 		#scale stuff here - must chop off extreme values, copy alex's way
 		#numpy arrays pass by reference, they do NOT create a copy also only allows one instance open?
@@ -711,9 +779,8 @@ class MyApp(object):
 		self.tauamin = a1[int(0.01*len(a))]
 		self.tauamax = a1[int(0.99*len(a))]
 		self.ironmin = e1[int(0.04*len(e))]
-		#if self.ironmin<0:
-		#	self.ironmin=0
-		#see about making colors different when off scale
+		if self.ironmin<0:
+			self.ironmin=0
 		self.ironmax = e1[int(0.97*len(e))]
 
 		self.builder.get_object("lifemintxt").set_text("%.4g" %self.taubmin)
@@ -800,10 +867,27 @@ class MyApp(object):
 
 		self.axis5=self.figure4.add_subplot(111, aspect='equal')
 		if self.ironmaptype=="linear":
-			imageiron=self.axis5.imshow(self.ironconcmatrix, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+			if self.ironplottypebox.get_active()==0:
+				#Individual C values
+				imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+			elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+				imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+			elif self.ironplottypebox.get_active()==2:
+				#Use mean of last C values
+				imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+
 			cbar3=self.figure4.colorbar(imageiron, fraction=0.045, extend='both')
 		elif self.ironmaptype=="logarithmic":
-			imageiron=self.axis5.imshow(self.ironconcmatrix, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+			if self.ironplottypebox.get_active()==0:
+				#Individual C values
+				imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+			elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+				imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+			elif self.ironplottypebox.get_active()==2:
+				imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+				#Use mean of last C values
 			cbar3=self.figure4.colorbar(imageiron, format=l_f, fraction=0.045, extend='both')
 
 		cbar3.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
@@ -974,10 +1058,26 @@ class MyApp(object):
 			self.axis5=self.figure4.add_subplot(111, aspect='equal')
 
 			if self.ironmaptype=="linear":
-				imageiron=self.axis5.imshow(self.ironconcmatrix, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+				if self.ironplottypebox.get_active()==0:
+				#Individual C values
+					imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+				elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+					imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+				elif self.ironplottypebox.get_active()==2:
+				#Use mean of last C values
+					imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+
 				cbar3=self.figure4.colorbar(imageiron, fraction=0.045, extend='both')
 			elif self.ironmaptype=="logarithmic":
-				imageiron=self.axis5.imshow(self.ironconcmatrix, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+				if self.ironplottypebox.get_active()==0:
+				#Individual C values
+					imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+				elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+					imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+				elif self.ironplottypebox.get_active()==2:
+					imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
 				cbar3=self.figure4.colorbar(imageiron, fraction=0.045, format=l_f, extend='both')
 
 			cbar3.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
@@ -1121,6 +1221,7 @@ class MyApp(object):
 		self.builder.get_object("lifemaxtxt").set_text("%.4g" %self.taubmax)
 		self.builder.get_object("femintxt").set_text("%.4g" %self.ironmin)
 		self.builder.get_object("femaxtxt").set_text("%.4g" %self.ironmax)
+		self.oldirontypeselection=self.ironplottypebox.get_active()
 		if self.lifemaptype=="linear":
 			self.linbutton.set_active(True)
 		if self.lifemaptype=="logarithmic":
@@ -1138,6 +1239,7 @@ class MyApp(object):
 		self.builder.get_object("editcolorbarwindow").show()
 
 	def editcolorbarcancelbtnclicked(self,widget):
+		self.ironplottypebox.set_active(self.oldirontypeselection)
 		self.builder.get_object("editcolorbarwindow").hide()
 
 	def editcolorbarokbtnclicked(self,widget):
@@ -1184,9 +1286,9 @@ class MyApp(object):
 			if self.curid!=None:
 				self.builder.get_object("statusbar").remove_message(self.plconid, self.curid)
 				
-			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, iron=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrix[int(round(event.ydata))][int(round(event.xdata))]))
+			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, irongenlevelC=%.3g, ironindividualC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))
 
-			print 'x=%d, y=%d, taub=%.3g, taua=%.3g, iron=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrix[int(round(event.ydata))][int(round(event.xdata))])
+			#print 'x=%d, y=%d, taub=%.3g, taua=%.3g, iron=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrix[int(round(event.ydata))][int(round(event.xdata))])
 
 
 if __name__ == "__main__":

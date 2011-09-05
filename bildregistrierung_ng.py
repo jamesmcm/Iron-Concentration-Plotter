@@ -2,6 +2,9 @@
 import imp, os, sys
 import numpy as np
 
+import platform
+
+compiler = ["msvc", "gcc"][platform.system() != "Windows"]
 
 import scipy.weave
 from scipy.weave import converters
@@ -169,8 +172,8 @@ def build_extension():
     mod.add_function(func)
 
 
-    #mod.compile(verbose=2)
-    mod.compile(compiler="gcc", verbose=2)
+    mod.compile(verbose=2, compiler=compiler)
+    #mod.compile(compiler="msvc", verbose=2)
 
 
 if not main_is_frozen():

@@ -26,8 +26,8 @@ def calcPrefactor(constants, NA, deltaN):
     C=C*1E6
     return C
 
-def calcFeConc(constants, NA, deltaN, tB, ti):
-    C=calcPrefactor(constants, NA, deltaN)
+def calcFeConc(C, tB, ti):
+    #C=calcPrefactor(constants, NA, deltaN)
     #print C
     FeConc=C*((1/ti)-(1/tB))
     #abs hack

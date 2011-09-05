@@ -13,7 +13,7 @@ warnings.simplefilter('ignore')
 mydata=[]
 for value in matplotlib.get_py2exe_datafiles():
     mydata.append(value)
-otherdata=["myapp.xml", "bildregistrierung_ng.pyc","bildregistrierung_ng_ext.pyd","bildregistrierung_ng_ext.cpp", "bildregistrierung_ng.py"]
+otherdata=['myapp.xml', "bildregistrierung_ng.pyc","bildregistrierung_ng_ext.pyd","bildregistrierung_ng_ext.cpp", "bildregistrierung_ng.py"]
 for value in otherdata:
     mydata.append(value)
 
