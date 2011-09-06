@@ -35,7 +35,7 @@ class MyApp(object):
 	def __init__(self):
 	    self.builder = gtk.Builder()
 	    self.builder.add_from_file("myapp.xml")
-	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "saveplotbtnclicked":self.saveplotbtnclicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked})
+	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "saveplotbtnclicked":self.saveplotbtnclicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked, "editfitokbtnclicked":self.editfitokbtnclicked, "fitdefaultsbtnclicked":self.fitdefaultsbtnclicked, "editfitcancelbtnclicked":self.editfitcancelbtnclicked, "changefitparamsbtnclicked":self.changefitparamsbtnclicked})
 	    self.window = self.builder.get_object("MainWindow")
 	    #self.window.fullscreen()
 	    filter1 = gtk.FileFilter()
@@ -64,7 +64,10 @@ class MyApp(object):
 	    self.cursave=""
 	    self.curid=None
 	    self.fitparams=[]
-	    self.startguess=np.array([1.72e-3,1e-2,1.22E2,9e1,2e15],np.float64)
+	    #taup, taun, n1, p1, NA
+	    self.startguessb=np.array([1.72e-3,1e-2,1.22E2,9e1,2e15],np.float64)
+	    self.startguessa=np.array([1.72e-3,1e-2,1.22E2,9e1,2e15],np.float64)
+	    self.defaultstartguess=np.array([1.72e-3,1e-2,1.22E2,9e1,2e15],np.float64)
 
 	    self.combobox = gtk.combo_box_new_text()
 	    self.builder.get_object("combospace").add(self.combobox)
@@ -160,6 +163,7 @@ class MyApp(object):
 			self.builder.get_object("recalccopbtn").set_sensitive(True)
 			self.builder.get_object("calcdopefromres").set_sensitive(True)
 			self.builder.get_object("restoredopingbtn").set_sensitive(True)
+			self.builder.get_object("editfitbtn").set_sensitive(True)
 
 	def plot1(self, file1, pointcol, linecol, mylabel):
 		#note there is no adjustment for extreme values here, although an adjustment of the limit method could perhaps provide this
@@ -184,11 +188,11 @@ class MyApp(object):
 		range1=np.arange(0,5e15,0.5e14)
 		try:
 			if mylabel=="Before Illumination":
-				self.beforefitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguess)[0]
+				self.beforefitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguessb)[0]
 				taup, taun, n1, p1, NA=self.beforefitparams
 				self.axis1.plot(range1[2:], (((taup*n1)+(taup*range1[2:])+(taun*p1)+(taun*NA)+(taun*range1[2:]))/(NA+range1[2:])), linecol)
 			elif mylabel=="After Illumination":
-				self.afterfitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguess)[0]
+				self.afterfitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguessa)[0]
 				taup, taun, n1, p1, NA=self.afterfitparams
 				self.axis1.plot(range1[2:], (((taup*n1)+(taup*range1[2:])+(taun*p1)+(taun*NA)+(taun*range1[2:]))/(NA+range1[2:])), linecol)
 		except:
@@ -725,8 +729,10 @@ class MyApp(object):
 		#accounts for some files using already microseconds
 		if self.taubefore.mean()>1000:
 			self.taubefore=self.taubefore/1E6
+			b=b/1E6
 		if self.tauafter.mean()>1000:
 			self.tauafter=self.tauafter/1E6
+			a=a/1E6
 		# 1E6 factor is necessary to put in microseconds
 
 		#Need injection level for genlevel iron values
@@ -777,13 +783,16 @@ class MyApp(object):
 		a1.sort()
 		b1.sort()
 		e1.sort()
-		self.taubmin = b1[int(0.01*len(b))]
+		#self.taubmin = b1[int(0.01*len(b))]
+		self.taubmin=0
+		self.tauamin=0
 		self.taubmax = b1[int(0.99*len(b))]
-		self.tauamin = a1[int(0.01*len(a))]
+		#self.tauamin = a1[int(0.01*len(a))]
 		self.tauamax = a1[int(0.99*len(a))]
-		self.ironmin = e1[int(0.01*len(e))]
-		if self.ironmin<0:
-			self.ironmin=0
+		#self.ironmin = e1[int(0.01*len(e))]
+		#if self.ironmin<0:
+		#	self.ironmin=0
+		self.ironmin=1E10
 		self.ironmax = e1[int(0.97*len(e))]
 
 		self.builder.get_object("lifemintxt").set_text("%.4g" %self.taubmin)
@@ -833,6 +842,7 @@ class MyApp(object):
 		self.plcalcbtnclicked(widget)
 		self.newcc=bildreg.correlation(self.taubefore[100:-100,100:-100], self.tauafter[100:-100,100:-100])
 #((self.tauafter-self.tauafter.mean()) * (self.taubefore - self.taubefore.mean())).mean() / (self.taubefore.std() * self.tauafter.std())
+		self.plcalcbtnclicked(widget)
 		self.builder.get_object("matchingcomplete").set_property("secondary-text", "The lifetime map after illumination was translated on to the lifetime map before illumination. The new cross-correlation value is %.4g, compared to the old one of %.4g" % (self.newcc, self.oldcc))
 		self.builder.get_object("matchingcomplete").show()
 		
@@ -1316,6 +1326,52 @@ class MyApp(object):
 	def ironviewclosebtnclicked(self, widget):
 		self.builder.get_object("ironviewwindow").hide()
 
+	def changefitparamsbtnclicked(self, widget):
+		self.builder.get_object("taupb").set_text("%.4g" % self.startguessb[0])
+		self.builder.get_object("taunb").set_text("%.4g" % self.startguessb[1])
+		self.builder.get_object("n1b").set_text("%.4g" % self.startguessb[2])
+		self.builder.get_object("p1b").set_text("%.4g" % self.startguessb[3])
+		self.builder.get_object("NAb").set_text("%.4g" % self.startguessb[4])
+		self.builder.get_object("taupa").set_text("%.4g" % self.startguessa[0])
+		self.builder.get_object("tauna").set_text("%.4g" % self.startguessa[1])
+		self.builder.get_object("n1a").set_text("%.4g" % self.startguessa[2])
+		self.builder.get_object("p1a").set_text("%.4g" % self.startguessa[3])
+		self.builder.get_object("NAa").set_text("%.4g" % self.startguessa[4])
+		self.builder.get_object("actualtaupa").set_text("%.4g" % self.afterfitparams[0])
+		self.builder.get_object("actualtauna").set_text("%.4g" % self.afterfitparams[1])
+		self.builder.get_object("actualn1a").set_text("%.4g" % self.afterfitparams[2])
+		self.builder.get_object("actualp1a").set_text("%.4g" % self.afterfitparams[3])
+		self.builder.get_object("actualNAa").set_text("%.4g" % self.afterfitparams[4])
+		self.builder.get_object("actualtaupb").set_text("%.4g" % self.beforefitparams[0])
+		self.builder.get_object("actualtaunb").set_text("%.4g" % self.beforefitparams[1])
+		self.builder.get_object("actualn1b").set_text("%.4g" % self.beforefitparams[2])
+		self.builder.get_object("actualp1b").set_text("%.4g" % self.beforefitparams[3])
+		self.builder.get_object("actualNAb").set_text("%.4g" % self.beforefitparams[4])
+		self.builder.get_object("editfitwindow").show()
+
+	def fitdefaultsbtnclicked(self, widget):
+		self.startguessa=self.defaultstartguess
+		self.startguessb=self.defaultstartguess
+		self.builder.get_object("taupb").set_text("%.4g" % self.startguessb[0])
+		self.builder.get_object("taunb").set_text("%.4g" % self.startguessb[1])
+		self.builder.get_object("n1b").set_text("%.4g" % self.startguessb[2])
+		self.builder.get_object("p1b").set_text("%.4g" % self.startguessb[3])
+		self.builder.get_object("NAb").set_text("%.4g" % self.startguessb[4])
+		self.builder.get_object("taupa").set_text("%.4g" % self.startguessa[0])
+		self.builder.get_object("tauna").set_text("%.4g" % self.startguessa[1])
+		self.builder.get_object("n1a").set_text("%.4g" % self.startguessa[2])
+		self.builder.get_object("p1a").set_text("%.4g" % self.startguessa[3])
+		self.builder.get_object("NAa").set_text("%.4g" % self.startguessa[4])
+
+	def editfitcancelbtnclicked(self, widget):
+		self.builder.get_object("editfitwindow").hide()
+
+	def editfitokbtnclicked(self, widget):
+		self.startguessb=np.array([float(self.builder.get_object("taupb").get_text()),float(self.builder.get_object("taunb").get_text()),float(self.builder.get_object("n1b").get_text()),float(self.builder.get_object("p1b").get_text()),float(self.builder.get_object("NAb").get_text())],np.float64)
+		self.startguessa=np.array([float(self.builder.get_object("taupa").get_text()),float(self.builder.get_object("tauna").get_text()),float(self.builder.get_object("n1a").get_text()),float(self.builder.get_object("p1a").get_text()),float(self.builder.get_object("NAa").get_text())],np.float64)
+
+		self.plotgraph1(widget)
+		self.builder.get_object("editfitwindow").hide()
 
 if __name__ == "__main__":
 	app = MyApp()
