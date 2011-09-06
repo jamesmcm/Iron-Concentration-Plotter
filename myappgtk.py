@@ -24,6 +24,7 @@ from openpyxl.reader.excel import load_workbook
 import concentration
 from matplotlib.colors import LogNorm
 from statlib import stats
+import scipy.interpolate
 
 import warnings
 warnings.simplefilter('ignore')
@@ -34,7 +35,7 @@ class MyApp(object):
 	def __init__(self):
 	    self.builder = gtk.Builder()
 	    self.builder.add_from_file("myapp.xml")
-	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "saveplotbtnclicked":self.saveplotbtnclicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked})
+	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "saveplotbtnclicked":self.saveplotbtnclicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked})
 	    self.window = self.builder.get_object("MainWindow")
 	    #self.window.fullscreen()
 	    filter1 = gtk.FileFilter()
@@ -479,6 +480,7 @@ class MyApp(object):
 		self.builder.get_object("getfebtn").set_sensitive(True)
 		self.builder.get_object("meanlabel").set_label("Mean of the interstitial\nIron Concentration from\nthe last 10 values (cm<sup>-3</sup>): ")	
 		ironmean=stats.mean(ironvalues[-10:-1])
+		self.qsspcironmeanlast=ironmean
 		self.builder.get_object("meanconctxt").set_text("%.4g" % ironmean)
 
 		#don't delete just change default view
@@ -501,7 +503,8 @@ class MyApp(object):
 		self.curplot="Fe"
 		self.builder.get_object("deltangettxt").set_text("")
 		self.builder.get_object("fegettxt").set_text("")
-		self.builder.get_object("scalebtn2").set_sensitive(True)	
+		self.builder.get_object("scalebtn2").set_sensitive(True)
+		self.qsspclist=[sortedbkeylist, ironvalues]
 
 	def saveplotbtnclicked(self, widget):
 		self.builder.get_object("plotfilesavedialog").show()
@@ -778,7 +781,7 @@ class MyApp(object):
 		self.taubmax = b1[int(0.99*len(b))]
 		self.tauamin = a1[int(0.01*len(a))]
 		self.tauamax = a1[int(0.99*len(a))]
-		self.ironmin = e1[int(0.04*len(e))]
+		self.ironmin = e1[int(0.01*len(e))]
 		if self.ironmin<0:
 			self.ironmin=0
 		self.ironmax = e1[int(0.97*len(e))]
@@ -792,6 +795,17 @@ class MyApp(object):
 		if self.ironconcmatrixgenlevel[547:555].mean()<=0:
 			self.builder.get_object("negiron").show()
 
+		#Fill show iron value boxes
+		#1. QSSPC iron value from given generation/injection level: must interpolate iron plot
+		self.ironcalcbtnclicked(widget)
+		ironinterpf=scipy.interpolate.interp1d(self.qsspclist[0], self.qsspclist[1])
+		iron=ironinterpf(float(self.builder.get_object("injectionleveltxt").get_text()))
+		self.builder.get_object("qsspcgenlevel").set_text("%.4g" % iron)
+		self.builder.get_object("lastqsspciron").set_text("%.4g" % self.qsspcironmeanlast)
+		self.builder.get_object("meanironplindividual").set_text("%.4g" % stats.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
+		self.builder.get_object("meanironplgenlevel").set_text("%.4g" % stats.mean(self.ironconcmatrixgenlevel[100:-100,100:-100]))
+		self.builder.get_object("meanironpllastc").set_text("%.4g" % stats.mean(self.ironconcmatrixmeanC[100:-100,100:-100]))
+		self.builder.get_object("showironvaluesbtn").set_sensitive(True)
 
 		#except:
 			#self.errorshow(widget)
@@ -1296,7 +1310,11 @@ class MyApp(object):
 				
 			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, irongenlevelC=%.3g, ironindividualC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))
 
-			#print 'x=%d, y=%d, taub=%.3g, taua=%.3g, iron=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrix[int(round(event.ydata))][int(round(event.xdata))])
+	def showironvaluesbtnclicked(self, widget):
+		self.builder.get_object("ironviewwindow").show()
+
+	def ironviewclosebtnclicked(self, widget):
+		self.builder.get_object("ironviewwindow").hide()
 
 
 if __name__ == "__main__":
