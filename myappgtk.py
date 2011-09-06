@@ -807,9 +807,12 @@ class MyApp(object):
 		#Fill show iron value boxes
 		#1. QSSPC iron value from given generation/injection level: must interpolate iron plot
 		self.ironcalcbtnclicked(widget)
-		ironinterpf=scipy.interpolate.interp1d(self.qsspclist[0], self.qsspclist[1])
-		iron=ironinterpf(float(self.builder.get_object("injectionleveltxt").get_text()))
-		self.builder.get_object("qsspcgenlevel").set_text("%.4g" % iron)
+		try:
+			ironinterpf=scipy.interpolate.interp1d(self.qsspclist[0], self.qsspclist[1])
+			iron=ironinterpf(float(self.builder.get_object("injectionleveltxt").get_text()))
+			self.builder.get_object("qsspcgenlevel").set_text("%.4g" % iron)
+		except: 
+			self.builder.get_object("qsspcgenlevel").set_text("Given Injection level out of bounds for interpolation!")
 		self.builder.get_object("lastqsspciron").set_text("%.4g" % self.qsspcironmeanlast)
 		self.builder.get_object("meanironplindividual").set_text("%.4g" % stats.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
 		self.builder.get_object("meanironplgenlevel").set_text("%.4g" % stats.mean(self.ironconcmatrixgenlevel[100:-100,100:-100]))
