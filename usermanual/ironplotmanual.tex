@@ -52,9 +52,7 @@
 
 \renewcommand{\labelenumi}{{\color{red} {\bf\arabic{enumi}}}}
 
-\section{QSSPC Measurements}
-
-\subsection{GUI Map}
+\section{QSSPC Measurements - GUI Map}
 
 When the program is first loaded the default tab is the ``QSSPC'' tab. Figure \ref{figure1} shows this window labelled when in use.
 
@@ -84,7 +82,7 @@ When the program is first loaded the default tab is the ``QSSPC'' tab. Figure \r
 
 \item This button calculates and plots the Iron Concentration graph.
 
-\item This button calculates and plots the Prefactor values graph. It also changes controls {\color{red} {\bf 13}}, {\color{red} {\bf 14}}, {\color{red} {\bf 15}} and {\color{red} {\bf 16}} to work for the Prefactor values.
+\item This button calculates and plots the Prefactor values graph. It also changes controls {\color{red} {\bf 13}}, {\color{red} {\bf 15}}, {\color{red} {\bf 16}} and {\color{red} {\bf 17}} to work for the Prefactor values.
 
 \item This is the area where the Iron Concentration plot is loaded. It behaves the same as the lifetime plot.
 
@@ -107,15 +105,16 @@ When the program is first loaded the default tab is the ``QSSPC'' tab. Figure \r
 \item Here the application can be closed, maximised or minimised.
 \end{enumerate}
 
-\subsection{Usage}
-The Excel files are loaded using the two buttons at the top of the screen and the QSSPC lifetime data is plotted. The doping concentration can then be changed manually if desired. The interstitial Iron Concentration against injection level plot can then be calculated and plotted, as can the prefactor values against injection levels.
+
+
+
 
 \section{PL Imaging}
 \subsection{GUI Map}
 
 \begin{figure}[h]
-\includegraphics[height=4in]{pllabel}
-\caption{\label{figure2} The PL imaging tab shown after loading the PL data files and plotting the PL maps for lifetime and interstitial iron concentration.The ``Edit Colorbars'' is also shown.}
+\includegraphics[height=4in]{2plimaging}
+\caption{\label{figure2} The PL imaging tab shown after loading the PL data files and plotting the PL maps for lifetime and interstitial iron concentration.}
 \end{figure}
 
 \begin{enumerate}
@@ -124,29 +123,85 @@ The Excel files are loaded using the two buttons at the top of the screen and th
 \item  Here the desired Generation Level for the after illumation PL data is listed so it can be read whilst selecting the file.
 \item Here the injection level used in the calculation of the Iron Concentration PL Map is shown, and may be edited. It is read from the injection level corresponding to the given generation level in the Before Illumination Excel file.
 \item Here is the Doping Concentration level, it is read from the Excel file and will be updated if it is changed on the QSSPC page. It can also be edited here for producing the PL maps.
+\item This button calculates and plots the iron concentration values, and then asks whether adjustment of the lifetime images is necessary. It may take a long time.
+\item This button opens a window where the colorbar colormap can be changed, the limits on the colorbar can be changed as can whether the maps are base-10 logarithmic or linear and the type of calculation used for the interstitial iron concentration map.
+\item This button shows a window with the mean interstitial iron concentration values from different calculations.
 \item The navigation toolbar, here the arrows are panning buttons, and the panning moves all the maps together to keep them comparable. The zooming function also works this way. The save button opens a dialog asking which plot or data to save.
 \item The plot area for the before illumination lifetime map.
 \item The plot area for the after illumination lifetime map. Note that both lifetime maps actually belong to the same figure, and so are saved together.
 \item The plot area for the interstitial iron concentration map. Note that the iron concentration map is a separate figure from the lifetime figure and so must be saved separately.
-\item The status bar, hovering over the plots provides details of the points here.
-\item Here the limits to the colorbars can be changed.
-\item Here the PL map colorbars can be set to use logarithmic scales.
-\item Here the colormap can be changed.
-\item Here the options are confirmed or cancelled. They only take effect if confirmed.
+\item The status bar, hovering over the plots provides details of the points here. It lists the current x co-ordinate, y co-ordinate, before illumination lifetime (in microseconds), after illumination lifetime, the interstitial iron concentration at the point as calculated using the prefactor calculated from the given generation level, the interstitial iron concentration at the point as calculated using the individual prefactor for that point (by matching the lifetimes to the QSSPC fits to get an injection level), and the interstitial iron concentration at the point by using the mean of the high prefactors calculated from the QSSPC graph.
 \end{enumerate}
 
-\subsection{Usage}
-Firstly the Excel files in the QSSPC page must be loaded. Then the PL before illumination data file can be selected, and the generation level used can be entered in to the dialog box. The PL after file is then chosen with the generation level closest to that given in the marked textbox and dialog title. The PL maps may then be calculated and plotted. The Iron Concentration map data can be saved under the save dialog after clicking the save icon in the toolbar.
-\pagebreak
-\section{Editing Constants}
-\subsection{GUI Map}
+
+\section{User Guide}
+The Excel files are loaded using the two buttons at the top of the screen and the QSSPC lifetime data is plotted. The resistivity (or doping concentration directly) can then be changed manually if desired. The fits can also be adjusted to ensure the values used for calculating the individual prefactor values for the PL images are accurate, and the actually used fit parameters can be viewed in the ``Change Fitting Parameters'' window. The interstitial Iron Concentration against injection level plot can then be calculated and plotted, as can the prefactor values against injection level.
+\\
+The PL Imaging tab is then opened. Then the PL before illumination data file can be selected, and the generation level used can be entered in to the dialog box.
+
 \begin{figure}[h!]
-\includegraphics[height=5in]{constants}
+\includegraphics[height=1in]{2genlevel}
+\caption{\label{figure2} The window where the user enters the generation level used for the Before Illumination PL image.}
+\end{figure}
+
+The PL after file is then chosen with the generation level closest to that given in the filled textbox and dialog title.
+
+\begin{figure}[h!]
+\includegraphics[height=3in]{2loadplafterfile} 
+\caption{\label{figure2} The window where the After Illumination PL file is loaded, note the target generation level is given in the window title.}
+\end{figure}
+
+\pagebreak
+ The PL maps may then be calculated and plotted. The default maps plotted have linear scales and the interstitial iron map plotted is using the individual prefactor values for each pixel. The program then asks the user whether they wish to attempt adjusting the after illumination lifetime map to ensure that the pixels are in the right position compared to the before illumination map. 
+
+\begin{figure}[h!]
+\includegraphics[height=2in]{2attemptcorrection}
+\caption{\label{figure2} The window which asks whether image correction should be attempted. Here it has been and the progress bar is shown during the calculation process.}
+\end{figure}
+
+If this is done then it will make the calculated adjustments to maximise the correlation, and the user is given the option to save the adjusted data. When it is completed a window will show the results of the transformation on the cross-correlation value and the user has the opportunity to save the adjusted After Illumination lifetime data.
+
+\begin{figure}[h!]
+\includegraphics[height=2in]{2imagematchingcomplete}
+\caption{\label{figure2} The window shown when image matching is complete. The cross-correlation values are given and the user has an opportunity to save the adjusted lifetime data.}
+\end{figure}
+
+\pagebreak
+
+The Plot Options can then be changed, to set the limits on the plots, make them logarithmic or linear, change the colour map used and change the type of interstitial iron concentration calculation that is plotted. Note that when using logarithmic scales the limits should not be set equal to, or less than, zero as this will produce errors, nor should boxes be left blank as this may also produce errors. The different color maps all have distinct colors for values below the scale limit to highlight anomalous values.
+
+\begin{figure}[h!]
+\includegraphics[height=1.8in]{editcolorbar}
+\caption{\label{figure2} The plot options window. Note that when the plots are logarithmic the scale values cannot be equal to zero (or negative), and boxes cannot be left unfilled.}
+\end{figure}
+
+The mean interstitial Iron Concentration values for the different methods of calculation can be viewed by clicking the ``Show mean Iron Concentration values'' button.
+
+\begin{figure}[h!]
+\includegraphics[height=2in]{meanvalues}
+\caption{\label{figure2} The window showing the mean interstitial Iron Concentration value from the various calculation methods.}
+\end{figure}
+
+The ``Mean Interstitial Iron Concentration from the QSSPC measurements at the Generation Level used for the before PL image'' gives the interstitial iron concentration from the QSSPC measurements at the given generation level (from which the closest injection level is matched). The ``Mean Interstitial Iron Concentration from the mean of the last 10 values from the QSSPC measurements'' takes the mean of the last 10 values on the plotted Iron Concentration graph from the QSSPC measurements as these are stable compared with the lower-injection level values. The ``{\bf Mean of spatially resolved Interstitial Iron Concentration map using individual C values}'' takes the mean of the spatially resolved interstitial Iron Concentration map when the prefactor for the calculation is calculated seperately for each pixel by taking the Before Illumination and After Illumination lifetimes and obtaining an injection level by seeing where these appear on the QSSPC fits, this injection level is then used to calculate the prefactor for that pixel, if the lifetimes are too low to be fitted then the minimum injection level from the QSSPC plot is used. The ``Mean of spatially resolved Iron Concentration map using C value from the given Generation Level'' uses the given generation level to obtain an injection level by finding the closest value in the Before Illumination file, and then uses this to calculate a prefactor value which is applied to all pixels. The ``Mean of spatially resolved Iron Concentration map using the C value from the mean of the last 10 C values'' takes the mean of the last 10 C values on the C value (prefactor) plot from the QSSPC measurements and applies this C factor to all the pixels.
+
+
+\begin{figure}[h!]
+\includegraphics[height=2in]{2whichsave}
+\caption{\label{figure2} From this window the user can save the different PL data sets. The first two are images, whilst the last is the actual calculated Interstitial Iron Concentration data set, it will save whatever type of calculation is currently plotted.}
+\end{figure}
+
+The user can also click the save button in the Navigation Toolbart of the PL maps to save images of the plots as they are, and also to save the calculated interstitial iron concentration data to a file. The data saved will be whatever calculation method is currently plotted.
+\\
+\pagebreak
+
+Finally, the constants used in the calculation of the prefactor values can be modified on the Constants window as shown. Note that they only take effect at the next calculation, so if already plotted, the graphs will need to be recalculated.
+
+\begin{figure}[h!]
+\includegraphics[height=4in]{2constants}
 \caption{\label{figure3} The Constants tab, here the constants can be edited.}
 \end{figure}
 
-\subsection{Usage}
-Here the constants can be edited and their default values restored via the ``Restore Default Values'' button. The modified constants will take effect whenever there is a next calculation, so if you wish to apply them you will need to recalculate what has already been calculated (i.e. the PL maps or the QSSPC Iron Concentration plot).
+
 \end{document}
 
 

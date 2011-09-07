@@ -749,27 +749,36 @@ class MyApp(object):
 		taupa, tauna, n1a, p1a, NAa=self.afterfitparams
 		i=0
 		j=0
-		while i<1000:
-			while j<1000:
-				nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore[i][j]/1E6)*NAb))/((self.taubefore[i][j]/1E6)-(taupb+taunb))
-				nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter[i][j]/1E6)*NAa))/((self.tauafter[i][j]/1E6)-(taupa+tauna))
-				#Fix boundary conditions later with good data
-				if nafter<0:
-					nafter=0
-				if nbefore<0:
-					nbefore=0
+		# while i<1000:
+		# 	while j<1000:
+		# 		nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore[i][j]/1E6)*NAb))/((self.taubefore[i][j]/1E6)-(taupb+taunb))
+		# 		nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter[i][j]/1E6)*NAa))/((self.tauafter[i][j]/1E6)-(taupa+tauna))
+		# 		#Fix boundary conditions later with good data
+		# 		if nafter<0:
+		# 			nafter=0
+		# 		if nbefore<0:
+		# 			nbefore=0
 
-				# if abs(nbefore-nafter)>1E13:
-				# 	print "Warning, high difference between lifetime deltan values, before was %.4g, after was %.4g\n" % (nbefore, nafter)
+		# 		# if abs(nbefore-nafter)>1E13:
+		# 		# 	print "Warning, high difference between lifetime deltan values, before was %.4g, after was %.4g\n" % (nbefore, nafter)
 
-				nmean=(nafter+nbefore)/2.0
-				C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
-				self.ironconcmatrixindividual[i][j]=abs(C*(1/self.taubefore[i][j] - 1/self.tauafter[i][j]))
-				#print "i : %i j: %i taubefore: %.6g tauafter: %.6g nbefore: %.4g nafter: %.4g C: %.4g iron: %.4g" % (i, j, self.taubefore[i][j], self.tauafter[i][j], nbefore, nafter, C, self.ironconcmatrixindividual[i][j])
-				j+=1
-			i+=1
-			j=0
-
+		# 		nmean=(nafter+nbefore)/2.0
+		# 		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
+		# 		self.ironconcmatrixindividual[i][j]=abs(C*(1/self.taubefore[i][j] - 1/self.tauafter[i][j]))
+		# 		#print "i : %i j: %i taubefore: %.6g tauafter: %.6g nbefore: %.4g nafter: %.4g C: %.4g iron: %.4g" % (i, j, self.taubefore[i][j], self.tauafter[i][j], nbefore, nafter, C, self.ironconcmatrixindividual[i][j])
+		# 		j+=1
+		# 	i+=1
+		# 	j=0
+		
+		nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore/1E6)*NAb))/((self.taubefore/1E6)-(taupb+taunb))
+		nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter/1E6)*NAa))/((self.tauafter/1E6)-(taupa+tauna))
+		nbefore[nbefore<0]=0
+		nafter[nafter<0]=0
+		nmean=(nafter+nbefore)/2.0
+		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
+		self.ironconcmatrixindividual=np.abs(C*(1/self.taubefore - 1/self.tauafter))
+		
+		
 		
 		
 		
@@ -836,18 +845,26 @@ class MyApp(object):
 
 
 	def attemptcorrectionbtnclicked(self, widget):
-		trafo = bildreg.transformation_berechnen(self.taubefore, self.tauafter, maxdelta=34, korrelationsgroesse=128, N=5)
+		self.builder.get_object("progressbar1").set_fraction(0)
+		self.builder.get_object("progressbar1").set_visible(True)
+		trafo = bildreg.transformation_berechnen(self.taubefore, self.tauafter, maxdelta=34, korrelationsgroesse=128, N=5, callback=self.progbar)
 		T_T = np.ndarray(self.tauafter.shape, dtype=np.float)
 		bildreg.transform(self.tauafter,trafo,T_T)
 		self.tauafter=T_T
 		self.adjusted=1
-		self.builder.get_object("imagematchingwindow").hide()
+
 		self.plcalcbtnclicked(widget)
 		self.newcc=bildreg.correlation(self.taubefore[100:-100,100:-100], self.tauafter[100:-100,100:-100])
 #((self.tauafter-self.tauafter.mean()) * (self.taubefore - self.taubefore.mean())).mean() / (self.taubefore.std() * self.tauafter.std())
 		self.plcalcbtnclicked(widget)
+		self.builder.get_object("progressbar1").set_visible(False)
+		self.builder.get_object("imagematchingwindow").hide()
 		self.builder.get_object("matchingcomplete").set_property("secondary-text", "The lifetime map after illumination was translated on to the lifetime map before illumination. The new cross-correlation value is %.4g, compared to the old one of %.4g" % (self.newcc, self.oldcc))
 		self.builder.get_object("matchingcomplete").show()
+
+	def progbar(self, number):
+		self.builder.get_object("progressbar1").set_fraction(number)
+		gtk.main_iteration()
 		
 	def donothingbtnclicked(self, widget):
 		self.builder.get_object("imagematchingwindow").hide()
@@ -1378,4 +1395,4 @@ class MyApp(object):
 
 if __name__ == "__main__":
 	app = MyApp()
-	gtk.main()
+	mainloop=gtk.main()

@@ -3431,6 +3431,19 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
           </packing>
         </child>
         <child>
+          <object class="GtkProgressBar" id="progressbar1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="show_text">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">5</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkVButtonBox" id="vbuttonbox2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -3469,7 +3482,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

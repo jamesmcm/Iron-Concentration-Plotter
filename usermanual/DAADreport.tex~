@@ -1,0 +1,49 @@
+\documentclass[final,a4paper,oneside,12pt]{article}
+\setlength{\parindent}{0in}
+ \usepackage{verbatim}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage[pdftex]{graphicx}
+\begin{comment}
+\usepackage[OT2,T1]{fontenc}
+\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+\end{comment}
+\usepackage{geometry}
+%% Alex's thing
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\linespread{1}
+
+\geometry{
+  body={7in, 10in},
+  left=0.6in,
+  top=0.5in
+}
+
+\setlength\parindent{0em}
+
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*1}{*1}
+\titlespacing{\subsection}{1pt}{*0.8}{*0.8}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[pdftex]{graphicx}
+\usepackage{fullpage}
+%%%
+\begin{document}
+
+\centerline{\Large \bf{Rise 2011 Report}}
+\bigskip
+\centerline{James McMurray}
+\bigskip

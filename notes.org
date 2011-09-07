@@ -99,19 +99,19 @@
 * Critical
 ** DONE Remember to edit save dialogs for different iron data save types too
 ** TODO Fix boundary conditions onm getting injection level - need good test data
-** TODO Add ability to set initial guess value, maybe indepdendently
+** DONE Add ability to set initial guess value, maybe indepdendently
 ** TODO Add ability to set C value for normal iron plot
 ** Could create own bundle by including binary for python interpreter and bat file to run the script
 ** TODO Add warning if fitting results in worse plot
-** TODO Make fits from SRH theory to QSSPC lifetime plots
+** DONE Make fits from SRH theory to QSSPC lifetime plots
 ** TODO Change limit for drawing interpolation lines as doesn't work with old files
-** TODO Fix status bar in exectuable - is this status bar or matplotlib canvas?
-** TODO Get C factor for every point in iron map calculation by looking at QSSPC fits backwards to get the injection level from the lifetime
+** DONE Fix status bar in exectuable - is this status bar or matplotlib canvas?
+** DONE Get C factor for every point in iron map calculation by looking at QSSPC fits backwards to get the injection level from the lifetime
 ** TODO Print warning if injection level difference is high between the lifetimes for the same point at many ponits
-** TODO When value is too high just take highest value 
-** TODO When value is too low just take lowest value as there is very little variation on the right of the COP
-** TODO Make this another option for plotting the iron map
-** TODO Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
+** DONE When value is too high just take highest value 
+** DONE When value is too low just take lowest value as there is very little variation on the right of the COP
+** DONE Make this another option for plotting the iron map
+** DONE Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
 ** TODO Allow editing of entered gen level from main window
 ** TODO Reduce compiled size (below 20MB ideally)
 ** TODO Make standalone executable
