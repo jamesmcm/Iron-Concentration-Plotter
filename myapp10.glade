@@ -2102,6 +2102,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="urgency_hint">True</property>
+    <property name="deletable">False</property>
     <property name="message_type">warning</property>
     <property name="buttons">close</property>
     <property name="text">Warning: Resistivity values do not match</property>
@@ -2134,6 +2135,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="title" translatable="yes">Warning: The PL images may be offset</property>
     <property name="type_hint">dialog</property>
     <property name="skip_taskbar_hint">True</property>
+    <property name="deletable">False</property>
     <property name="message_type">warning</property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Warning: The PL images may be offset</property>
@@ -2636,6 +2638,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
   <object class="GtkWindow" id="editfitwindow">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Edit Initial Guess Parameters</property>
+    <property name="deletable">False</property>
     <child>
       <object class="GtkVBox" id="vbox14">
         <property name="visible">True</property>
@@ -3371,6 +3374,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="border_width">5</property>
     <property name="type_hint">dialog</property>
     <property name="skip_taskbar_hint">True</property>
+    <property name="deletable">False</property>
     <property name="message_type">error</property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Error: Fit could not be produced</property>
@@ -3798,6 +3802,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="title" translatable="yes">Warning: The calculated Iron Concentration is negative</property>
     <property name="type_hint">dialog</property>
     <property name="skip_taskbar_hint">True</property>
+    <property name="deletable">False</property>
     <property name="message_type">warning</property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Warning: The calculated Iron Concentration is negative</property>
@@ -4159,6 +4164,56 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
       <action-widget response="0">plplotdialogcancelbtn</action-widget>
     </action-widgets>
   </object>
+  <object class="GtkMessageDialog" id="qsspcmeanwarning">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="deletable">False</property>
+    <property name="message_type">warning</property>
+    <property name="buttons">close</property>
+    <property name="text" translatable="yes">Warning: Individual C Factor calculation may be incorrect! </property>
+    <property name="secondary_text" translatable="yes">There were significant differences between the injection levels obtained for the same positions on the before illumination and after illumination PL map. This means the calculation of the individual prefactors may be incorrect.</property>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox11">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area10">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="warnmeanlabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">label</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="reswindow">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Resistivity values do not match!</property>
@@ -4291,6 +4346,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="title" translatable="yes">Choose file to save...</property>
     <property name="default_width">440</property>
     <property name="default_height">250</property>
+    <property name="deletable">False</property>
     <child>
       <object class="GtkVBox" id="vbox9">
         <property name="visible">True</property>

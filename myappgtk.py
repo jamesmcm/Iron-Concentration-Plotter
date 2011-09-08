@@ -774,6 +774,11 @@ class MyApp(object):
 		nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter/1E6)*NAa))/((self.tauafter/1E6)-(taupa+tauna))
 		nbefore[nbefore<0]=0
 		nafter[nafter<0]=0
+		matrixmean= np.mean(np.abs(nafter[100:-100,100:-100]-nbefore[100:-100,100:-100]))
+		if matrixmean>1e14:
+			self.builder.get_object("warnmeanlabel").set_label("The difference between the means of the arrays of injection level values was %.4g." % matrixmean)
+			self.builder.get_object("qsspcmeanwarning").show()
+
 		nmean=(nafter+nbefore)/2.0
 		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
 		self.ironconcmatrixindividual=np.abs(C*(1/self.taubefore - 1/self.tauafter))

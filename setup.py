@@ -37,7 +37,7 @@ setup(
                       'packages':'encodings',
                       'includes': ['email', 'email.header', 'email.message', 'cairo', 'pango', 'pangocairo', 'atk', 'gobject', 'gio', 'glib', 'email.mime.*'],
                       'excludes': ['_backend_gdk', '_backend_gtk', '_tkagg,' '_cocoaagg', '_fltkagg','Qt', 'PyQt4','_qt', '_gdk', '_Tkinter', '_ssl', 'Tkinter', '_tcl', 'tcl', 'doctest', "_imagingtk", "PIL._imagingtk", "ImageTk", "PIL.ImageTk", "FixTk", "pydoc"],
-                      #'bundle_files':1,
+                      'bundle_files':3,
                   }
               },
 

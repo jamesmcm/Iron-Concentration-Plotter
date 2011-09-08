@@ -96,22 +96,21 @@
 ** DONE Display offlimit colors on colorbar
 ** DONE Add ability to change resistivity and make it change the doping concentration
 ** DONE if resistivity doesn't match make dialog where it can be entered whilst showing both resistivity values
-* Critical
-** DONE Remember to edit save dialogs for different iron data save types too
-** TODO Fix boundary conditions onm getting injection level - need good test data
 ** DONE Add ability to set initial guess value, maybe indepdendently
-** TODO Add ability to set C value for normal iron plot
-** Could create own bundle by including binary for python interpreter and bat file to run the script
-** TODO Add warning if fitting results in worse plot
+** DONE Remember to edit save dialogs for different iron data save types too
 ** DONE Make fits from SRH theory to QSSPC lifetime plots
-** TODO Change limit for drawing interpolation lines as doesn't work with old files
 ** DONE Fix status bar in exectuable - is this status bar or matplotlib canvas?
 ** DONE Get C factor for every point in iron map calculation by looking at QSSPC fits backwards to get the injection level from the lifetime
-** TODO Print warning if injection level difference is high between the lifetimes for the same point at many ponits
+** DONE Print warning if injection level difference is high between the lifetimes for the same point at many ponits
 ** DONE When value is too high just take highest value 
 ** DONE When value is too low just take lowest value as there is very little variation on the right of the COP
 ** DONE Make this another option for plotting the iron map
 ** DONE Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
+** DONE Make it so hovering voer graph shows values in status bar
+* Critical
+** TODO Fix boundary conditions onm getting injection level - need good test data
+** TODO Add ability to set C value for normal iron plot
+** TODO Add warning if fitting results in worse plot
 ** TODO Allow editing of entered gen level from main window
 ** TODO Reduce compiled size (below 20MB ideally)
 ** TODO Make standalone executable
@@ -135,7 +134,6 @@
 ** TODO Could provide options for other filetypes too
 ** TODO Add error handling for file saving
 ** TODO Add way of finding Crossover point and centering view on it
-** TODO Maybe add figure clearing to early plots although not broken
 ** TODO Make it so resistivty etc. is laoded with before file
 ** TODO Make save function combine both plots and save them
 ** TODO Add zooming rescale colors for PL images
@@ -145,7 +143,6 @@
 ** TODO With tabbed window allow way of selecting certain columns to save data
 ** TODO Add menu bar - ability to load excel files and save plots
 ** TODO Maybe add functioning status bar
-** TODO Make it so hovering voer graph shows values in status bar
 ** TODO Make CLI versions for mass scripting and saving of data
 * Manual
 ** TODO Screnshots
