@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  7 SEP 2011 16:36
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  8 SEP 2011 12:08
 entering extended mode
 **\input DAADreport.tex
 (c:\Users\James\Documents\pyprog\myfiles\usermanual\DAADreport.tex
@@ -168,7 +168,14 @@ Package: titlesec 2011/08/28 v2.9.1 Sectioning titles
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip48
 )
-(c:\Users\James\Documents\pyprog\myfiles\usermanual\DAADreport.aux)
+(c:\Users\James\Documents\pyprog\myfiles\usermanual\DAADreport.aux
+
+LaTeX Warning: Label `figure2' multiply defined.
+
+
+LaTeX Warning: Label `figure2' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
@@ -181,8 +188,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
-
-("C:\Program Files (x86)\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
+ ("C:\Program Files (x86)\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count103
 \scratchdimen=\dimen127
@@ -232,6 +238,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
 
 Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
@@ -242,30 +250,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--59
+<herrenchiemsee.jpg, id=1, 2053.6725pt x 1349.04pt>
+File: herrenchiemsee.jpg Graphic file (type jpg)
+ <use herrenchiemsee.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
 [1
 
-{C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map}]
-(c:\Users\James\Documents\pyprog\myfiles\usermanual\DAADreport.aux) ) 
+{C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map} <c:/Users/James/Documents/
+pyprog/myfiles/usermanual/herrenchiemsee.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+<bodensee.jpg, id=9, 2055.68pt x 1541.76pt>
+File: bodensee.jpg Graphic file (type jpg)
+ <use bodensee.jpg>
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ¤ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+[2 <c:/Users/James/Documents/pyprog/myfiles/usermanual/bodensee.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+
+ []
+
+<heidelberg.jpg, id=13, 1100.11pt x 485.815pt>
+File: heidelberg.jpg Graphic file (type jpg)
+ <use heidelberg.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+[3 <c:/Users/James/Documents/pyprog/myfiles/usermanual/heidelberg.jpg>]
+(c:\Users\James\Documents\pyprog\myfiles\usermanual\DAADreport.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2546 strings out of 495285
- 32554 string characters out of 3179879
- 93470 words of memory out of 3000000
- 5750 multiletter control sequences out of 15000+200000
+ 2565 strings out of 495285
+ 32854 string characters out of 3179879
+ 94517 words of memory out of 3000000
+ 5764 multiletter control sequences out of 15000+200000
  4891 words of font info for 18 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,5n,28p,753b,115s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Progra
-m Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program 
-Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on DAADreport.pdf (1 page, 43746 bytes).
+ 27i,6n,28p,753b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on DAADreport.pdf (3 pages, 1397370 bytes).
 PDF statistics:
- 18 PDF objects out of 1000 (max. 8388607)
+ 27 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
