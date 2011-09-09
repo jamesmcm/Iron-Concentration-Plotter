@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  7 SEP 2011 15:28
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  9 SEP 2011 16:06
 entering extended mode
 **\input ironplotmanual.tex
 (c:\Users\James\Documents\pyprog\myfiles\usermanual\ironplotmanual.tex
@@ -285,7 +285,7 @@ files/usermanual/2imagematchingcomplete.png (PNG copy)>]
 <editcolorbar.png, id=31, 834.11626pt x 228.855pt>
 File: editcolorbar.png Graphic file (type png)
  <use editcolorbar.png>
-Overfull \hbox (21.17238pt too wide) in paragraph at lines 174--175
+Overfull \hbox (21.17238pt too wide) in paragraph at lines 170--171
 [][] 
  []
 
@@ -318,7 +318,7 @@ Here is how much of TeX's memory you used:
 <C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 /Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ironplotmanual.pdf (9 pages, 1197831 bytes).
+Output written on ironplotmanual.pdf (9 pages, 1197859 bytes).
 PDF statistics:
  56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
