@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  8 SEP 2011 12:08
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  12 SEP 2011 12:18
 entering extended mode
 **\input DAADreport.tex
 (c:\Users\James\Documents\pyprog\myfiles\usermanual\DAADreport.tex
@@ -238,8 +238,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¤ in font cmr12!
 
 Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
@@ -261,12 +259,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
 {C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map} <c:/Users/James/Documents/
 pyprog/myfiles/usermanual/herrenchiemsee.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
@@ -276,24 +274,24 @@ File: bodensee.jpg Graphic file (type jpg)
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
 [2 <c:/Users/James/Documents/pyprog/myfiles/usermanual/bodensee.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 <heidelberg.jpg, id=13, 1100.11pt x 485.815pt>
 File: heidelberg.jpg Graphic file (type jpg)
  <use heidelberg.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
@@ -304,17 +302,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2565 strings out of 495285
- 32854 string characters out of 3179879
+ 2566 strings out of 495285
+ 32862 string characters out of 3179879
  94517 words of memory out of 3000000
- 5764 multiletter control sequences out of 15000+200000
+ 5765 multiletter control sequences out of 15000+200000
  4891 words of font info for 18 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,6n,28p,753b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 /Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on DAADreport.pdf (3 pages, 1397370 bytes).
+Output written on DAADreport.pdf (3 pages, 1397674 bytes).
 PDF statistics:
  27 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

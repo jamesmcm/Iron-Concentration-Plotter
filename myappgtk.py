@@ -124,6 +124,7 @@ class MyApp(object):
 	    cm.hot.set_under('b')
 	    #cm.hot.set_over('g')
 	    self.cmap=cm.gray
+	    self.canfit=1
 	    
 	def plotgraph1(self, widget):
 		befile=self.builder.get_object("filebeforebtn")
@@ -188,15 +189,26 @@ class MyApp(object):
 		range1=np.arange(0,5e15,0.5e14)
 		try:
 			if mylabel=="Before Illumination":
+				self.bcanfit=1
 				self.beforefitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguessb)[0]
 				taup, taun, n1, p1, NA=self.beforefitparams
 				self.axis1.plot(range1[2:], (((taup*n1)+(taup*range1[2:])+(taun*p1)+(taun*NA)+(taun*range1[2:]))/(NA+range1[2:])), linecol)
 			elif mylabel=="After Illumination":
+				self.acanfit=1
 				self.afterfitparams=fitting.fitting(np.array(deltan[0:limit+1], np.float64), np.array(tauvalues[0:limit+1], np.float64), self.startguessa)[0]
 				taup, taun, n1, p1, NA=self.afterfitparams
 				self.axis1.plot(range1[2:], (((taup*n1)+(taup*range1[2:])+(taun*p1)+(taun*NA)+(taun*range1[2:]))/(NA+range1[2:])), linecol)
+				self.ironplottypebox.set_active(0)
+				self.builder.get_object("maptypelabel").set_label("<b>Individual C values</b>")
 		except:
+			if mylabel=="Before Illumination":
+				self.bcanfit=0
+			elif mylabel=="After Illumination":
+				self.acanfit=0
 			self.builder.get_object("fiterror").show()
+			self.canfit=0
+			self.ironplottypebox.set_active(1)
+			self.builder.get_object("maptypelabel").set_label("<b>C value from Generation Level</b>")
 	def checkresistivity(self,widget):
 		#remember the order of the constants
 		#vthermal sigmani p1i sigmapi sigmanb n1b sigmapb
@@ -710,6 +722,11 @@ class MyApp(object):
 	def plcalcbtnclicked(self, widget):
 		#try:
 
+		if self.bcanfit==1 and self.acanfit==1:
+			self.canfit=1
+		else:
+			self.canfit=0
+
 		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
 
 		plbeforefile = open(self.builder.get_object("plbeforefile").get_filename(), "r")
@@ -744,68 +761,34 @@ class MyApp(object):
 		#mean C value iron values:
 		self.cfactorbtnclicked(widget)
 		self.ironconcmatrixmeanC = abs(self.cmean*(1/self.taubefore - 1/self.tauafter))
-		self.ironconcmatrixindividual = np.ndarray(self.tauafter.shape, dtype=np.float)
-		taupb, taunb, n1b, p1b, NAb=self.beforefitparams
-		taupa, tauna, n1a, p1a, NAa=self.afterfitparams
-		i=0
-		j=0
-		# while i<1000:
-		# 	while j<1000:
-		# 		nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore[i][j]/1E6)*NAb))/((self.taubefore[i][j]/1E6)-(taupb+taunb))
-		# 		nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter[i][j]/1E6)*NAa))/((self.tauafter[i][j]/1E6)-(taupa+tauna))
-		# 		#Fix boundary conditions later with good data
-		# 		if nafter<0:
-		# 			nafter=0
-		# 		if nbefore<0:
-		# 			nbefore=0
+		if self.canfit==1:
+			self.ironconcmatrixindividual = np.ndarray(self.tauafter.shape, dtype=np.float)
+			taupb, taunb, n1b, p1b, NAb=self.beforefitparams
+			taupa, tauna, n1a, p1a, NAa=self.afterfitparams		
+			nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore/1E6)*NAb))/((self.taubefore/1E6)-(taupb+taunb))
+			nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter/1E6)*NAa))/((self.tauafter/1E6)-(taupa+tauna))
+			nbefore[nbefore<0]=0
+			nafter[nafter<0]=0
+			matrixmean= np.mean(np.abs(nafter[100:-100,100:-100]-nbefore[100:-100,100:-100]))
+			if matrixmean>1e14:
+				self.builder.get_object("warnmeanlabel").set_label("The difference between the means of the arrays of injection level values was %.4g." % matrixmean)
+				self.builder.get_object("qsspcmeanwarning").show()
 
-		# 		# if abs(nbefore-nafter)>1E13:
-		# 		# 	print "Warning, high difference between lifetime deltan values, before was %.4g, after was %.4g\n" % (nbefore, nafter)
-
-		# 		nmean=(nafter+nbefore)/2.0
-		# 		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
-		# 		self.ironconcmatrixindividual[i][j]=abs(C*(1/self.taubefore[i][j] - 1/self.tauafter[i][j]))
-		# 		#print "i : %i j: %i taubefore: %.6g tauafter: %.6g nbefore: %.4g nafter: %.4g C: %.4g iron: %.4g" % (i, j, self.taubefore[i][j], self.tauafter[i][j], nbefore, nafter, C, self.ironconcmatrixindividual[i][j])
-		# 		j+=1
-		# 	i+=1
-		# 	j=0
-		
-		nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore/1E6)*NAb))/((self.taubefore/1E6)-(taupb+taunb))
-		nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter/1E6)*NAa))/((self.tauafter/1E6)-(taupa+tauna))
-		nbefore[nbefore<0]=0
-		nafter[nafter<0]=0
-		matrixmean= np.mean(np.abs(nafter[100:-100,100:-100]-nbefore[100:-100,100:-100]))
-		if matrixmean>1e14:
-			self.builder.get_object("warnmeanlabel").set_label("The difference between the means of the arrays of injection level values was %.4g." % matrixmean)
-			self.builder.get_object("qsspcmeanwarning").show()
-
-		nmean=(nafter+nbefore)/2.0
-		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
-		self.ironconcmatrixindividual=np.abs(C*(1/self.taubefore - 1/self.tauafter))
-		
-		
-		
-		
+				nmean=(nafter+nbefore)/2.0
+				C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
+				self.ironconcmatrixindividual=np.abs(C*(1/self.taubefore - 1/self.tauafter))
 		
 
-		#throws errors on some values may need to fix for py2exe
-		#scale stuff here - must chop off extreme values, copy alex's way
-		#numpy arrays pass by reference, they do NOT create a copy also only allows one instance open?
 		a1 = a[500]
 		b1 = b[500]
 		e1 = e[500]
 		a1.sort()
 		b1.sort()
 		e1.sort()
-		#self.taubmin = b1[int(0.01*len(b))]
 		self.taubmin=0
 		self.tauamin=0
 		self.taubmax = b1[int(0.99*len(b))]
-		#self.tauamin = a1[int(0.01*len(a))]
 		self.tauamax = a1[int(0.99*len(a))]
-		#self.ironmin = e1[int(0.01*len(e))]
-		#if self.ironmin<0:
-		#	self.ironmin=0
 		self.ironmin=1E10
 		self.ironmax = e1[int(0.97*len(e))]
 
@@ -814,9 +797,11 @@ class MyApp(object):
 		self.builder.get_object("femintxt").set_text("%.4g" %self.ironmin)
 		self.builder.get_object("femaxtxt").set_text("%.4g" %self.ironmax)
 		self.plplotallbtnclicked(widget)
+
+		#print 	 np.min(self.ironconcmatrixindividual[100:-100,100:-100])
 		#random numbers chosen away from edges to avoid infinities
-		if self.ironconcmatrixgenlevel[547:555].mean()<=0:
-			self.builder.get_object("negiron").show()
+		#if self.ironconcmatrixgenlevel[547:555].mean()<=0:
+		#	self.builder.get_object("negiron").show()
 
 		#Fill show iron value boxes
 		#1. QSSPC iron value from given generation/injection level: must interpolate iron plot
@@ -828,9 +813,16 @@ class MyApp(object):
 		except: 
 			self.builder.get_object("qsspcgenlevel").set_text("Given Injection level out of bounds for interpolation!")
 		self.builder.get_object("lastqsspciron").set_text("%.4g" % self.qsspcironmeanlast)
-		self.builder.get_object("meanironplindividual").set_text("%.4g" % stats.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
-		self.builder.get_object("meanironplgenlevel").set_text("%.4g" % stats.mean(self.ironconcmatrixgenlevel[100:-100,100:-100]))
-		self.builder.get_object("meanironpllastc").set_text("%.4g" % stats.mean(self.ironconcmatrixmeanC[100:-100,100:-100]))
+		if self.canfit==1:
+			if np.max(self.ironconcmatrixindividual[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100]) !=-numpy.Inf :
+				self.builder.get_object("meanironplindividual").set_text("%.4g" % np.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
+			else:
+				print "Crap"
+				
+		else:
+			self.builder.get_object("meanironplindividual").set_text("Fit could not be calculated for data!")
+		self.builder.get_object("meanironplgenlevel").set_text("%.4g" % np.mean(self.ironconcmatrixgenlevel[100:-100,100:-100]))
+		self.builder.get_object("meanironpllastc").set_text("%.4g" % np.mean(self.ironconcmatrixmeanC[100:-100,100:-100]))
 		self.builder.get_object("showironvaluesbtn").set_sensitive(True)
 
 		#except:
@@ -1300,6 +1292,16 @@ class MyApp(object):
 		self.builder.get_object("editcolorbarwindow").hide()
 
 	def editcolorbarokbtnclicked(self,widget):
+		if self.ironplottypebox.get_active()==0:
+				#Individual C values
+			self.builder.get_object("maptypelabel").set_label("<b>Individual C values</b>")
+		elif self.ironplottypebox.get_active()==1:
+				#C value from Generation Level
+			self.builder.get_object("maptypelabel").set_label("<b>C value from Generation Level</b>")
+
+		elif self.ironplottypebox.get_active()==2:
+			self.builder.get_object("maptypelabel").set_label("<b>C value from mean of last 10 C values</b>")
+
 		self.builder.get_object("editcolorbarwindow").hide()
 	        self.taubmin=float(self.builder.get_object("lifemintxt").get_text())
 	        self.taubmax=float(self.builder.get_object("lifemaxtxt").get_text())

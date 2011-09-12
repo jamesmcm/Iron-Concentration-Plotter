@@ -108,6 +108,12 @@
 ** DONE Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
 ** DONE Make it so hovering voer graph shows values in status bar
 * Critical
+** DONE Fix stuff when fit is not possible
+** TODO Fix negative lifetime values producing infinite iron values
+** TODO Add ability to plot two iron concentration graphs side by side for comparison
+** DONE Add ability to see currently chosen plot
+** TODO Add lines on legend
+** TODO Add ability to get trap energy level from fits by calculating Nv/Nc theoretically
 ** TODO Fix boundary conditions onm getting injection level - need good test data
 ** TODO Add ability to set C value for normal iron plot
 ** TODO Add warning if fitting results in worse plot

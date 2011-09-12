@@ -76,7 +76,7 @@ When the program is first loaded the default tab is the ``QSSPC'' tab. Figure \r
 
 \item Here the calculated Doping Concentration is printed. The Doping Concentration may then be edited here to override the calculated value for calculating the interstitial Iron Concentration graph and the Photo-Luminescence (PL) maps.
 
-\item Here a theoretical value is calculated for the Cross-Over Point (COP) from the Doping Concentration value using the equation given in Birkholz \textit{et al.} JAPL {\bf 97}, 103708 (2005)
+\item Here a theoretical value is calculated for the Cross-Over Point (COP) from the Doping Concentration value using the equation given in Birkholz \textit{et al.} JAPL {\bf 97}, 103708 (2005), note that this does not take temperature dependence in to account and so may be inaccurate for this reason.
 
 \item The navigation toolbar for the QSSPC graph. The home button resets the view to default, or to the manually set value using the manual controls marked at {\color{red}{\bf 5}}. The back and forward buttons move between views that the user has set using the pan or zoom tool, like the Back/Forward buttons in a Web Browser, it does not pan itself. The panning tool pans across the graph by holding the leftm mouse button on the graph and dragging the mouse cursor in the opposite direction to the panning. The Zoom tool allows the user to click and draw a rectangle on the graph to zoom to. The Configure Subplots button adjusts the borders of the plot, this may be useful when saving. The save button allows the current plot to be saved.
 
@@ -104,10 +104,6 @@ When the program is first loaded the default tab is the ``QSSPC'' tab. Figure \r
 
 \item Here the application can be closed, maximised or minimised.
 \end{enumerate}
-
-
-
-
 
 \section{PL Imaging}
 \subsection{GUI Map}
