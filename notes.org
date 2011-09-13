@@ -108,10 +108,39 @@
 ** DONE Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
 ** DONE Make it so hovering voer graph shows values in status bar
 * Critical
+** DONE FIX BUG WHERE DDN LIMIT TOO HIGH
+** DONE FIX NEGATIVE VALUES ON PL MAP
+** TODO Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
+** DONE Allow warning ddn level to be varied
+** DONE Change exe name
+** TODO Update manual, i.e. explaining that on ffits mode the QSSPC iron calc uses fits, -666 trick, etc.
+** TODO Fix end of fit plotted range so always equal length and maximum of points
+** DONE Calculate line for iron conc qsspc graph from fits
 ** DONE Fix stuff when fit is not possible
-** TODO Fix negative lifetime values producing infinite iron values
+** DONE Fix negative lifetime values producing infinite iron values - cannot make them zero as arrays immutable, fix later line 758
+** DONE Fix infinite means
 ** TODO Add ability to plot two iron concentration graphs side by side for comparison
 ** DONE Add ability to see currently chosen plot
+** TODO Add least square value to fittinog options = must eget variance of matrix
+** DONE Give ability to set fitting range
+** DONE Change fitting range to use 10% of value rather than limit crap
+** TODO Plot fitted range values in different color
+** TODO Extrapolate the fits to zero and edges always
+** DONE Center text
+** TODO Do backward calculation from doping concentration to resistivity
+** TODO Try to Get COP from fits
+** DONE make option between fits and interpoltation
+** DONE Add formula used to fitting window
+** DONE Defaultly use fits for Fei calculation i.e. match each datapoint with a fit datapoint
+** TODO Add lifetime values to ascii save and header with fitting parameters and formula and the fit values
+** DONE Remove save current plot to PNG file box
+** TODO Remove mean of last 10 and instead allow the values to be given for a range
+** TODO Make the default generation level 1.92E17
+** DONE GIve the percentage of datapoints where delta (deltaN) is exceeded by a value that may be given
+** TODO Color points that exceed this value on the maps - give them another unique value somehow?
+** TODO Add option to save lifetime maps after image matching
+** TODO Change mean of last 10 C values to mean of some deltan range given
+** TODO Make iron map labels bigger and add "Pixels" labels
 ** TODO Add lines on legend
 ** TODO Add ability to get trap energy level from fits by calculating Nv/Nc theoretically
 ** TODO Fix boundary conditions onm getting injection level - need good test data
