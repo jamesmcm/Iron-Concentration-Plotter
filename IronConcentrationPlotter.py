@@ -35,7 +35,7 @@ class MyApp(object):
 	def __init__(self):
 	    self.builder = gtk.Builder()
 	    self.builder.add_from_file("myapp.xml")
-	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked, "editfitokbtnclicked":self.editfitokbtnclicked, "fitdefaultsbtnclicked":self.fitdefaultsbtnclicked, "editfitcancelbtnclicked":self.editfitcancelbtnclicked, "changefitparamsbtnclicked":self.changefitparamsbtnclicked})
+	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked, "editfitokbtnclicked":self.editfitokbtnclicked, "fitdefaultsbtnclicked":self.fitdefaultsbtnclicked, "editfitcancelbtnclicked":self.editfitcancelbtnclicked, "changefitparamsbtnclicked":self.changefitparamsbtnclicked, "calculatemeanrangeclicked":self.calculatemeanrangeclicked})
 	    self.window = self.builder.get_object("MainWindow")
 	    #self.window.fullscreen()
 	    filter1 = gtk.FileFilter()
@@ -97,7 +97,7 @@ class MyApp(object):
 	    self.builder.get_object("ironplottypespace").show_all()
 	    self.ironplottypebox.append_text('Individual C values')
 	    self.ironplottypebox.append_text('C value from Generation Level')
-	    self.ironplottypebox.append_text('Use mean of high generation level C values')
+	    self.ironplottypebox.append_text('Use mean C value in given range')
 	    self.ironplottypebox.set_active(0)
 
 	    self.fitusebox = gtk.combo_box_new_text()
@@ -144,6 +144,9 @@ class MyApp(object):
 	    self.afterplotcounter=0
 	    self.ddnlimit=1e14
 	    self.ironplmapcounter=0
+	    self.meanmode="Fe" #or C
+	    self.fitplotlimit=0
+
 	    
 	def plotgraph1(self, widget):
 		befile=self.builder.get_object("filebeforebtn")
@@ -164,9 +167,9 @@ class MyApp(object):
 		self.befile=befile
 		self.affile=affile
 		if befile.get_filename()!=None:
-			self.plot1(befile, "ro", "b-", "Before Illumination")
+			self.plot1(befile, "ro", "b-", "Before Illumination", widget)
 		if affile.get_filename()!=None:
-			self.plot1(affile, "go", "r-", "After Illumination")
+			self.plot1(affile, "go", "r-", "After Illumination", widget)
 			
 		self.axis1.set_xlabel('Minority Carrier Density (cm$^{-3}$)')   
 		self.axis1.set_ylabel('Measured Lifetime (s)')   
@@ -187,7 +190,7 @@ class MyApp(object):
 			self.builder.get_object("restoredopingbtn").set_sensitive(True)
 			self.builder.get_object("editfitbtn").set_sensitive(True)
 
-	def plot1(self, file1, pointcol, linecol, mylabel):
+	def plot1(self, file1, pointcol, linecol, mylabel, widget):
 		#note there is no adjustment for extreme values here, although an adjustment of the limit method could perhaps provide this
 		filename=file1.get_filename()
 		fitpoints=[]
@@ -197,6 +200,10 @@ class MyApp(object):
 		if datalist==[0,0,0]:
 			self.errorshow(self)
 			return 1
+
+		if deltan[0]>self.fitplotlimit:
+			self.fitplotlimit=deltan[0]
+
 		#limit = excel.getlocalmin(datalist[1])
 		self.axis1.plot(deltan,tauvalues, pointcol, label=mylabel)
 		self.axis1.legend()
@@ -208,73 +215,90 @@ class MyApp(object):
 		#print tauvalues[0:limit+1]
 		#print deltan[0:limit+1]
 		#fix this later
-		range1=np.arange(0,1E16,0.5e14)
+
+		range1=np.arange(0,self.fitplotlimit,0.5e14)
 		#print (deltan[int(0.65*len(deltan))])
 		offset=0.60
-		try:
-			if mylabel=="Before Illumination":
-				if self.beforeplotcounter==0:
-					self.bfitrmin=deltan[int(offset*len(deltan))]
-					self.bfitrmax=deltan[0]
-					self.builder.get_object("bfitrmin").set_text("%.4g" % self.bfitrmin)
-					self.builder.get_object("bfitrmax").set_text("%.4g" % self.bfitrmax)
+		#try:
+		if mylabel=="Before Illumination":
+			if self.beforeplotcounter==0:
+				self.bfitrmin=deltan[int(offset*len(deltan))]
+				self.bfitrmax=deltan[0]
+				self.builder.get_object("bfitrmin").set_text("%.4g" % self.bfitrmin)
+				self.builder.get_object("bfitrmax").set_text("%.4g" % self.bfitrmax)
 
-				self.bcanfit=1
-				#need to get from deltan values to actual offset
-				#Find min:
-				i=0
-				self.beforeplotcounter+=1
-				while deltan[i]>self.bfitrmax:
-					i+=1
-				actualmax=i
-				i=len(deltan)-1
-				while deltan[i]<self.bfitrmin:
-					i-=1
-				actualmin=i
-				self.beforefitparams=fitting.fitting(np.array(deltan[actualmax:actualmin], np.float64), np.array(tauvalues[actualmax:actualmin], np.float64), self.startguessb)[0]
-				taup, taun, n1, p1, NA=self.beforefitparams
-				if self.fitusebox.get_active()==0:
-					self.axis1.plot(range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1)), linecol)
-					self.beforefitplot=[range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1))]
-				elif self.fitusebox.get_active()==1:
-					self.axis1.plot(deltan[0:int(offset*len(deltan))], tauvalues[0:int(offset*len(deltan))], linecol)
-			elif mylabel=="After Illumination":
-				if self.afterplotcounter==0:
-					self.afitrmin=deltan[int(offset*len(deltan))]
-					self.afitrmax=deltan[0]
-					self.builder.get_object("afitrmin").set_text("%.4g" % self.afitrmin)
-					self.builder.get_object("afitrmax").set_text("%.4g" % self.afitrmax)
-				self.acanfit=1
-				i=0
-				self.afterplotcounter+=1
-				while deltan[i]>self.afitrmax:
-					#print "max: %.4g deltan: %.4g" % (self.afitrmax, deltan[i])
-					i+=1
-				actualmax=i
-				i=len(deltan)-1
-				while deltan[i]<self.afitrmin:
-					i-=1
-				actualmin=i
-				self.afterfitparams=fitting.fitting(np.array(deltan[actualmax:actualmin], np.float64), np.array(tauvalues[actualmax:actualmin], np.float64), self.startguessa)[0]
-				taup, taun, n1, p1, NA=self.afterfitparams
+			self.bcanfit=1
+			#need to get from deltan values to actual offset
+			#Find min:
+			i=0
+			self.beforeplotcounter+=1
+			while deltan[i]>self.bfitrmax:
+				i+=1
+			actualmax=i
+			i=len(deltan)-1
+			while deltan[i]<self.bfitrmin:
+				i-=1
+			actualmin=i
+			self.beforefitparams=fitting.fitting(np.array(deltan[actualmax:actualmin+1], np.float64), np.array(tauvalues[actualmax:actualmin+1], np.float64), self.startguessb)[0]
+			#print fitting.fitting(np.array(deltan[actualmax:actualmin+1], np.float64), np.array(tauvalues[actualmax:actualmin+1], np.float64), self.startguessb)[1]
+			i=actualmax
+			squarediff=0
+			taup, taun, n1, p1, NA=self.beforefitparams
+			while i<actualmin+1:
+				squarediff+=pow(tauvalues[i]-(((taup*n1)+(taup*deltan[i])+(taun*p1)+(taun*NA)+(taun*deltan[i]))/(NA+deltan[i])),2)
+				i+=1
+			self.builder.get_object("squarediffbefore").set_text("%.4g" % np.sqrt(squarediff))
+			self.bsquarediff= np.sqrt(squarediff)
+			if self.fitusebox.get_active()==0:
+				self.axis1.plot(range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1)), linecol)
+				self.beforefitplot=[range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1))]
+			elif self.fitusebox.get_active()==1:
+				self.axis1.plot(deltan[0:int(offset*len(deltan))], tauvalues[0:int(offset*len(deltan))], linecol)
+		elif mylabel=="After Illumination":
+			if self.afterplotcounter==0:
+				self.afitrmin=deltan[int(offset*len(deltan))]
+				self.afitrmax=deltan[0]
+				self.builder.get_object("afitrmin").set_text("%.4g" % self.afitrmin)
+				self.builder.get_object("afitrmax").set_text("%.4g" % self.afitrmax)
+			self.acanfit=1
+			i=0
+			self.afterplotcounter+=1
+			while deltan[i]>self.afitrmax:
+				#print "max: %.4g deltan: %.4g" % (self.afitrmax, deltan[i])
+				i+=1
+			actualmax=i
+			i=len(deltan)-1
+			while deltan[i]<self.afitrmin:
+				i-=1
+			actualmin=i
+			self.afterfitparams=fitting.fitting(np.array(deltan[actualmax:actualmin], np.float64), np.array(tauvalues[actualmax:actualmin], np.float64), self.startguessa)[0]
+			taup, taun, n1, p1, NA=self.afterfitparams
+			i=actualmax
+			squarediff=0
+			while i<actualmin+1:
+				squarediff+=pow(tauvalues[i]-(((taup*n1)+(taup*deltan[i])+(taun*p1)+(taun*NA)+(taun*deltan[i]))/(NA+deltan[i])),2)
+				i+=1
+			self.builder.get_object("squarediffafter").set_text("%.4g" % np.sqrt(squarediff))
+			self.asquarediff= np.sqrt(squarediff)
 
-				if self.fitusebox.get_active()==0:
-					self.axis1.plot(range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1)), linecol)
-					self.afterfitplot=[range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1))]
-					self.ironplottypebox.set_active(0)
-					self.builder.get_object("maptypelabel").set_label("<b>Individual C values</b>")
-				elif self.fitusebox.get_active()==1:
-					self.axis1.plot(deltan[0:int(offset*len(deltan))], tauvalues[0:int(offset*len(deltan))], linecol)
 
-		except:
-			if mylabel=="Before Illumination":
-				self.bcanfit=0
-			elif mylabel=="After Illumination":
-				self.acanfit=0
-			self.builder.get_object("fiterror").show()
-			self.canfit=0
-			self.ironplottypebox.set_active(1)
-			self.builder.get_object("maptypelabel").set_label("<b>C value from Generation Level</b>")
+			if self.fitusebox.get_active()==0:
+				self.axis1.plot(range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1)), linecol)
+				self.afterfitplot=[range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1))]
+				self.ironplottypebox.set_active(0)
+				self.builder.get_object("maptypelabel").set_label("<b>Individual C values</b>")
+			elif self.fitusebox.get_active()==1:
+				self.axis1.plot(deltan[0:int(offset*len(deltan))], tauvalues[0:int(offset*len(deltan))], linecol)
+
+		# except:
+		# 	if mylabel=="Before Illumination":
+		# 		self.bcanfit=0
+		# 	elif mylabel=="After Illumination":
+		# 		self.acanfit=0
+		# 	self.builder.get_object("fiterror").show()
+		# 	self.canfit=0
+		# 	self.ironplottypebox.set_active(1)
+		# 	self.builder.get_object("maptypelabel").set_label("<b>C value from Generation Level</b>")
 	def checkresistivity(self,widget):
 		#remember the order of the constants
 		#vthermal sigmani p1i sigmapi sigmanb n1b sigmapb
@@ -297,6 +321,7 @@ class MyApp(object):
 			self.builder.get_object("reswindow").show()
 
 		self.builder.get_object("resistivity").set_text("%.4g" % belist[0])
+
 
 	def resbeforevalbtnclicked(self, widget):
 		self.oldres=self.resbeforeval
@@ -485,6 +510,7 @@ class MyApp(object):
 		graphview.pack_start(self.canvas2, True, True)				
 
 	def ironcalcbtnclicked(self, widget):
+		self.plotgraph1(widget)
 		self.dope=float(self.builder.get_object("doping").get_text())
 		beforelist=excel.getValues(self.builder.get_object("filebeforebtn").get_filename())
 		afterlist=excel.getValues(self.builder.get_object("fileafterbtn").get_filename())
@@ -495,7 +521,9 @@ class MyApp(object):
 		afterlist[2].reverse()
 		beforelist[1].reverse()
 		afterlist[1].reverse()
-
+		
+		self.bqsspclife=beforelist
+		self.aqsspclife=afterlist
 		if self.fitusebox.get_active()==0:
 			bdict=dict(zip(beforelist[2], beforelist[1]))
 			adict=dict(zip(afterlist[2], afterlist[1]))
@@ -530,6 +558,7 @@ class MyApp(object):
 			#difference is expected but must be handled
 		
 		ironvalues=[]
+		qsspccvals=[]
 
 
 		sortedbkeylist=sorted(dictlist[0].iterkeys())
@@ -540,6 +569,7 @@ class MyApp(object):
 			C=concentration.calcPrefactor(self.constants, self.dope, bkey)
 			iron=1E-6*(concentration.calcFeConc(C, dictlist[0][bkey], dictlist[1][bkey]))
 			ironvalues.append(iron)
+			qsspccvals.append(C)
 			#print "iron: %.4g, tn0: %.4g, tp0: %.4g, doping: %.4g, tbefore: %.4g, tafter: %.4g, deltan: %.4g \n" % (iron, tn0, tp0, self.dope, dictlist[0][bkey], dictlist[1][bkey], bkey)
 
 
@@ -563,15 +593,18 @@ class MyApp(object):
 		if self.fitusebox.get_active()==0:
 			i=0
 			ironvals=[]
+			self.fitcvals=[]
 			while i<len(self.beforefitplot[0]):
 				C=concentration.calcPrefactor(self.constants, self.dope, self.beforefitplot[0][i])
 				iron=1E-6*(concentration.calcFeConc(C, self.beforefitplot[1][i], self.afterfitplot[1][i]))
+				self.fitcvals.append(C)
 				ironvals.append(iron)
 				i+=1
 			self.axis2.plot(self.beforefitplot[0], ironvals, "b-")
+			self.associron=ironvals
 					   
 					   
-		self.irondata=[sortedbkeylist, ironvalues]
+		self.irondata=[sortedbkeylist, ironvalues, qsspccvals]
 		self.axis2.set_xlabel('Minority Carrier Density (cm$^{-3}$)')   
 		self.axis2.set_ylabel('Interstitial Iron Concentration (cm$^{-3}$)') #check units are correct   
 		self.axis2.ticklabel_format(style='sci',scilimits=(0,0))
@@ -588,12 +621,11 @@ class MyApp(object):
 		self.builder.get_object("crossovertxt").set_text("%.4g" % cop)
 		self.builder.get_object("savedatabtn").set_sensitive(True)
 		self.builder.get_object("getfebtn").set_sensitive(True)
-		self.builder.get_object("meanlabel").set_label("Mean of the interstitial\nIron Concentration from\nthe last 10 values (cm<sup>-3</sup>): ")	
-		ironmean=stats.mean(ironvalues[-10:-1])
-		self.qsspcironmeanlast=ironmean
-		self.builder.get_object("meanconctxt").set_text("%.4g" % ironmean)
+	
+
 
 		#don't delete just change default view
+		ironmean=stats.mean(ironvalues[-10:-1])
 		ironmin=max(ironvalues)
 		i=ironvalues.index(ironmin)
 		stddevfe=stats.stdev(ironvalues)
@@ -615,6 +647,51 @@ class MyApp(object):
 		self.builder.get_object("fegettxt").set_text("")
 		self.builder.get_object("scalebtn2").set_sensitive(True)
 		self.qsspclist=[sortedbkeylist, ironvalues]
+		self.builder.get_object("meancalcbtn").set_sensitive(True)
+		self.meanmode="Fe"
+		if self.builder.get_object("meanmin").get_text()==None or self.builder.get_object("meanmin").get_text()=="" or self.builder.get_object("meanmax").get_text()==None or self.builder.get_object("meanmin").get_text()=="":
+			self.builder.get_object("meanmin").set_text("%.4g" % sortedbkeylist[-10])
+			self.builder.get_object("meanmax").set_text("%.4g" % sortedbkeylist[-1])
+
+		# ironmean=stats.mean(ironvalues[-10:-1])
+		# self.qsspcironmeanlast=ironmean
+		# self.builder.get_object("meanconctxt").set_text("%.4g" % ironmean)
+		self.builder.get_object("meanlabel").set_label("Mean of the interstitial\nIron Concentration in\nthe range given (cm<sup>-3</sup>): ")
+		self.builder.get_object("meancalcbtn").set_label("Calculate mean Iron Concentration\n              in the range given")
+		self.calculatemeanrangeclicked(widget)
+
+	def calculatemeanrangeclicked(self, widget):
+		try:
+			rangemin=float(self.builder.get_object("meanmin").get_text())
+			rangemax=float(self.builder.get_object("meanmax").get_text())
+			if self.meanmode=="Fe":
+				i=0
+				while self.qsspclist[0][i]<rangemin:
+					i+=1
+				actualmin=i
+				i=len(self.qsspclist[0])-1
+				while self.qsspclist[0][i]>rangemax:
+					i-=1
+				actualmax=i
+				ironmean=stats.mean(self.qsspclist[1][actualmin:actualmax+1])
+				self.qsspcironmeanlast=ironmean
+				self.builder.get_object("meanconctxt").set_text("%.4g" % ironmean)
+
+			elif self.meanmode=="C":
+				i=0
+				while self.cvaluedn[i]<rangemin:
+					i+=1
+				actualmin=i
+				i=len(self.cvaluedn)-1
+				while self.cvaluedn[i]>rangemax:
+					i-=1
+				actualmax=i
+				cmean=stats.mean(self.cvalues[actualmin:actualmax+1])
+				self.cmean=cmean
+				self.builder.get_object("meanconctxt").set_text("%.4g" % cmean)
+		except:
+			self.builder.get_object("meanrangeerror").show()
+			
 
 	def plotdialogcancelbtnclicked(self,widget):
 		self.builder.get_object("plotfilesavedialog").hide()
@@ -678,17 +755,57 @@ class MyApp(object):
 		#add error handling
 
 	def datatxtsave(self):
+		#QSSPC data self.bqsspclife, self.aqsspclife tau, n 1,2 and resistivity is 0
+		#Fitting formula and parameters and least squares
+		#Fitted data: deltan, taubefore, tauafter
+		#Iron concentration data
 		self.builder.get_object("datafilesavedialog").hide()
 		textfile=open(self.currentfilename, "w")
-		textfile.write("deltaN(cm^-3)\t[Fe](cm^-3)\n")
+		textfile.write("Constants: vthermal: %.4g, sigmani: %.4g, p1i: %.4g, sigmapi: %.4g, sigmanb: %.4g, n1b: %.4g, sigmapb: %.4g\n" % (self.constants[0],self.constants[1],self.constants[2],self.constants[3],self.constants[4],self.constants[5],self.constants[6]))
+		textfile.write("QSSPC Data:\n")
+		textfile.write("Before Illumination, Resistivity=%.4g:\n" % self.bqsspclife[0])
+		textfile.write("deltaN(cm^-3)\tTau before(s)\n")
 		i=0
+		while i<len(self.bqsspclife[2]):
+			textfile.write("%.4g\t%.4g\n" % (self.bqsspclife[2][i], self.bqsspclife[1][i]))
+			i+=1
+		textfile.write("\nAfter Illumination, Resistivity=%.4g:\n" % self.aqsspclife[0])
+		i=0
+		while i<len(self.aqsspclife[2]):
+			textfile.write("%.4g\t%.4g\n" % (self.aqsspclife[2][i], self.aqsspclife[1][i]))
+			i+=1
+
+		textfile.write("\nFitting Data:\n")
+		textfile.write("Fitting equation: (((taup*n1)+(taup*deltaN)+(taun*p1)+(taun*NA)+(taun*deltaN))/(NA+deltaN))\n")
+		taup, taun, n1, p1, NA=self.beforefitparams
+		textfile.write("Before Illumination Fit data:\n")
+		textfile.write("Before Illumination Fitting range (in deltaN): Minimum: %.4g, Maximum %.4g\n" % (self.bfitrmin, self.bfitrmax) )
+		textfile.write("Before Illumination Fit parameters: taup: %.4g, taun: %.4g, n1: %.4g, p1: %.4g, NA: %.4g\n" % (taup, taun, n1, p1, NA))
+		textfile.write("Square root of the sum of the squared differences within the fitting range for the Before Illumination fit: %.4g\n" % self.bsquarediff)
+		textfile.write("After Illumination Fit data:\n")
+		textfile.write("After Illumination Fitting range (in deltaN): Minimum: %.4g, Maximum %.4g\n" % (self.afitrmin, self.afitrmax) )
+		taup, taun, n1, p1, NA=self.afterfitparams
+		textfile.write("After Illumination Fit parameters: taup: %.4g, taun: %.4g, n1: %.4g, p1: %.4g, NA: %.4g\n" % (taup, taun, n1, p1, NA))
+		textfile.write("Square root of the sum of the squared differences within the fitting range for the Before Illumination fit: %.4g\n" % self.asquarediff)
+		textfile.write("Plotted fit values for Before and After Illumination:\n")
+		textfile.write("deltaN(cm^-3)\tTau before (s)\tTau after(s)\tPrefactor value\tInterstitial Iron Concentration (cm^-3)\n")
+		i=0
+		while i<len(self.beforefitplot[0]):
+			textfile.write("%.4g\t%.4g\t%.4g\t%.4g\t%.4g\n" % (self.beforefitplot[0][i], self.beforefitplot[1][i], self.afterfitplot[1][i], self.fitcvals[i], self.associron[i]))
+			i+=1
+		
+		textfile.write("\nQSSPC Iron Concentration data:\n")
+		textfile.write("deltaN(cm^-3)\tPrefactor\t[Fe](cm^-3)\n")
+		i=0
+
 		while i<len(self.irondata[0]):
-			textfile.write("%e\t%e\n" % (self.irondata[0][i], self.irondata[1][i]))
+			textfile.write("%.4g\t%.4g\t%.4g\n" % (self.irondata[0][i], self.irondata[2][i], self.irondata[1][i]))
 			i+=1
 		textfile.close()
 
 		
 	def cfactorbtnclicked(self, widget):
+		self.plotgraph1(widget)
 		self.dope=float(self.builder.get_object("doping").get_text())
 		beforelist=excel.getValues(self.builder.get_object("filebeforebtn").get_filename())
 		afterlist=excel.getValues(self.builder.get_object("fileafterbtn").get_filename())
@@ -735,6 +852,17 @@ class MyApp(object):
 			self.builder.get_object("toolbar2").remove(self.toolbar2)
 		self.axis2.plot(sortedbkeylist,cvalues, "bo")
 		#self.axis2.plot(sortedbkeylist, ironvalues, "b-") #maybe make this within limit later		 
+
+		if self.fitusebox.get_active()==0:
+			i=0
+			ironvals=[]
+			self.fitcvals=[]
+			while i<len(self.beforefitplot[0]):
+				C=concentration.calcPrefactor(self.constants, self.dope, self.beforefitplot[0][i])
+				self.fitcvals.append(C)
+				i+=1
+			self.axis2.plot(self.beforefitplot[0], self.fitcvals, "r-")
+
 		self.axis2.set_xlabel('Minority Carrier Density (cm$^{-3}$)')   
 		self.axis2.set_ylabel('Prefactor, C') #check units are correct   
 		self.axis2.ticklabel_format(style='sci',scilimits=(0,0))
@@ -750,10 +878,10 @@ class MyApp(object):
 
 		self.builder.get_object("feilabel").set_label("C: ")
 		self.builder.get_object("getfebtnlabel").set_label("Get C")
-		self.builder.get_object("meanlabel").set_label("Mean of the Prefactor value from\nthe last 10 values: ")	
+		
 
 		self.cmean= stats.mean(cvalues[-10:-1])
-		self.builder.get_object("meanconctxt").set_text("%.4g" % self.cmean)
+		# self.builder.get_object("meanconctxt").set_text("%.4g" % self.cmean)
 		self.curplot="C"
 
 		self.cvalues=cvalues
@@ -773,6 +901,14 @@ class MyApp(object):
 		self.builder.get_object("deltangettxt").set_text("")
 		self.builder.get_object("fegettxt").set_text("")
 		self.builder.get_object("scalebtn2").set_sensitive(True)
+		self.builder.get_object("meancalcbtn").set_sensitive(True)
+		self.meanmode="C"
+		self.builder.get_object("meanlabel").set_label("Mean of the Prefactor value\n   in the given range: ")	
+		if self.builder.get_object("meanmin").get_text()==None or self.builder.get_object("meanmin").get_text()=="" or self.builder.get_object("meanmax").get_text()==None or self.builder.get_object("meanmin").get_text()=="":
+			self.builder.get_object("meanmin").set_text("%.4g" % self.cvaluedn[-10])
+			self.builder.get_object("meanmax").set_text("%.4g" % self.cvaluedn[-1])
+		self.builder.get_object("meancalcbtn").set_label("Calculate mean Prefactor value\n      in the range given")
+		self.calculatemeanrangeclicked(widget)
 
 	
 	def resetbtn2clicked(self, widget):
@@ -937,7 +1073,7 @@ class MyApp(object):
 			count=0
 			indicesb=[]
 			zeroarray2=[]
-			print diffmatrixflatten.size
+			#print diffmatrixflatten.size
 			while i<diffmatrixflatten.size:
 				if diffmatrixflatten[i]>self.ddnlimit:
 					indicesb.append(i)
@@ -945,7 +1081,7 @@ class MyApp(object):
 					count+=1
 				i+=1
 			percent=(float(count)/diffmatrixflatten.size)*100
-			self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe percentage of values with differences above this was %.4f. \nThe mean of the array of differences of injection level values was %.4g.\nThese values will be colored red on the PL map, the warning level can be changed in the Edit Plot Options window." % (self.ddnlimit,percent, matrixmean))
+			self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe number of values above this was %i out of %i pixels.\nThe percentage of values with differences above this was %.4f. \nThe mean of the array of differences of injection level values was %.4g.\nThese values will be set to -7E30 on the PL map (and so coloured differently).\nThe warning level can be changed in the Edit Plot Options window.\n You must recalculate  the maps after changing this though." % (self.ddnlimit, count, diffmatrixflatten.size, percent, matrixmean))
 #colour them differently
 			#if self.ironplmapcounter=0:
 			#	self.originalironconcmatrixindividual=np.copy(self.ironconcmatrixindividual)
@@ -1024,7 +1160,7 @@ class MyApp(object):
 
 		oldshape=self.ironconcmatrixindividual.shape
 		flatbefore=self.ironconcmatrixindividual.flatten()
-		print flatbefore.size
+		#print flatbefore.size
 		flatbefore.put(indicesb, zeroarray2)
 		self.ironconcmatrixindividual=flatbefore.reshape(oldshape)
 		self.plplotallbtnclicked(widget)
@@ -1045,7 +1181,7 @@ class MyApp(object):
 			self.builder.get_object("qsspcgenlevel").set_text("Given Injection level out of bounds for interpolation!")
 		self.builder.get_object("lastqsspciron").set_text("%.4g" % self.qsspcironmeanlast)
 		if self.canfit==1:
-			if np.max(self.ironconcmatrixindividual[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100]) !=-np.Inf :
+			if np.max(self.ironconcmatrixindividual[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100])>0:
 				self.builder.get_object("meanironplindividual").set_text("%.4g" % np.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
 			else:
 				cutborders=self.ironconcmatrixindividual[100:-100,100:-100]
@@ -1067,7 +1203,7 @@ class MyApp(object):
 		else:
 			self.builder.get_object("meanironplindividual").set_text("Fit could not be calculated for data!")
 		
-		if np.max(self.ironconcmatrixgenlevel[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixgenlevel[100:-100,100:-100]) !=-np.Inf :
+		if np.max(self.ironconcmatrixgenlevel[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixgenlevel[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixgenlevel[100:-100,100:-100])>0:
 			self.builder.get_object("meanironplgenlevel").set_text("%.4g" % np.mean(self.ironconcmatrixgenlevel[100:-100,100:-100]))
 		else:
 			cutborders=self.ironconcmatrixgenlevel[100:-100,100:-100]
@@ -1086,7 +1222,7 @@ class MyApp(object):
 			mean=total/float(n)
 			self.builder.get_object("meanironplgenlevel").set_text("%.4g" % mean)
 
-		if np.max(self.ironconcmatrixmeanC[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixmeanC[100:-100,100:-100]) !=-np.Inf :
+		if np.max(self.ironconcmatrixmeanC[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixmeanC[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixmeanC[100:-100,100:-100])>0 :
 			self.builder.get_object("meanironpllastc").set_text("%.4g" % np.mean(self.ironconcmatrixmeanC[100:-100,100:-100]))
 		else:
 			cutborders=self.ironconcmatrixmeanC[100:-100,100:-100]
@@ -1584,7 +1720,7 @@ class MyApp(object):
 			self.builder.get_object("maptypelabel").set_label("<b>C value from Generation Level</b>")
 
 		elif self.ironplottypebox.get_active()==2:
-			self.builder.get_object("maptypelabel").set_label("<b>C value from mean of last 10 C values</b>")
+			self.builder.get_object("maptypelabel").set_label("<b>Mean C value from given range</b>")
 
 		self.builder.get_object("editcolorbarwindow").hide()
 	        self.taubmin=float(self.builder.get_object("lifemintxt").get_text())
@@ -1679,7 +1815,6 @@ class MyApp(object):
 		self.builder.get_object("NAa").set_text("%.4g" % self.startguessa[4])
 		self.beforeplotcounter=0
 		self.afterplotcounter=0
-		self.plotgraph1(widget)
 
 	def editfitcancelbtnclicked(self, widget):
 		self.builder.get_object("editfitwindow").hide()
