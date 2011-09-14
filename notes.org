@@ -161,12 +161,9 @@
 ** TODO Try to add more Mouse based UI
 ** TODO Make save dialogs defaultly have .png there
 ** TODO Add temperature dependence and see how it changes estimate for COP
-** TODO ADd plot to zoom by mouse - use pylab instead
+** TODO ADd plot to zoom by mouse
 ** TODO Add documentation
 ** TODO Comment and cleanup code - i.e. make signals standardised
-** TODO In save dialog ask to append PNG extension if none given
-** TODO Also ask if extension is other than PNG
-** TODO Could provide options for other filetypes too
 ** TODO Add error handling for file saving
 ** TODO Add way of finding Crossover point and centering view on it
 ** TODO Make it so resistivty etc. is laoded with before file
@@ -175,19 +172,6 @@
 ** TODO Make Resistivity editable
 ** TODO Enable saving of C factor data
 * Optional
-** TODO With tabbed window allow way of selecting certain columns to save data
 ** TODO Add menu bar - ability to load excel files and save plots
 ** TODO Maybe add functioning status bar
 ** TODO Make CLI versions for mass scripting and saving of data
-* Manual
-** TODO Screnshots
-** TODO QSSPC measurements
-** TODO PL Imaging
-** TODO Editing constants
-* Image Matching
-** transformation_berechnen(I, T, maxdelta=34, korrelationsgroesse=128, N=5)
-** returns list trafo: dx, dy, alpha, scale
-** transform(T, trafo, T_T)
-** T_T is transformed array, must first be created
-** 
-   
