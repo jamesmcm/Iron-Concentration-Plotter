@@ -136,6 +136,18 @@
 ** DONE Add option to save lifetime maps after image matching
 ** DONE Change mean of last 10 C values to mean of some deltan range given
 * Critical
+** TODO FIX MEAN RANGE STUFF - PERHAPS USE FIT?
+** TODO FIX FINAL DELTAN calculation for individual C factors. is mean best?
+** TODO Fix ValueError: Data has no positive values, and therefore can not be log-scaled. when mean wrong
+** TODO Plot of differences (ddn)
+** TODO Standard Deviation of Mean [Fei]s
+** TODO Comparison of PL maps
+** TODO Iron map labels bigger with pixels label
+** TODO On QSSPC lifetime plots label the fits
+** TODO Caclulate Et from fit data
+** TODO Backward calculation Doping conc. to resistivity
+** TODO Fix zero lifetime values i.e. make negative again after use - since already have indices needed
+** TODO Print percentage of invalid data points, mean of differences, etc. in plot options as well
 ** TODO Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
 ** TODO Add ability to plot two iron concentration graphs side by side for comparison
 ** TODO Plot fitted range values in different color
