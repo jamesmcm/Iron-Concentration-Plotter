@@ -131,6 +131,7 @@ When the program is first loaded the default tab is the ``QSSPC'' tab. Figure \r
 
 
 \section{User Guide}
+{\bf To fix graphical glitches try making the window full size after running the program.}\\
 The Excel files are loaded using the two buttons at the top of the screen and the QSSPC lifetime data is plotted. The resistivity (or doping concentration directly) can then be changed manually if desired. The fits can also be adjusted to ensure the values used for calculating the individual prefactor values for the PL images are accurate, and the actually used fit parameters can be viewed in the ``Change Fitting Parameters'' window along with the square root of the sum of the squared differences of the fit and actual values (ie. $\sqrt{\sum (y_{fit} - y_{actual})^{2}}$) as an estimate for the error in the fit. Note that this is only calculated {\bf for the given fitting range}, and so a poor overallfit with a small fitting range could have a very low error. The Resistivity and Doping Concentration used can also be varied manually (the former is used to calculate the latter).\\
 
 Note that if the Before Illumination data covers a smaller range than the After Illumination data then the fit will not be plotted all the way, refreshing the plot by loading the Edit Fit window and clicking OK or clicking the calculate Iron Concentration plot Button will fix it. Note that this has no effect on the calculations anyway.\\
@@ -163,16 +164,16 @@ The PL after file is then chosen with the generation level closest to that given
 \caption{\label{figure2} The window which asks whether image correction should be attempted. Here it has been and the progress bar is shown during the calculation process.}
 \end{figure}
 
-If this is done then it will make the calculated adjustments to maximise the correlation, and the user is given the option to save the adjusted data. When it is completed a window will show the results of the transformation on the cross-correlation value and the user has the opportunity to save the adjusted After Illumination lifetime data.
+If this is done then it will make the calculated adjustments to maximise the correlation, and the user is given the option to save the adjusted data. When it is completed a window will show the results of the transformation on the cross-correlation value and the user has the opportunity to save the adjusted After Illumination lifetime data. The lifetime data can also be saved using the Disk icon on the Navigation Toolbar for the PL maps.
 
 \begin{figure}[h!]
 \includegraphics[height=2in]{2imagematchingcomplete}
 \caption{\label{figure2} The window shown when image matching is complete. The cross-correlation values are given and the user has an opportunity to save the adjusted lifetime data.}
 \end{figure}
 
-\pagebreak
+%\pagebreak
 
-When calculating the C factor for each pixel, the program takes the lifetime values for the pixel, before and after illumination, and uses the fits to get injection level values from these. If the values differ by more than the warning value (set in the Edit Plot Options window) then they will be flagged as red, as the injection level difference is considered too high for them to be trustworthy. To colour them red, the values are set to -7E30. Values are also set red if the lifetime values were negative or zero (and so would produce infinities), these values are set to -6E30 and so can be distinguished from the others by hovering over them.
+When calculating the C factor for each pixel, the program takes the lifetime values for the pixel, before and after illumination, and uses the fits to get injection level values from these. If the values differ by more than the warning value (set in the Edit Plot Options window) then they will be flagged as red, as the injection level difference is considered too high for them to be trustworthy. To colour them red, the values are set to -7E30. Values are also set red if the lifetime values were negative or zero (and so would produce infinities), these values are set to -6E30 and so can be distinguished from the others by hovering over them. Note that the PL maps have to be recalculated after changing the warning level.
 \\
 The Plot Options can then be changed, to set the limits on the plots, make them logarithmic or linear, change the colour map used and change the type of interstitial iron concentration calculation that is plotted. Note that when using logarithmic scales the limits should not be set equal to, or less than, zero as this will produce errors, nor should boxes be left blank as this may also produce errors. The different color maps all have distinct colors for values below the scale limit to highlight anomalous values.
 

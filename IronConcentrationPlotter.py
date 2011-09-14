@@ -510,6 +510,16 @@ class MyApp(object):
 		graphview.pack_start(self.canvas2, True, True)				
 
 	def ironcalcbtnclicked(self, widget):
+		taupb, taunb, n1b, p1b, NAb=self.beforefitparams
+		taupa, tauna, n1a, p1a, NAa=self.afterfitparams
+		a=(taupb+taunb-taupa-tauna)
+		b=((NAa*taupb)+(NAa*taunb)+(n1b*taupb)+(p1b*taunb)+(taunb*NAb)-(NAb*taupa)-(NAb*tauna)-(n1a*taupa)-(tauna*p1a)-(tauna*NAa))
+		c=(NAa*n1b*taupb)+(NAa*taunb*p1b)+(NAa*taunb*NAb)-(NAb*n1a*taupa)-(NAb*tauna*p1a)-(NAb*tauna*NAa)
+		copfit1= (-b+np.sqrt(pow(b,2)-(4*a*c)))/(2*a)
+		copfit2= (-b-np.sqrt(pow(b,2)-(4*a*c)))/(2*a)
+		self.builder.get_object("copfit1").set_label("%.4g" % copfit1)
+		self.builder.get_object("copfit2").set_label("%.4g" % copfit2)
+
 		self.plotgraph1(widget)
 		self.dope=float(self.builder.get_object("doping").get_text())
 		beforelist=excel.getValues(self.builder.get_object("filebeforebtn").get_filename())

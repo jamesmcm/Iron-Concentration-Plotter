@@ -1084,7 +1084,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="invisible_char">●</property>
-                            <property name="width_chars">7</property>
+                            <property name="width_chars">9</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="primary_icon_sensitive">True</property>
@@ -1115,7 +1115,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="invisible_char">●</property>
-                            <property name="width_chars">7</property>
+                            <property name="width_chars">9</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="primary_icon_sensitive">True</property>

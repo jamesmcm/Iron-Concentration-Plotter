@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  14 SEP 2011 14:41
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2011.9.6)  14 SEP 2011 16:07
 entering extended mode
 **\input ironplotmanual.tex
 (c:\Users\James\Documents\pyprog\myfiles\usermanual\ironplotmanual.tex
@@ -263,60 +263,63 @@ pyprog/myfiles/usermanual/2mainscreen.png (PNG copy)>] [2]
 File: 2plimaging.png Graphic file (type png)
  <use 2plimaging.png> [3 <c:/Users/James/Documents/pyprog/myfiles/usermanual/2p
 limaging.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 134.
+LaTeX Font Info:    Try loading font information for U+msa on input line 135.
 
 ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 134.
+LaTeX Font Info:    Try loading font information for U+msb on input line 135.
 
 ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--143
+Underfull \hbox (badness 10000) in paragraph at lines 139--144
 
  []
 
 <2genlevel.png, id=21, 312.41719pt x 104.64093pt>
 File: 2genlevel.png Graphic file (type png)
- <use 2genlevel.png> [5 <c:/Users/James/Documents/pyprog/myfiles/usermanual/2ge
-nlevel.png (PNG copy)>]
-<2loadplafterfile.png, id=30, 555.57562pt x 439.6425pt>
-File: 2loadplafterfile.png Graphic file (type png)
-
-<use 2loadplafterfile.png>
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
-
- []
-
-<2attemptcorrection.png, id=31, 612.78937pt x 291.33844pt>
-File: 2attemptcorrection.png Graphic file (type png)
-
-<use 2attemptcorrection.png>
-<2imagematchingcomplete.png, id=32, 313.9228pt x 169.38281pt>
-File: 2imagematchingcomplete.png Graphic file (type png)
-
-<use 2imagematchingcomplete.png>
+ <use 2genlevel.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6 <c:/Users/James/Documents/pyprog/myfiles/usermanual/2loadplafterfile.png (PN
-G copy)> <c:/Users/James/Documents/pyprog/myfiles/usermanual/2attemptcorrection
-.png (PNG copy)>] <editcolorbar.png, id=36, 834.11626pt x 228.855pt>
-File: editcolorbar.png Graphic file (type png)
+<2loadplafterfile.png, id=22, 555.57562pt x 439.6425pt>
+File: 2loadplafterfile.png Graphic file (type png)
 
-<use editcolorbar.png>
-Overfull \hbox (21.17238pt too wide) in paragraph at lines 180--181
+<use 2loadplafterfile.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+<2attemptcorrection.png, id=23, 612.78937pt x 291.33844pt>
+File: 2attemptcorrection.png Graphic file (type png)
+
+<use 2attemptcorrection.png> [5]
+<2imagematchingcomplete.png, id=32, 313.9228pt x 169.38281pt>
+File: 2imagematchingcomplete.png Graphic file (type png)
+
+<use 2imagematchingcomplete.png> [6 <c:/Users/James/Documents/pyprog/myfiles/us
+ermanual/2genlevel.png (PNG copy)> <c:/Users/James/Documents/pyprog/myfiles/use
+rmanual/2loadplafterfile.png (PNG copy)> <c:/Users/James/Documents/pyprog/myfil
+es/usermanual/2attemptcorrection.png (PNG copy)>]
+<editcolorbar.png, id=36, 834.11626pt x 228.855pt>
+File: editcolorbar.png Graphic file (type png)
+ <use editcolorbar.png>
+Overfull \hbox (21.17238pt too wide) in paragraph at lines 181--182
 [][] 
  []
 
@@ -331,14 +334,25 @@ ng (PNG copy)> <c:/Users/James/Documents/pyprog/myfiles/usermanual/editcolorbar
 .png (PNG copy)>] <2whichsave.png, id=42, 342.5297pt x 216.81pt>
 File: 2whichsave.png Graphic file (type png)
 
-<use 2whichsave.png> [8 <c:/Users/James/Documents/pyprog/myfiles/usermanual/mea
-nvalues.png (PNG copy)> <c:/Users/James/Documents/pyprog/myfiles/usermanual/2wh
-ichsave.png (PNG copy)>] [9]
-<2constants.png, id=49, 917.67844pt x 705.38531pt>
+<use 2whichsave.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--202
+
+ []
+
+<2constants.png, id=43, 917.67844pt x 705.38531pt>
 File: 2constants.png Graphic file (type png)
  <use 2constants.png>
-[10 <c:/Users/James/Documents/pyprog/myfiles/usermanual/2constants.png (PNG cop
-y)>] (c:\Users\James\Documents\pyprog\myfiles\usermanual\ironplotmanual.aux)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8 <c:/Users/James/Documents/pyprog/myfiles/usermanual/meanvalues.png (PNG copy
+)>] [9 <c:/Users/James/Documents/pyprog/myfiles/usermanual/2whichsave.png (PNG 
+copy)> <c:/Users/James/Documents/pyprog/myfiles/usermanual/2constants.png (PNG 
+copy)>] (c:\Users\James\Documents\pyprog\myfiles\usermanual\ironplotmanual.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -346,7 +360,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  2658 strings out of 495285
  34509 string characters out of 3179879
- 97535 words of memory out of 3000000
+ 97534 words of memory out of 3000000
  5832 multiletter control sequences out of 15000+200000
  10150 words of font info for 38 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -359,9 +373,9 @@ gram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Fi
 les (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ironplotmanual.pdf (10 pages, 1242967 bytes).
+Output written on ironplotmanual.pdf (9 pages, 1243720 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 76 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
