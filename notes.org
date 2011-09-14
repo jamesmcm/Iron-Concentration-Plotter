@@ -107,10 +107,8 @@
 ** DONE Make this another option for plotting the iron map
 ** DONE Out put 4 averages for iron concentration: QSSPC reading at the deltan from the given injection level, mean from last values of QSSPC reading (already printed), mean value from PL map with constant C factor (current) and mean value from varying C factor PL map (new)
 ** DONE Make it so hovering voer graph shows values in status bar
-* Critical
 ** DONE FIX BUG WHERE DDN LIMIT TOO HIGH
 ** DONE FIX NEGATIVE VALUES ON PL MAP
-** TODO Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
 ** DONE Allow warning ddn level to be varied
 ** DONE Change exe name
 ** DONE Update manual, i.e. explaining that on ffits mode the QSSPC iron calc uses fits, -666 trick, etc.
@@ -119,16 +117,13 @@
 ** DONE Fix stuff when fit is not possible
 ** DONE Fix negative lifetime values producing infinite iron values - cannot make them zero as arrays immutable, fix later line 758
 ** DONE Fix infinite means
-** TODO Add ability to plot two iron concentration graphs side by side for comparison
 ** DONE Add ability to see currently chosen plot
 ** DONE Add least square value to fittinog options = must eget variance of matrix
 ** DONE Give ability to set fitting range
 ** DONE Change fitting range to use 10% of value rather than limit crap
-** TODO Plot fitted range values in different color
 ** DONE Extrapolate the fits to zero and edges always
 ** DONE Center text
-** TODO Do backward calculation from doping concentration to resistivity
-** TODO Try to Get COP from fits
+** DONE Try to Get COP from fits
 ** DONE make option between fits and interpoltation
 ** DONE Add formula used to fitting window
 ** DONE Defaultly use fits for Fei calculation i.e. match each datapoint with a fit datapoint
@@ -140,6 +135,11 @@
 ** DONE Color points that exceed this value on the maps - give them another unique value somehow?
 ** DONE Add option to save lifetime maps after image matching
 ** DONE Change mean of last 10 C values to mean of some deltan range given
+* Critical
+** TODO Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
+** TODO Add ability to plot two iron concentration graphs side by side for comparison
+** TODO Plot fitted range values in different color
+** TODO Do backward calculation from doping concentration to resistivity
 ** TODO Make iron map labels bigger and add "Pixels" labels
 ** TODO Add lines on legend
 ** TODO Add ability to get trap energy level from fits by calculating Nv/Nc theoretically
