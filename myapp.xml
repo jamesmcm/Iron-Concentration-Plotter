@@ -3710,8 +3710,9 @@ for after fit:</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Square root of the
 sum of the squared
-differences within
-the fitting range: </property>
+differences &lt;b&gt;within
+the fitting range&lt;/b&gt;: </property>
+                <property name="use_markup">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -3724,7 +3725,7 @@ the fitting range: </property>
               <object class="GtkLabel" id="label98">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Before fit: </property>
+                <property name="label" translatable="yes">Before Illumination fit: </property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -3749,7 +3750,7 @@ the fitting range: </property>
               <object class="GtkLabel" id="label99">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">After fit:</property>
+                <property name="label" translatable="yes">After Illumination fit:</property>
               </object>
               <packing>
                 <property name="expand">True</property>
