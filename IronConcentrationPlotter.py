@@ -324,8 +324,10 @@ class MyApp(object):
 
 
 	def resbeforevalbtnclicked(self, widget):
+		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
 		self.oldres=self.resbeforeval
 		self.dope=doping.calcDoping(self.resbeforeval)
+		self.olddope=self.dope
 		self.builder.get_object("resistivity").set_text("%.4g" % self.resbeforeval)
 		self.builder.get_object("pldopingtxt").set_text("%.4g" % self.dope)
 		self.builder.get_object("doping").set_text("%.4g" % self.dope)
@@ -333,8 +335,10 @@ class MyApp(object):
 		self.builder.get_object("reswindow").hide()
 
 	def resaftervalbtnclicked(self, widget):
+		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
 		self.dope=doping.calcDoping(self.resafterval)
 		self.oldres=self.resafterval
+		self.olddope=self.dope
 		self.builder.get_object("resistivity").set_text("%.4g" % self.resafterval)
 		self.builder.get_object("pldopingtxt").set_text("%.4g" % self.dope)
 		self.builder.get_object("doping").set_text("%.4g" % self.dope)
@@ -342,9 +346,11 @@ class MyApp(object):
 		self.builder.get_object("reswindow").hide()
 
 	def resmyvalbtnclicked(self, widget):
+		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
 		myres=float(self.builder.get_object("myrestxt").get_text())
 		self.oldres=myres
 		self.dope=doping.calcDoping(myres)
+		self.olddope=self.dope
 		self.builder.get_object("resistivity").set_text("%.4g" % myres)
 		self.builder.get_object("pldopingtxt").set_text("%.4g" % self.dope)
 		self.builder.get_object("doping").set_text("%.4g" % self.dope)	
@@ -353,10 +359,14 @@ class MyApp(object):
 
 
 	def recalccopbtnclicked(self, widget):
+		#new doping concentration
 		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
 		self.dope=float(self.builder.get_object("doping").get_text())
 		self.builder.get_object("crossovertheory").set_text("%.4g" % concentration.COPcalc(self.constants, self.dope))
 		self.builder.get_object("pldopingtxt").set_text("%.4g" % self.dope)
+		#get new resistivity
+		self.builder.get_object("resistivity").set_text("%.4g" % doping.calcRes(self.dope))
+		
 
 	def restoredopingbtnclicked(self, widget):
 		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
@@ -384,6 +394,7 @@ class MyApp(object):
 
 	def calcdopefromresistivity(self, widget):
 		self.dope=doping.calcDoping(float(self.builder.get_object("resistivity").get_text()))
+		self.builder.get_object("crossovertheory").set_text("%.4g" % concentration.COPcalc(self.constants, self.dope))
 		self.builder.get_object("pldopingtxt").set_text("%.4g" % self.dope)
 		self.builder.get_object("doping").set_text("%.4g" % self.dope)
 		
@@ -676,30 +687,32 @@ class MyApp(object):
 			rangemax=float(self.builder.get_object("meanmax").get_text())
 			if self.meanmode=="Fe":
 				i=0
-				while self.qsspclist[0][i]<rangemin:
+				while self.qsspclist[0][i]<rangemin and i<len(self.qsspclist[0]):
 					i+=1
 				actualmin=i
 				i=len(self.qsspclist[0])-1
-				while self.qsspclist[0][i]>rangemax:
+				while self.qsspclist[0][i]>rangemax and i>=0:
 					i-=1
 				actualmax=i
 				ironmean=stats.mean(self.qsspclist[1][actualmin:actualmax+1])
+				self.qsspcstdev=stats.stdev(self.qsspclist[1][actualmin:actualmax+1])
 				self.qsspcironmeanlast=ironmean
 				self.builder.get_object("meanconctxt").set_text("%.4g" % ironmean)
 
 			elif self.meanmode=="C":
 				i=0
-				while self.cvaluedn[i]<rangemin:
+				while self.cvaluedn[i]<rangemin and i<len(self.cvaluedn):
 					i+=1
 				actualmin=i
 				i=len(self.cvaluedn)-1
-				while self.cvaluedn[i]>rangemax:
+				while self.cvaluedn[i]>rangemax and i>=0:
 					i-=1
 				actualmax=i
 				cmean=stats.mean(self.cvalues[actualmin:actualmax+1])
 				self.cmean=cmean
+				self.cstdev=stats.stdev(self.cvalues[actualmin:actualmax+1])
 				self.builder.get_object("meanconctxt").set_text("%.4g" % cmean)
-		except:
+		except (ValueError, ZeroDivisionError, IndexError):
 			self.builder.get_object("meanrangeerror").show()
 			
 
@@ -1113,8 +1126,9 @@ class MyApp(object):
 		a1.sort()
 		b1.sort()
 		e1.sort()
-		self.taubmin=0
-		self.tauamin=0
+		#Must make 0 tau values red
+		self.taubmin=0.1
+		self.tauamin=0.1
 		self.taubmax = b1[int(0.99*len(b))]
 		self.tauamax = a1[int(0.99*len(a))]
 		self.ironmin=1E10
@@ -1190,9 +1204,11 @@ class MyApp(object):
 		except: 
 			self.builder.get_object("qsspcgenlevel").set_text("Given Injection level out of bounds for interpolation!")
 		self.builder.get_object("lastqsspciron").set_text("%.4g" % self.qsspcironmeanlast)
+		self.builder.get_object("stdlastqsspciron").set_text("%.4g" % self.qsspcstdev)
 		if self.canfit==1:
 			if np.max(self.ironconcmatrixindividual[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100])>0:
 				self.builder.get_object("meanironplindividual").set_text("%.4g" % np.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
+				self.builder.get_object("stdironplindividual").set_text("%.4g" % np.std(self.ironconcmatrixindividual[100:-100,100:-100]))
 			else:
 				cutborders=self.ironconcmatrixindividual[100:-100,100:-100]
 				i=0
@@ -1208,13 +1224,30 @@ class MyApp(object):
 					j=0
 					i+=1
 				mean=total/float(n)
-				self.builder.get_object("meanironplindividual").set_text("%.4g" % mean)				
+				self.builder.get_object("meanironplindividual").set_text("%.4g" % mean)
+				i=0
+				j=0
+				n=0
+				total=0
+				while i<800:
+					while j<800:
+						if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
+							total+=pow((cutborders[i][j]-mean),2)
+							n+=1
+						j+=1
+					j=0
+					i+=1
+				print total
+				print n
+				stddev=np.sqrt((1.0/(n-1))*total)
+				self.builder.get_object("stdironplindividual").set_text("%.4g" % stddev)
 				
 		else:
 			self.builder.get_object("meanironplindividual").set_text("Fit could not be calculated for data!")
 		
 		if np.max(self.ironconcmatrixgenlevel[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixgenlevel[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixgenlevel[100:-100,100:-100])>0:
 			self.builder.get_object("meanironplgenlevel").set_text("%.4g" % np.mean(self.ironconcmatrixgenlevel[100:-100,100:-100]))
+			self.builder.get_object("stdironplgenlevel").set_text("%.4g" % np.std(self.ironconcmatrixgenlevel[100:-100,100:-100]))			
 		else:
 			cutborders=self.ironconcmatrixgenlevel[100:-100,100:-100]
 			i=0
@@ -1231,9 +1264,24 @@ class MyApp(object):
 				i+=1
 			mean=total/float(n)
 			self.builder.get_object("meanironplgenlevel").set_text("%.4g" % mean)
+			i=0
+			j=0
+			n=0
+			total=0
+			while i<800:
+				while j<800:
+					if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
+						total+=pow((cutborders[i][j]-mean),2)
+						n+=1
+					j+=1
+				j=0
+				i+=1
+			stddev=np.sqrt((1.0/(n-1))*total)
+			self.builder.get_object("stdironplgenlevel").set_text("%.4g" % stddev)
 
 		if np.max(self.ironconcmatrixmeanC[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixmeanC[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixmeanC[100:-100,100:-100])>0 :
 			self.builder.get_object("meanironpllastc").set_text("%.4g" % np.mean(self.ironconcmatrixmeanC[100:-100,100:-100]))
+			self.builder.get_object("stdironpllastc").set_text("%.4g" % np.std(self.ironconcmatrixmeanC[100:-100,100:-100]))			
 		else:
 			cutborders=self.ironconcmatrixmeanC[100:-100,100:-100]
 			i=0
@@ -1249,7 +1297,21 @@ class MyApp(object):
 				j=0
 				i+=1
 			mean=total/float(n)
-			self.builder.get_object("meanironpllastc").set_text("%.4g" % mean)	
+			self.builder.get_object("meanironpllastc").set_text("%.4g" % mean)
+			i=0
+			j=0
+			n=0
+			total=0
+			while i<800:
+				while j<800:
+					if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
+						total+=pow((cutborders[i][j]-mean),2)
+						n+=1
+					j+=1
+				j=0
+				i+=1
+			stddev=np.sqrt((1.0/(n-1))*total)
+			self.builder.get_object("stdironpllastc").set_text("%.4g" % stddev)			
 
 		self.builder.get_object("showironvaluesbtn").set_sensitive(True)
 

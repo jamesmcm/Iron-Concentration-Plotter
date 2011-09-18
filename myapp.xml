@@ -1,5 +1,5 @@
-<?xml version="1.0" ?><interface>
-  
+<?xml version="1.0"?>
+<interface>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkMessageDialog" id="ErrorWindow">
     <property name="can_focus">False</property>
@@ -254,7 +254,7 @@
                           <object class="GtkEntry" id="ymin1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -285,7 +285,7 @@
                           <object class="GtkEntry" id="ymax1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -356,7 +356,7 @@
                           <object class="GtkEntry" id="xmax1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -391,7 +391,7 @@
                           <object class="GtkEntry" id="xmin1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -432,7 +432,7 @@
                       <object class="GtkLabel" id="label7">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Resistivity (Ω cm):</property>
+                        <property name="label" translatable="yes">Resistivity (&#x3A9; cm):</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -444,7 +444,7 @@
                       <object class="GtkEntry" id="resistivity">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#x25CF;</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
@@ -492,7 +492,7 @@
                       <object class="GtkEntry" id="doping">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#x25CF;</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
@@ -560,7 +560,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#x25CF;</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
@@ -760,7 +760,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="ymin2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -793,7 +793,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="ymax2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -842,7 +842,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="xmin2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -877,7 +877,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="xmax2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -935,7 +935,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                       <object class="GtkLabel" id="label16">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Estimate of Δn of crossover point from
+                        <property name="label" translatable="yes">Estimate of &#x394;n of crossover point from
  discontinuity on graph (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -950,7 +950,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#x25CF;</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
@@ -984,7 +984,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkLabel" id="deltanlabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Δn (cm&lt;sup&gt;-3&lt;/sup&gt;): </property>
+                            <property name="label" translatable="yes">&#x394;n (cm&lt;sup&gt;-3&lt;/sup&gt;): </property>
                             <property name="use_markup">True</property>
                           </object>
                           <packing>
@@ -998,7 +998,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="deltangettxt">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1068,7 +1068,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="editable">False</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1141,7 +1141,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="meanmin">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">9</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1172,7 +1172,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="meanmax">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">●</property>
+                            <property name="invisible_char">&#x25CF;</property>
                             <property name="width_chars">9</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1216,7 +1216,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#x25CF;</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
@@ -1416,7 +1416,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="width_chars">11</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -1474,7 +1474,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkEntry" id="injectionleveltxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="width_chars">11</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -1533,7 +1533,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkEntry" id="pldopingtxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="width_chars">11</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -1920,7 +1920,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkEntry" id="vthermaltxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">1.1E7</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -1999,7 +1999,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label27">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;n_1&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;n_1&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2011,7 +2011,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmanitxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">1.3E-14</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -2053,7 +2053,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="p1itxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">1.28E13</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -2083,7 +2083,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label33">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;p_1&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;p_1&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2095,7 +2095,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmapitxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">7E-17</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -2144,7 +2144,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label37">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;n_2&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;n_2&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2158,7 +2158,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmanbtxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">5E-15</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -2206,7 +2206,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="n1btxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">1.22571E15</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -2240,7 +2240,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label41">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;p_2&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;p_2&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2254,7 +2254,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmapbtxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="text" translatable="yes">3E-15</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
@@ -2324,7 +2324,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="message_type">warning</property>
     <property name="buttons">close</property>
     <property name="text">Warning: Resistivity values do not match</property>
-    <property name="secondary_text">The resistivity values in the Excel spreadsheets are not equal. This may mean the results are not from the same sample or it was entered incorrectly in the spreadsheet. Please correct this before continuing as the theoretical crossover point value will be based upon the value in the &quot;Before illumination&quot; spreadsheet.</property>
+    <property name="secondary_text">The resistivity values in the Excel spreadsheets are not equal. This may mean the results are not from the same sample or it was entered incorrectly in the spreadsheet. Please correct this before continuing as the theoretical crossover point value will be based upon the value in the "Before illumination" spreadsheet.</property>
     <signal handler="resistivityresponse" name="response" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">
@@ -2515,7 +2515,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="lifemaxtxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -2534,7 +2534,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkLabel" id="label50">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Maximum (µs): </property>
+                <property name="label" translatable="yes">Maximum (&#xB5;s): </property>
               </object>
               <packing>
                 <property name="x_options">GTK_FILL</property>
@@ -2562,7 +2562,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="femaxtxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -2582,7 +2582,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkLabel" id="label51">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Minimum (µs): </property>
+                <property name="label" translatable="yes">Minimum (&#xB5;s): </property>
               </object>
               <packing>
                 <property name="top_attach">1</property>
@@ -2596,7 +2596,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="lifemintxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -2634,7 +2634,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="femintxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -2798,7 +2798,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Warning level for the 
-differences in Δn levels:</property>
+differences in &#x394;n levels:</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -2814,7 +2814,7 @@ differences in Δn levels:</property>
               <object class="GtkEntry" id="ddnwarnlevel">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="primary_icon_sensitive">True</property>
@@ -2931,7 +2931,7 @@ differences in Δn levels:</property>
                   <object class="GtkLabel" id="label64">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
+                    <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -2939,7 +2939,7 @@ differences in Δn levels:</property>
                   <object class="GtkLabel" id="label66">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
+                    <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2987,7 +2987,7 @@ differences in Δn levels:</property>
                   <object class="GtkEntry" id="taupb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="primary_icon_sensitive">True</property>
@@ -3003,7 +3003,7 @@ differences in Δn levels:</property>
                   <object class="GtkEntry" id="taunb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="primary_icon_sensitive">True</property>
@@ -3021,7 +3021,7 @@ differences in Δn levels:</property>
                   <object class="GtkEntry" id="n1b">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="primary_icon_sensitive">True</property>
@@ -3039,7 +3039,7 @@ differences in Δn levels:</property>
                   <object class="GtkEntry" id="p1b">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="primary_icon_sensitive">True</property>
@@ -3057,7 +3057,7 @@ differences in Δn levels:</property>
                   <object class="GtkEntry" id="NAb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">●</property>
+                    <property name="invisible_char">&#x25CF;</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="primary_icon_sensitive">True</property>
@@ -3118,7 +3118,7 @@ differences in Δn levels:</property>
               <object class="GtkLabel" id="label65">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>
@@ -3126,7 +3126,7 @@ differences in Δn levels:</property>
               <object class="GtkLabel" id="label67">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -3174,7 +3174,7 @@ differences in Δn levels:</property>
               <object class="GtkEntry" id="taupa">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -3191,7 +3191,7 @@ differences in Δn levels:</property>
               <object class="GtkEntry" id="tauna">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -3210,7 +3210,7 @@ differences in Δn levels:</property>
               <object class="GtkEntry" id="n1a">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -3229,7 +3229,7 @@ differences in Δn levels:</property>
               <object class="GtkEntry" id="p1a">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -3248,7 +3248,7 @@ differences in Δn levels:</property>
               <object class="GtkEntry" id="NAa">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -3304,7 +3304,7 @@ differences in Δn levels:</property>
               <object class="GtkLabel" id="label75">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>
@@ -3312,7 +3312,7 @@ differences in Δn levels:</property>
               <object class="GtkLabel" id="label76">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -3455,7 +3455,7 @@ differences in Δn levels:</property>
               <object class="GtkLabel" id="label81">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>
@@ -3463,7 +3463,7 @@ differences in Δn levels:</property>
               <object class="GtkLabel" id="label82">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -3622,7 +3622,7 @@ for before fit:</property>
               <object class="GtkEntry" id="bfitrmin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="primary_icon_sensitive">True</property>
@@ -3649,7 +3649,7 @@ for before fit:</property>
               <object class="GtkEntry" id="bfitrmax">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="primary_icon_sensitive">True</property>
@@ -3697,7 +3697,7 @@ for after fit:</property>
               <object class="GtkEntry" id="afitrmin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -3725,7 +3725,7 @@ for after fit:</property>
               <object class="GtkEntry" id="afitrmax">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
@@ -4103,7 +4103,7 @@ the fitting range&lt;/b&gt;: </property>
           <object class="GtkLabel" id="label55">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Mean Interstitial Iron Concentration from the QSSPC measurements at the Generation Level used for the before PL image:</property>
+            <property name="label" translatable="yes">Interstitial Iron Concentration from the QSSPC measurements at the Generation Level used for the before PL image:</property>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -4113,21 +4113,81 @@ the fitting range&lt;/b&gt;: </property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="qsspcgenlevel">
+          <object class="GtkHBox" id="hbox14">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="invisible_char">●</property>
-            <property name="primary_icon_activatable">False</property>
-            <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label101">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label103">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard Deviation</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="padding">8</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox13">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="qsspcgenlevel">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">8</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label112">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Not Applicable</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -4140,25 +4200,91 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="lastqsspciron">
+          <object class="GtkHBox" id="hbox16">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="invisible_char">●</property>
-            <property name="primary_icon_activatable">False</property>
-            <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label104">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label105">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard Deviation</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="padding">8</property>
-            <property name="position">4</property>
+            <property name="position">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox15">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="lastqsspciron">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">8</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="stdlastqsspciron">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x2022;</property>
+                <property name="xalign">0.5</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">6</property>
           </packing>
         </child>
         <child>
@@ -4172,25 +4298,91 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">5</property>
+            <property name="position">7</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="meanironplindividual">
+          <object class="GtkHBox" id="hbox18">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="invisible_char">●</property>
-            <property name="primary_icon_activatable">False</property>
-            <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label106">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label107">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard Deviation</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="padding">8</property>
-            <property name="position">6</property>
+            <property name="position">8</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox17">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="meanironplindividual">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">8</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="stdironplindividual">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x2022;</property>
+                <property name="xalign">0.5</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">9</property>
           </packing>
         </child>
         <child>
@@ -4203,25 +4395,91 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">7</property>
+            <property name="position">10</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="meanironplgenlevel">
+          <object class="GtkHBox" id="hbox20">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="invisible_char">●</property>
-            <property name="primary_icon_activatable">False</property>
-            <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label108">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label109">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard Deviation</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="padding">8</property>
-            <property name="position">8</property>
+            <property name="position">11</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox19">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="meanironplgenlevel">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">8</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="stdironplgenlevel">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x2022;</property>
+                <property name="xalign">0.5</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">12</property>
           </packing>
         </child>
         <child>
@@ -4234,25 +4492,91 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">9</property>
+            <property name="position">13</property>
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="meanironpllastc">
+          <object class="GtkHBox" id="hbox22">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="invisible_char">●</property>
-            <property name="primary_icon_activatable">False</property>
-            <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label110">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label111">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard Deviation</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="padding">8</property>
-            <property name="position">10</property>
+            <property name="position">14</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox21">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="meanironpllastc">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">8</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="stdironpllastc">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x2022;</property>
+                <property name="xalign">0.5</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">15</property>
           </packing>
         </child>
         <child>
@@ -4279,7 +4603,7 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">11</property>
+            <property name="position">16</property>
           </packing>
         </child>
       </object>
@@ -4539,7 +4863,7 @@ the fitting range&lt;/b&gt;: </property>
           <object class="GtkEntry" id="pl1genleveltxt">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="invisible_char">●</property>
+            <property name="invisible_char">&#x25CF;</property>
             <property name="text" translatable="yes">1.92E17</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>
@@ -4853,7 +5177,7 @@ the fitting range&lt;/b&gt;: </property>
               <object class="GtkEntry" id="myrestxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
+                <property name="invisible_char">&#x25CF;</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="primary_icon_sensitive">True</property>

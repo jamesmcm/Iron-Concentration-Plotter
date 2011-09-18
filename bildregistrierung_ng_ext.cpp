@@ -840,16 +840,16 @@ static PyObject* find_best_for_angle(PyObject*self, PyObject* args, PyObject* ky
     {                                
         py_xr = py_xr;
         PyArrayObject* xr_array = convert_to_numpy(py_xr,"xr");
-        conversion_numpy_check_type(xr_array,PyArray_LONG,"xr");
+        conversion_numpy_check_type(xr_array,PyArray_INT,"xr");
         conversion_numpy_check_size(xr_array,1,"xr");
-        blitz::Array<long,1> xr = convert_to_blitz<long,1>(xr_array,"xr");
+        blitz::Array<int,1> xr = convert_to_blitz<int,1>(xr_array,"xr");
         blitz::TinyVector<int,1> Nxr = xr.shape();
         xr_used = 1;
         py_yr = py_yr;
         PyArrayObject* yr_array = convert_to_numpy(py_yr,"yr");
-        conversion_numpy_check_type(yr_array,PyArray_LONG,"yr");
+        conversion_numpy_check_type(yr_array,PyArray_INT,"yr");
         conversion_numpy_check_size(yr_array,1,"yr");
-        blitz::Array<long,1> yr = convert_to_blitz<long,1>(yr_array,"yr");
+        blitz::Array<int,1> yr = convert_to_blitz<int,1>(yr_array,"yr");
         blitz::TinyVector<int,1> Nyr = yr.shape();
         yr_used = 1;
         py_dx = py_dx;
