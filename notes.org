@@ -136,6 +136,9 @@
 ** DONE Add option to save lifetime maps after image matching
 ** DONE Change mean of last 10 C values to mean of some deltan range given
 * Critical
+** TODO Move stats stuff to scipy
+** TODO DO stdev with arrays
+** TODO Move mean calculation to negative settting loop
 ** DONE FIX MEAN RANGE STUFF - PERHAPS USE FIT? - add length(array) conditional
 ** TODO FIX FINAL DELTAN calculation for individual C factors. is mean best?
 ** TODO Fix ValueError: Data has no positive values, and therefore can not be log-scaled. when mean wrong
