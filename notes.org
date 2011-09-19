@@ -138,6 +138,7 @@
 * Critical
 ** TODO Move stats stuff to scipy
 ** TODO DO stdev with arrays
+** TODO test
 ** TODO Move mean calculation to negative settting loop
 ** DONE FIX MEAN RANGE STUFF - PERHAPS USE FIT? - add length(array) conditional
 ** TODO FIX FINAL DELTAN calculation for individual C factors. is mean best?
