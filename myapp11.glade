@@ -1630,6 +1630,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkButton" id="compareplmapsbtn">
                     <property name="label" translatable="yes">Compare PL maps</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
@@ -2365,8 +2366,9 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
   </object>
   <object class="GtkWindow" id="comparewindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Compare PL Maps</property>
+    <property name="default_width">1024</property>
+    <property name="default_height">1024</property>
     <property name="deletable">False</property>
     <child>
       <object class="GtkVBox" id="vbox15">
@@ -2492,7 +2494,6 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
         <child>
           <object class="GtkToolbar" id="pltoolbar1">
             <property name="visible">True</property>
-            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
             <property name="toolbar_style">icons</property>
             <child>
@@ -2578,7 +2579,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Zoom Out</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-zoom-out</property>
-                <signal name="clicked" handler="zoomoutcomparebuttonclicked" swapped="no"/>
+                <signal name="clicked" handler="zoomoutcomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2600,32 +2601,6 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
-            <child>
-              <object class="GtkSeparatorToolItem" id="toolbutton2">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkToolButton" id="savefemapbtn1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="use_action_appearance">False</property>
-                <property name="label" translatable="yes">Save Files</property>
-                <property name="use_underline">True</property>
-                <property name="stock_id">gtk-floppy</property>
-                <signal name="clicked" handler="savecomparebtnclicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">True</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -2634,10 +2609,22 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
           </packing>
         </child>
         <child>
+          <object class="GtkStatusbar" id="comparestatusbar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="spacing">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkHButtonBox" id="hbuttonbox5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
+            <property name="layout_style">center</property>
             <child>
               <object class="GtkButton" id="closecomparebtn">
                 <property name="label" translatable="yes">Close</property>
@@ -2657,7 +2644,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
@@ -2777,7 +2764,6 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
   </object>
   <object class="GtkWindow" id="editcolorbarwindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Colorbar Options</property>
     <property name="deletable">False</property>
     <child>
@@ -3156,6 +3142,95 @@ differences in Δn levels:</property>
           </packing>
         </child>
         <child>
+          <object class="GtkHBox" id="hbox23">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label117">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Number of pixels above warning level: </property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">4</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="warnpixlabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">4</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label119">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean of array of differences of injection level: </property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">5</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="meanarraydifflabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">4</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label121">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard deviation: </property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">4</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="stdarraydifflabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">4</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkHButtonBox" id="hbuttonbox2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -3196,7 +3271,7 @@ differences in Δn levels:</property>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
@@ -3204,7 +3279,6 @@ differences in Δn levels:</property>
   </object>
   <object class="GtkWindow" id="editfitwindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Edit Initial Guess Parameters</property>
     <property name="deletable">False</property>
     <child>
@@ -4273,7 +4347,6 @@ the fitting range&lt;/b&gt;: </property>
     <property name="width_request">800</property>
     <property name="height_request">350</property>
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Attempt Image Matching?</property>
     <property name="urgency_hint">True</property>
     <property name="deletable">False</property>
@@ -4398,7 +4471,6 @@ the fitting range&lt;/b&gt;: </property>
   </object>
   <object class="GtkWindow" id="ironviewwindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Different mean interstitial Iron Concentration values</property>
     <property name="deletable">False</property>
     <child>
@@ -5444,7 +5516,6 @@ the fitting range&lt;/b&gt;: </property>
   </object>
   <object class="GtkWindow" id="reswindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Resistivity values do not match!</property>
     <property name="deletable">False</property>
     <child>
@@ -5572,7 +5643,6 @@ the fitting range&lt;/b&gt;: </property>
   </object>
   <object class="GtkWindow" id="whichsavewindow">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
     <property name="title" translatable="yes">Choose file to save...</property>
     <property name="default_width">440</property>
     <property name="default_height">250</property>

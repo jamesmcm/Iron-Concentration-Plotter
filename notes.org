@@ -135,28 +135,26 @@
 ** DONE Color points that exceed this value on the maps - give them another unique value somehow?
 ** DONE Add option to save lifetime maps after image matching
 ** DONE Change mean of last 10 C values to mean of some deltan range given
-* Critical
-** TODO Move stats stuff to scipy
-** TODO DO stdev with arrays
-** TODO test
-** TODO Move mean calculation to negative settting loop
+** DONE Move stats stuff to scipy
 ** DONE FIX MEAN RANGE STUFF - PERHAPS USE FIT? - add length(array) conditional
+** DONE Plot of differences (ddn)
+** DONE Standard Deviation of Mean [Fei]s
+** DONE Comparison of PL maps
+** DONE Backward calculation Doping conc. to resistivity - buggy ONLY WORKS FOR RESISTIVITY > 0.1 NOTE THIS IN MANUAL
+** DONE Add ability to plot two iron concentration graphs side by side for comparison
+** DONE Do backward calculation from doping concentration to resistivity
+* Critical
+** TODO Move mean calculation to negative settting loop
 ** TODO FIX FINAL DELTAN calculation for individual C factors. is mean best?
 ** TODO Fix ValueError: Data has no positive values, and therefore can not be log-scaled. when mean wrong
-** TODO Plot of differences (ddn)
-** DONE Standard Deviation of Mean [Fei]s
-** TODO Comparison of PL maps
 ** TODO Iron map labels bigger with pixels label
 ** TODO On QSSPC lifetime plots label the fits
 ** TODO Caclulate Et from fit data
-** DONE Backward calculation Doping conc. to resistivity - buggy ONLY WORKS FOR RESISTIVITY > 0.1 NOTE THIS IN MANUAL
 ** TODO Fix zero lifetime values i.e. make negative again after use - since already have indices needed
 ** TODO Print percentage of invalid data points, mean of differences, etc. in plot options as well
 ----
 ** TODO Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
-** TODO Add ability to plot two iron concentration graphs side by side for comparison
 ** TODO Plot fitted range values in different color
-** TODO Do backward calculation from doping concentration to resistivity
 ** TODO Make iron map labels bigger and add "Pixels" labels
 ** TODO Add lines on legend
 ** TODO Add ability to get trap energy level from fits by calculating Nv/Nc theoretically
@@ -192,3 +190,8 @@
 ** TODO Add menu bar - ability to load excel files and save plots
 ** TODO Maybe add functioning status bar
 ** TODO Make CLI versions for mass scripting and saving of data
+21
+27
+
+97
+
