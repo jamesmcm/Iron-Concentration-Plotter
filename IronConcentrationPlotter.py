@@ -255,6 +255,10 @@ class MyApp(object):
 			if self.fitusebox.get_active()==0:
 				self.axis1.plot(range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1)), linecol, label="Before Illumination Fit")
 				self.beforefitplot=[range1, (((taup*n1)+(taup*range1)+(taun*p1)+(taun*NA)+(taun*range1))/(NA+range1))]
+				# print "Before:"
+				# print "Trap from valence: %.4g" % ((1.3806503E-23*300*np.log(1.83E19/p1))/1.602E-19)
+				# print "Trap from conduction: %.4g" % (((1.14*1.602E-19)-(1.3806503E-23*300*np.log(2.82E19/n1)))/1.6E-19)
+				# print "Ec-Ev: %.4g" % ((1.3806503E-23*300*np.log((1.83E19*2.82E19)/(n1*p1)))/1.602E-19)
 			elif self.fitusebox.get_active()==1:
 				self.axis1.plot(deltan[0:int(offset*len(deltan))], tauvalues[0:int(offset*len(deltan))], linecol, label="Before Illumination Interpolation")
 		elif mylabel=="After Illumination":
@@ -283,6 +287,10 @@ class MyApp(object):
 				i+=1
 			self.builder.get_object("squarediffafter").set_text("%.4g" % np.sqrt(squarediff))
 			self.asquarediff= np.sqrt(squarediff)
+			# print "After:"
+			# print "Trap from valence: %.4g" % ((1.3806503E-23*300*np.log(1.83E19/p1))/1.602E-19)
+			# print "Trap from conduction: %.4g" % (((1.14*1.602E-19)-(1.3806503E-23*300*np.log(2.82E19/n1)))/1.6E-19)
+			# print "Ec-Ev: %.4g" % ((1.3806503E-23*300*np.log((1.83E19*2.82E19)/(n1*p1)))/1.602E-19)
 
 
 			if self.fitusebox.get_active()==0:
@@ -294,7 +302,7 @@ class MyApp(object):
 				self.axis1.plot(deltan[0:int(offset*len(deltan))], tauvalues[0:int(offset*len(deltan))], linecol, label="After Illumination Interpolation")
 
 
-		self.axis1.legend()
+		self.axis1.legend(loc=4, prop={'size':10})
 		# except:
 		# 	if mylabel=="Before Illumination":
 		# 		self.bcanfit=0
@@ -1011,6 +1019,7 @@ class MyApp(object):
 		if np.min(self.taubefore)<0:
 			indicesb=[]
 			zeroarray=[]
+			self.negarrayb=[]			
 			oldshape=self.taubefore.shape
 			flatbefore=self.taubefore.flatten()
 			i=0
@@ -1018,6 +1027,7 @@ class MyApp(object):
 				if flatbefore[i]<0:
 					indicesb.append(i)
 					zeroarray.append(0)
+					self.negarrayb.append(-5E30)					
 				i+=1
 
 			flatbefore.put(indicesb, zeroarray)
@@ -1026,6 +1036,7 @@ class MyApp(object):
 		if np.min(self.tauafter)<0:
 			indicesa=[]
 			zeroarray=[]
+			self.negarraya=[]
 			oldshape=self.tauafter.shape
 			flatafter=self.tauafter.flatten()
 			i=0
@@ -1033,12 +1044,14 @@ class MyApp(object):
 				if flatafter[i]<0:
 					indicesa.append(i)
 					zeroarray.append(0)
+					self.negarraya.append(-5E30)
 				i+=1
 
 			flatafter.put(indicesa, zeroarray)
 			self.tauafter=flatafter.reshape(oldshape)
 			
-		
+		self.indicesb=indicesb
+		self.indicesa=indicesa
 		# if np.min(self.taubefore)<0:
 		# 	i=0
 		# 	j=0
@@ -1102,16 +1115,52 @@ class MyApp(object):
 			i=0
 			count=0
 			indicesb=[]
+			indices=[]
+			zeroarray=[]
 			zeroarray2=[]
+		# if self.canfit==1:
+		# 	indices=[]
+		# 	zeroarray=[]
+		# 	oldshape=self.ironconcmatrixindividual.shape
+		# 	ironflat=self.ironconcmatrixindividual.flatten()
+		# 	i=0
+		# 	while i<ironflat.size:
+		# 		if ironflat[i]==np.Inf or ironflat[i]==-np.Inf or np.isnan(ironflat[i]):
+		# 			indices.append(i)
+		# 			zeroarray.append(-6e30)
+		# 		i+=1
+
+		# 	ironflat.put(indices, zeroarray)
+		# 	self.ironconcmatrixindividual=ironflat.reshape(oldshape)
+		# oldshape=self.ironconcmatrixindividual.shape
+		# flatbefore=self.ironconcmatrixindividual.flatten()
+		# #print flatbefore.size
+		# flatbefore.put(indicesb, zeroarray2)
+		# self.ironconcmatrixindividual=flatbefore.reshape(oldshape)
+
+			nmean=(nafter+nbefore)/2.0
+			sum=0
+			count=0
+			C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
+			self.ironconcmatrixindividual=np.abs(C*(1/self.taubefore - 1/self.tauafter))			
 			#print diffmatrixflatten.size
+			oldshape=self.ironconcmatrixindividual.shape
+			ironflat=self.ironconcmatrixindividual.flatten()			
 			while i<diffmatrixflatten.size:
 				if diffmatrixflatten[i]>self.ddnlimit:
 					indicesb.append(i)
 					zeroarray2.append(-7E30)
-					count+=1
+					count+=1				
+				elif ironflat[i]==np.Inf or ironflat[i]==-np.Inf or np.isnan(ironflat[i]):
+					indices.append(i)
+					zeroarray.append(-6E30)					
 				i+=1
+			#mean
+			ironflat.put(indices, zeroarray)
+			ironflat.put(indicesb, zeroarray2)
+			self.ironconcmatrixindividual=ironflat.reshape(oldshape)			
 			percent=(float(count)/diffmatrixflatten.size)*100
-			self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe number of values above this was %i out of %i pixels.\nThe percentage of values with differences above this was %.4f. \nThe mean of the array of differences of injection level values was %.4g.\n The standard deviation of he array of differences of the injection level was %.4g\nThese values will be set to -7E30 on the PL map (and so coloured differently).\nThe warning level can be changed in the Edit Plot Options window.\n You must recalculate  the maps after changing this though." % (self.ddnlimit, count, diffmatrixflatten.size, percent, matrixmean, matrixstd))
+			self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe number of values above this was %i out of %i pixels.\nThe percentage of values with differences above this was %.4g%%. \nThe mean of the array of differences of injection level values was %.4g.\n The standard deviation of he array of differences of the injection level was %.4g\nThese values will be set to -7E30 on the PL map (and so coloured differently).\nThe warning level can be changed in the Edit Plot Options window.\n You must recalculate  the maps after changing this though." % (self.ddnlimit, count, diffmatrixflatten.size, percent, matrixmean, matrixstd))
 			self.builder.get_object("warnpixlabel").set_label("%i/%i (%.4g%%)" % (count, diffmatrixflatten.size, percent))
 			self.builder.get_object("meanarraydifflabel").set_label("%.4g" % matrixmean)
 			self.builder.get_object("stdarraydifflabel").set_label("%.4g" % matrixstd)			
@@ -1126,9 +1175,6 @@ class MyApp(object):
 			self.builder.get_object("qsspcmeanwarning").show()
 
 
-			nmean=(nafter+nbefore)/2.0
-			C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)
-			self.ironconcmatrixindividual=np.abs(C*(1/self.taubefore - 1/self.tauafter))
 		
 
 		a1 = a[500]
@@ -1138,27 +1184,14 @@ class MyApp(object):
 		b1.sort()
 		e1.sort()
 		#Must make 0 tau values red
-		self.taubmin=0.1
-		self.tauamin=0.1
+		self.taubmin=0
+		self.tauamin=0
 		self.taubmax = b1[int(0.99*len(b))]
 		self.tauamax = a1[int(0.99*len(a))]
 		self.ironmin=1E10
 		self.ironmax = e1[int(0.97*len(e))]
 		
-		if self.canfit==1:
-			indices=[]
-			zeroarray=[]
-			oldshape=self.ironconcmatrixindividual.shape
-			ironflat=self.ironconcmatrixindividual.flatten()
-			i=0
-			while i<ironflat.size:
-				if ironflat[i]==np.Inf or ironflat[i]==-np.Inf or np.isnan(ironflat[i]):
-					indices.append(i)
-					zeroarray.append(-6e30)
-				i+=1
 
-			ironflat.put(indices, zeroarray)
-			self.ironconcmatrixindividual=ironflat.reshape(oldshape)
 
 		indices=[]
 		zeroarray=[]
@@ -1193,11 +1226,15 @@ class MyApp(object):
 		self.builder.get_object("femintxt").set_text("%.4g" %self.ironmin)
 		self.builder.get_object("femaxtxt").set_text("%.4g" %self.ironmax)
 
-		oldshape=self.ironconcmatrixindividual.shape
-		flatbefore=self.ironconcmatrixindividual.flatten()
-		#print flatbefore.size
-		flatbefore.put(indicesb, zeroarray2)
-		self.ironconcmatrixindividual=flatbefore.reshape(oldshape)
+		oldshape=self.taubefore.shape
+		flatbefore=self.taubefore.flatten()
+		flatbefore.put(self.indicesb, self.negarrayb)
+		self.taubefore=flatbefore.reshape(oldshape)
+		oldshape=self.tauafter.shape
+		flatafter=self.tauafter.flatten()		
+		flatafter.put(self.indicesa, zeroarray)
+		self.tauafter=flatafter.reshape(oldshape)
+
 		self.plplotallbtnclicked(widget)
 
 		#print 	 np.min(self.ironconcmatrixindividual[100:-100,100:-100])
@@ -1248,8 +1285,8 @@ class MyApp(object):
 						j+=1
 					j=0
 					i+=1
-				print total
-				print n
+				#print total
+				#print n
 				stddev=np.sqrt((1.0/(n-1))*total)
 				self.builder.get_object("stdironplindividual").set_text("%.4g" % stddev)
 				
@@ -1432,8 +1469,14 @@ class MyApp(object):
 				#Use mean of last C values
 			cbar3=self.figure4.colorbar(imageiron, format=l_f, fraction=0.045, extend='both')
 
-		cbar3.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
-		self.axis5.set_title("Interstitial Iron concentration")
+		cbar3.set_label(r'[Fe$_{i}$]  (cm$^{-3})$',fontsize=16)
+		self.axis5.set_title("Interstitial Iron concentration", fontsize=14)
+		self.axis5.set_xlabel("Pixels", fontsize=14)
+		self.axis5.set_ylabel("Pixels", fontsize=14)
+		self.axis4.set_xlabel("Pixels", fontsize=14)
+		self.axis4.set_ylabel("Pixels", fontsize=14)
+		self.axis3.set_xlabel("Pixels", fontsize=14)
+		self.axis3.set_ylabel("Pixels", fontsize=14)			
 		self.canvas4=FigureCanvasGTKAgg(self.figure4)
 		self.canvas4.show()
 		
@@ -1630,8 +1673,10 @@ class MyApp(object):
 					imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
 				cbar3=self.figure4.colorbar(imageiron, fraction=0.045, format=l_f, extend='both')
 
-			cbar3.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
-			self.axis5.set_title("Interstitial Iron concentration")
+			cbar3.set_label(r'[Fe$_{i}$]  (cm$^{-3})$', fontsize=16)
+			self.axis5.set_title("Interstitial Iron concentration", fontsize=14)
+			self.axis5.set_xlabel("Pixels", fontsize=14)
+			self.axis5.set_ylabel("Pixels", fontsize=14)			
 			self.canvas4=FigureCanvasGTKAgg(self.figure4)
 			self.canvas4.show()
 
@@ -1681,6 +1726,10 @@ class MyApp(object):
 			self.axis3.set_ylim(ylims)
 			self.axis4.set_xlim(xlims)
 			self.axis4.set_ylim(ylims)
+			self.axis4.set_xlabel("Pixels", fontsize=14)
+			self.axis4.set_ylabel("Pixels", fontsize=14)
+			self.axis3.set_xlabel("Pixels", fontsize=14)
+			self.axis3.set_ylabel("Pixels", fontsize=14)			
 			self.canvas3.mpl_connect('motion_notify_event', self.graphscroll)
 
 			self.builder.get_object("plgraphs1").pack_start(self.canvas3, True, True)

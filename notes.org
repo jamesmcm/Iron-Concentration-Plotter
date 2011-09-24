@@ -144,19 +144,18 @@
 ** DONE Add ability to plot two iron concentration graphs side by side for comparison
 ** DONE Do backward calculation from doping concentration to resistivity
 * Critical
-** TODO Move mean calculation to negative settting loop
-** TODO FIX FINAL DELTAN calculation for individual C factors. is mean best?
-** TODO Fix ValueError: Data has no positive values, and therefore can not be log-scaled. when mean wrong
-** TODO Iron map labels bigger with pixels label
-** TODO On QSSPC lifetime plots label the fits
+** DONE FIX FINAL DELTAN calculation for individual C factors. is mean best?
+** DONE Fix ValueError: Data has no positive values, and therefore can not be log-scaled. when mean wrong
+** DONE Iron map labels bigger with pixels label
+** DONE On QSSPC lifetime plots label the fits
 ** TODO Caclulate Et from fit data
-** TODO Fix zero lifetime values i.e. make negative again after use - since already have indices needed
-** TODO Print percentage of invalid data points, mean of differences, etc. in plot options as well
+** DONE Fix zero lifetime values i.e. make negative again after use - since already have indices needed
+** DONE Print percentage of invalid data points, mean of differences, etc. in plot options as well
 ----
-** TODO Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
+** DONE Fix fact that colorbra is approximate, so zero lifetime values aren't flagged
 ** TODO Plot fitted range values in different color
-** TODO Make iron map labels bigger and add "Pixels" labels
-** TODO Add lines on legend
+** DONE Make iron map labels bigger and add "Pixels" labels
+** DONE Add lines on legend
 ** TODO Add ability to get trap energy level from fits by calculating Nv/Nc theoretically
 ** TODO Fix boundary conditions onm getting injection level - need good test data
 ** TODO Add ability to set C value for normal iron plot
@@ -195,3 +194,8 @@
 
 97
 
+
+
+self.indicesb
+self.indicesa
+http://ecee.colorado.edu/~bart/book/ex019.htm
