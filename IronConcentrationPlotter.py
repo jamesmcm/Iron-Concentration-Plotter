@@ -35,7 +35,7 @@ class MyApp(object):
 	def __init__(self):
 	    self.builder = gtk.Builder()
 	    self.builder.add_from_file("myapp.xml")
-	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl1genlevelokbtnclicked":self.pl1genlevelokbtnclicked, "pl1genlevelcancelbtnclicked":self.pl1genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked, "editfitokbtnclicked":self.editfitokbtnclicked, "fitdefaultsbtnclicked":self.fitdefaultsbtnclicked, "editfitcancelbtnclicked":self.editfitcancelbtnclicked, "changefitparamsbtnclicked":self.changefitparamsbtnclicked, "calculatemeanrangeclicked":self.calculatemeanrangeclicked, "compareplmapsbtnclicked":self.compareplmapsbtnclicked, "closecomparebtnclicked":self.closecomparebtnclicked, "pandowncomparebtnclicked":self.pandowncomparebtnclicked, "panupcomparebtnclicked":self.panupcomparebtnclicked, "panleftcomparebtnclicked":self.panleftcomparebtnclicked, "panrightcomparebtnclicked":self.panrightcomparebtnclicked, "zoomincomparebtnclicked":self.zoomincomparebtnclicked, "zoomoutcomparebtnclicked":self.zoomoutcomparebtnclicked, "refreshcomparebtnclicked":self.refreshcomparebtnclicked})
+	    self.builder.connect_signals({ "on_MainWindow_destroy" : gtk.main_quit, "on_menuquit_activate" : gtk.main_quit, "on_filebeforebtn_file_set" : self.plotgraph1, "on_ErrorWindow_close" : self.errorclose, "scaletxtedit":self.scaletxtedit, "scalebtnclicked":self.scalebtnclicked, "resetbtnclicked":self.plotgraph1, "resistivityresponse" : self.errorclose, "ironcalcbtnclicked" : self.ironcalcbtnclicked, "scalebtn2clicked":self.scalebtn2clicked, "resetbtn2clicked":self.resetbtn2clicked, "plotdialogcancelbtnclicked":self.plotdialogcancelbtnclicked, "plotdialogsavebtnclicked":self.plotdialogsavebtnclicked, "savedatabtnclicked":self.savedatabtnclicked, "datadialogsavebtnclicked":self.datadialogsavebtnclicked, "datadialogcancelbtnclicked":self.datadialogcancelbtnclicked, "cfactorbtnclicked":self.cfactorbtnclicked, "plotflippeddialogclose":self.errorclose, "restoredefaultsbtnclicked":self.restoredefaultsbtnclicked, "plcalcbtnclicked":self.plcalcbtnclicked, "plfileset":self.plfileset, "plplotallbtnclicked":self.plplotallbtnclicked, "zoominbtnclicked":self.zoominbtnclicked, "zoomoutbtnclicked":self.zoomoutbtnclicked, "panleftbtnclicked":self.panleftbtnclicked, "panrightbtnclicked":self.panrightbtnclicked, "panupbtnclicked":self.panupbtnclicked, "pandownbtnclicked":self.pandownbtnclicked, "plplotdialogsavebtnclicked": self.plplotdialogsavebtnclicked, "plplotdialogcancelbtnclicked":self.plplotdialogcancelbtnclicked, "savefemapbtnclicked":self.savefemapbtnclicked, "overwriteresponseclicked":self.overwriteresponseclicked, "numbify":self.numbify, "pl2genlevelokbtnclicked":self.pl2genlevelokbtnclicked, "pl2genlevelcancelbtnclicked":self.pl2genlevelcancelbtnclicked, "getfebtnclicked":self.getfebtnclicked, "whichsavefebtnclicked":self.whichsavefebtnclicked, "whichsavelifebtnclicked":self.whichsavelifebtnclicked, "whichsavecancelbtnclicked":self.whichsavecancelbtnclicked, "editcolorbarbtnclicked":self.editcolorbarbtnclicked, "editcolorbarokbtnclicked":self.editcolorbarokbtnclicked, "editcolorbarcancelbtnclicked":self.editcolorbarcancelbtnclicked, "saveirondatabtnclicked":self.saveirondatabtnclicked, "recalccopbtnclicked":self.recalccopbtnclicked, "restoredopingbtnclicked":self.restoredopingbtnclicked, "attemptcorrectionbtnclicked":self.attemptcorrectionbtnclicked, "donothingbtnclicked":self.donothingbtnclicked, "saveadjusteddatabtnclicked":self.saveadjusteddatabtnclicked, "calcdopefromresbtnclicked":self.calcdopefromresistivity, "resbeforevalbtnclicked":self.resbeforevalbtnclicked, "resaftervalbtnclicked":self.resaftervalbtnclicked, "resmyvalbtnclicked":self.resmyvalbtnclicked,"showironvaluesbtnclicked":self.showironvaluesbtnclicked,"ironviewclosebtnclicked":self.ironviewclosebtnclicked, "editfitokbtnclicked":self.editfitokbtnclicked, "fitdefaultsbtnclicked":self.fitdefaultsbtnclicked, "editfitcancelbtnclicked":self.editfitcancelbtnclicked, "changefitparamsbtnclicked":self.changefitparamsbtnclicked, "calculatemeanrangeclicked":self.calculatemeanrangeclicked, "compareplmapsbtnclicked":self.compareplmapsbtnclicked, "closecomparebtnclicked":self.closecomparebtnclicked, "pandowncomparebtnclicked":self.pandowncomparebtnclicked, "panupcomparebtnclicked":self.panupcomparebtnclicked, "panleftcomparebtnclicked":self.panleftcomparebtnclicked, "panrightcomparebtnclicked":self.panrightcomparebtnclicked, "zoomincomparebtnclicked":self.zoomincomparebtnclicked, "zoomoutcomparebtnclicked":self.zoomoutcomparebtnclicked, "refreshcomparebtnclicked":self.refreshcomparebtnclicked})
 	    self.window = self.builder.get_object("MainWindow")
 	    #self.window.fullscreen()
 	    filter1 = gtk.FileFilter()
@@ -91,12 +91,13 @@ class MyApp(object):
 	    self.lifemaptype="linear"
 	    self.templifemaptype="linear"
 
-	    #iron plot type: individual - individual C factor values, genlevel - Cfactor based on gen level, mean - Use mean of last Cfactor values
-	    self.ironplottype="individual"
+	    #iron plot type: individual - individual C factor values, genlevel - Cfactor based on gen level, mean - Use mean of last Cfactor values, indgen - individual C values based on gen levels and tau values
+	    self.ironplottype="indgen"
 	    self.ironplottypebox = gtk.combo_box_new_text()
 	    self.builder.get_object("ironplottypespace").add(self.ironplottypebox)
 	    self.builder.get_object("ironplottypespace").show_all()
-	    self.ironplottypebox.append_text('Individual C values')
+	    self.ironplottypebox.append_text('Individual C values from Generation Levels and Tau values')	   
+	    self.ironplottypebox.append_text('Individual C values from QSSPC Fits')
 	    self.ironplottypebox.append_text('C value from Generation Level')
 	    self.ironplottypebox.append_text('Use mean C value in given range')
 	    self.ironplottypebox.set_active(0)
@@ -144,7 +145,8 @@ class MyApp(object):
 	    self.affile=0
 	    self.beforeplotcounter=0
 	    self.afterplotcounter=0
-	    self.ddnlimit=1e14
+#	    self.ddnlimit=1e14
+	    self.ddnlimit=1e14	    
 	    self.ironplmapcounter=0
 	    self.meanmode="Fe" #or C
 	    self.fitplotlimit=0
@@ -773,12 +775,15 @@ class MyApp(object):
 				self.datatxtsave()
 			elif self.datasave=="map":
 				if self.ironplottypebox.get_active()==0:
-				#Individual C values
-					savetxt(self.currentfilename, self.ironconcmatrixindividual, fmt="%12.6G")
+				#Individual C values from gen level, tau values
+					savetxt(self.currentfilename, self.ironconcmatrixindgen, fmt="%12.6G")				
 				elif self.ironplottypebox.get_active()==1:
+				#Individual C values from fits
+					savetxt(self.currentfilename, self.ironconcmatrixindividual, fmt="%12.6G")
+				elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 					savetxt(self.currentfilename, self.ironconcmatrixgenlevel, fmt="%12.6G")
-			elif self.ironplottypebox.get_active()==2:
+			elif self.ironplottypebox.get_active()==3:
 					savetxt(self.currentfilename, self.ironconcmatrixmeanC, fmt="%12.6G")
 				#Use mean of last C values
 
@@ -980,7 +985,7 @@ class MyApp(object):
 
 		if gtk.Buildable.get_name(widget)=="plbeforefile":
 			#display dialog asking for generation level
-			self.builder.get_object("pl1genleveldialog").show()
+			self.builder.get_object("pl2genleveldialog").show()
 		
 	def plcalcbtnclicked(self, widget):
 		#try:
@@ -1014,8 +1019,6 @@ class MyApp(object):
 			self.tauafter=self.tauafter/1E6
 			a=a/1E6
 		# 1E6 factor is necessary to put in microseconds
-
-		#doesn't work fix later - array immutable?
 		if np.min(self.taubefore)<0:
 			indicesb=[]
 			zeroarray=[]
@@ -1093,19 +1096,66 @@ class MyApp(object):
 		injectionlevel=float(self.builder.get_object("injectionleveltxt").get_text())
 		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), injectionlevel)
 		self.ironconcmatrixgenlevel = abs(C*(1/self.taubefore - 1/self.tauafter))
+
+		
 		#HACK TO MAKE NEGATIVE VALUES POSITIVE
 		e=abs(C*(1/self.taubefore - 1/self.tauafter))
 		#mean C value iron values:
 		self.cfactorbtnclicked(widget)
 		self.ironconcmatrixmeanC = abs(self.cmean*(1/self.taubefore - 1/self.tauafter))
+
+		
+		self.deltanbindgen=self.genlevelbefore*1E-6*self.taubefore
+		self.deltanaindgen=self.genlevelafter*1E-6*self.tauafter
+		#worry about warning level shit later
+		self.diffmatrixindgen=np.abs(self.deltanaindgen-self.deltanbindgen)
+		print np.mean(self.diffmatrixindgen[100:-100,100:-100])
+		nmean=(self.deltanaindgen+self.deltanbindgen)/2.0
+		
+		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)				
+		self.ironconcmatrixindgen=np.abs(C*(1/self.taubefore - 1/self.tauafter))
+		#do warn level shit
+		oldshape=self.ironconcmatrixindgen.shape
+		ironflat=self.ironconcmatrixindgen.flatten()
+		diffmatrixflatten=self.diffmatrixindgen.flatten()
+		indicesb=[]
+		indices=[]
+		zeroarray=[]
+		zeroarray2=[]
+		count=0
+		i=0
+		matrixmean= np.mean(self.diffmatrixindgen[100:-100,100:-100])
+		matrixstd= np.std(self.diffmatrixindgen[100:-100,100:-100])		
+		while i<diffmatrixflatten.size:
+			if diffmatrixflatten[i]>self.ddnlimit:
+				indicesb.append(i)
+				zeroarray2.append(-7E30)
+				count+=1				
+			elif ironflat[i]==np.Inf or ironflat[i]==-np.Inf or np.isnan(ironflat[i]):
+				indices.append(i)
+				zeroarray.append(-6E30)					
+			i+=1
+		#mean
+		ironflat.put(indices, zeroarray)
+		ironflat.put(indicesb, zeroarray2)
+		self.ironconcmatrixindgen=ironflat.reshape(oldshape)
+		if self.ironplottypebox.get_active()==0:
+			 percent=(float(count)/diffmatrixflatten.size)*100
+			 self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe number of values above this was %i out of %i pixels.\nThe percentage of values with differences above this was %.4g%%. \nThe mean of the array of differences of injection level values was %.4g.\nThe standard deviation of the array of differences of the injection level was %.4g\nThese values will be set to -7E30 on the PL map (and so coloured differently).\nThe warning level can be changed in the Edit Plot Options window.\nYou must recalculate the maps after changing this though." % (self.ddnlimit, count, diffmatrixflatten.size, percent, matrixmean, matrixstd))
+			 self.builder.get_object("warnpixlabel").set_label("%i/%i (%.4g%%)" % (count, diffmatrixflatten.size, percent))
+			 self.builder.get_object("validpointstxt").set_label("%i/%i (%.4g%%)" % (diffmatrixflatten.size-count, diffmatrixflatten.size, 100.0-percent))		
+			 self.builder.get_object("meanarraydifflabel").set_label("%.4g" % matrixmean)
+			 self.builder.get_object("stdarraydifflabel").set_label("%.4g" % matrixstd)
+			 self.builder.get_object("qsspcmeanwarning").show()
+			 
 		if self.canfit==1:
 			self.ironconcmatrixindividual = np.ndarray(self.tauafter.shape, dtype=np.float)
 			taupb, taunb, n1b, p1b, NAb=self.beforefitparams
 			taupa, tauna, n1a, p1a, NAa=self.afterfitparams		
 			nbefore=((n1b*taupb)+(taunb*(NAb+p1b))-((self.taubefore/1E6)*NAb))/((self.taubefore/1E6)-(taupb+taunb))
 			nafter=((n1a*taupa)+(tauna*(NAa+p1a))-((self.tauafter/1E6)*NAa))/((self.tauafter/1E6)-(taupa+tauna))
-			nbefore[nbefore<0]=0
-			nafter[nafter<0]=0
+			#nbefore[nbefore<0]=0
+			#nafter[nafter<0]=0
 			diffmatrix=np.abs(nafter-nbefore)
 			self.diffmatrix=diffmatrix
 			matrixmean= np.mean(diffmatrix[100:-100,100:-100])
@@ -1158,21 +1208,18 @@ class MyApp(object):
 			#mean
 			ironflat.put(indices, zeroarray)
 			ironflat.put(indicesb, zeroarray2)
-			self.ironconcmatrixindividual=ironflat.reshape(oldshape)			
-			percent=(float(count)/diffmatrixflatten.size)*100
-			self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe number of values above this was %i out of %i pixels.\nThe percentage of values with differences above this was %.4g%%. \nThe mean of the array of differences of injection level values was %.4g.\n The standard deviation of he array of differences of the injection level was %.4g\nThese values will be set to -7E30 on the PL map (and so coloured differently).\nThe warning level can be changed in the Edit Plot Options window.\n You must recalculate  the maps after changing this though." % (self.ddnlimit, count, diffmatrixflatten.size, percent, matrixmean, matrixstd))
-			self.builder.get_object("warnpixlabel").set_label("%i/%i (%.4g%%)" % (count, diffmatrixflatten.size, percent))
-			self.builder.get_object("meanarraydifflabel").set_label("%.4g" % matrixmean)
-			self.builder.get_object("stdarraydifflabel").set_label("%.4g" % matrixstd)			
+			self.ironconcmatrixindividual=ironflat.reshape(oldshape)
+			if self.ironplottypebox.get_active()==1:			
+				percent=(float(count)/diffmatrixflatten.size)*100
+				self.builder.get_object("warnmeanlabel").set_label("The warning level is %.4g.\nThe number of values above this was %i out of %i pixels.\nThe percentage of values with differences above this was %.4g%%. \nThe mean of the array of differences of injection level values was %.4g.\nThe standard deviation of the array of differences of the injection level was %.4g\nThese values will be set to -7E30 on the PL map (and so coloured differently).\nThe warning level can be changed in the Edit Plot Options window.\nYou must recalculate the maps after changing this though." % (self.ddnlimit, count, diffmatrixflatten.size, percent, matrixmean, matrixstd))
+				self.builder.get_object("warnpixlabel").set_label("%i/%i (%.4g%%)" % (count, diffmatrixflatten.size, percent))
+				self.builder.get_object("validpointstxt").set_label("%i/%i (%.4g%%)" % (diffmatrixflatten.size-count, diffmatrixflatten.size, 100.0-percent))			
+				self.builder.get_object("meanarraydifflabel").set_label("%.4g" % matrixmean)
+				self.builder.get_object("stdarraydifflabel").set_label("%.4g" % matrixstd)
+				self.builder.get_object("qsspcmeanwarning").show()
 								 
-#colour them differently
-			#if self.ironplmapcounter=0:
-			#	self.originalironconcmatrixindividual=np.copy(self.ironconcmatrixindividual)
 
 
-
-
-			self.builder.get_object("qsspcmeanwarning").show()
 
 
 		
@@ -1188,7 +1235,7 @@ class MyApp(object):
 		self.tauamin=0
 		self.taubmax = b1[int(0.99*len(b))]
 		self.tauamax = a1[int(0.99*len(a))]
-		self.ironmin=1E10
+		self.ironmin=1E8
 		self.ironmax = e1[int(0.97*len(e))]
 		
 
@@ -1253,6 +1300,39 @@ class MyApp(object):
 			self.builder.get_object("qsspcgenlevel").set_text("Given Injection level out of bounds for interpolation!")
 		self.builder.get_object("lastqsspciron").set_text("%.4g" % self.qsspcironmeanlast)
 		self.builder.get_object("stdlastqsspciron").set_text("%.4g" % self.qsspcstdev)
+		#mean gen and tau levels
+		cutborders=self.ironconcmatrixindgen[100:-100,100:-100]
+		i=0
+		j=0
+		n=0
+		total=0
+		while i<800:
+			while j<800:
+				if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
+					total+=cutborders[i][j]
+					n+=1
+				j+=1
+			j=0
+			i+=1
+		mean=total/float(n)
+		self.builder.get_object("meanironplindgen").set_text("%.4g" % mean)
+		i=0
+		j=0
+		n=0
+		total=0
+		while i<800:
+			while j<800:
+				if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
+					total+=pow((cutborders[i][j]-mean),2)
+					n+=1
+				j+=1
+			j=0
+			i+=1
+		#print total
+		#print n
+		stddev=np.sqrt((1.0/(n-1))*total)
+		self.builder.get_object("stdironplindgen").set_text("%.4g" % stddev)
+		
 		if self.canfit==1:
 			if np.max(self.ironconcmatrixindividual[100:-100,100:-100]) != np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100]) !=-np.Inf and np.min(self.ironconcmatrixindividual[100:-100,100:-100])>0:
 				self.builder.get_object("meanironplindividual").set_text("%.4g" % np.mean(self.ironconcmatrixindividual[100:-100,100:-100]))
@@ -1447,24 +1527,30 @@ class MyApp(object):
 		self.axis5=self.figure4.add_subplot(111, aspect='equal')
 		if self.ironmaptype=="linear":
 			if self.ironplottypebox.get_active()==0:
+				#Individual C values from Gen level, tau values
+				imageiron=self.axis5.imshow(self.ironconcmatrixindgen, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+			if self.ironplottypebox.get_active()==1:
 				#Individual C values
 				imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
-			elif self.ironplottypebox.get_active()==1:
+			elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 				imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
-			elif self.ironplottypebox.get_active()==2:
+			elif self.ironplottypebox.get_active()==3:
 				#Use mean of last C values
 				imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
 
 			cbar3=self.figure4.colorbar(imageiron, fraction=0.045, extend='both')
 		elif self.ironmaptype=="logarithmic":
 			if self.ironplottypebox.get_active()==0:
+				#Individual C values from Gen level, tau values				
+				imageiron=self.axis5.imshow(self.ironconcmatrixindgen, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))			
+			if self.ironplottypebox.get_active()==1:
 				#Individual C values
 				imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
-			elif self.ironplottypebox.get_active()==1:
+			elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 				imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
-			elif self.ironplottypebox.get_active()==2:
+			elif self.ironplottypebox.get_active()==3:
 				imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
 				#Use mean of last C values
 			cbar3=self.figure4.colorbar(imageiron, format=l_f, fraction=0.045, extend='both')
@@ -1625,12 +1711,15 @@ class MyApp(object):
 				self.datatxtsave()
 			elif self.cursave=="femapdata":
 				if self.ironplottypebox.get_active()==0:
-				#Individual C values
+				#Individual C values from gen level, tau values
+					savetxt(self.currentfilename, self.ironconcmatrixindgen, fmt="%12.6G")				
+				if self.ironplottypebox.get_active()==1:
+				#Individual C values from fits
 					savetxt(self.currentfilename, self.ironconcmatrixindividual, fmt="%12.6G")
-				elif self.ironplottypebox.get_active()==1:
+				elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 					savetxt(self.currentfilename, self.ironconcmatrixgenlevel, fmt="%12.6G")
-				elif self.ironplottypebox.get_active()==2:
+				elif self.ironplottypebox.get_active()==3:
 					savetxt(self.currentfilename, self.ironconcmatrixmeanC, fmt="%12.6G")
 				#Use mean of last C values
 			elif self.cursave=="adjusteddata":
@@ -1652,24 +1741,30 @@ class MyApp(object):
 
 			if self.ironmaptype=="linear":
 				if self.ironplottypebox.get_active()==0:
+				#Individual C values from gen level, tau values
+					imageiron=self.axis5.imshow(self.ironconcmatrixindgen, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)				
+				if self.ironplottypebox.get_active()==1:
 				#Individual C values
 					imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
-				elif self.ironplottypebox.get_active()==1:
+				elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 					imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
-				elif self.ironplottypebox.get_active()==2:
+				elif self.ironplottypebox.get_active()==3:
 				#Use mean of last C values
 					imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
 
 				cbar3=self.figure4.colorbar(imageiron, fraction=0.045, extend='both')
 			elif self.ironmaptype=="logarithmic":
 				if self.ironplottypebox.get_active()==0:
+				#Individual C values from tau values, gen level
+					imageiron=self.axis5.imshow(self.ironconcmatrixindgen, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))				
+				if self.ironplottypebox.get_active()==1:
 				#Individual C values
 					imageiron=self.axis5.imshow(self.ironconcmatrixindividual, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
-				elif self.ironplottypebox.get_active()==1:
+				elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 					imageiron=self.axis5.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
-				elif self.ironplottypebox.get_active()==2:
+				elif self.ironplottypebox.get_active()==3:
 					imageiron=self.axis5.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
 				cbar3=self.figure4.colorbar(imageiron, fraction=0.045, format=l_f, extend='both')
 
@@ -1734,10 +1829,12 @@ class MyApp(object):
 
 			self.builder.get_object("plgraphs1").pack_start(self.canvas3, True, True)
 
-	def pl1genlevelokbtnclicked(self, widget):
+	def pl2genlevelokbtnclicked(self, widget):
 		try:
-			self.builder.get_object("pl1genleveldialog").hide()
-			genlevelaim=float(self.builder.get_object("pl1genleveltxt").get_text())
+			self.builder.get_object("pl2genleveldialog").hide()
+			genlevelaim=float(self.builder.get_object("pl2pfluxb").get_text())*(1.0-float(self.builder.get_object("pl2reflectivity").get_text()))
+			self.genlevelbefore=float(self.builder.get_object("pl2pfluxb").get_text())*(1.0-float(self.builder.get_object("pl2reflectivity").get_text()))
+			self.genlevelafter=float(self.builder.get_object("pl2pfluxa").get_text())*(1.0-float(self.builder.get_object("pl2reflectivity").get_text()))
 			filename1=self.builder.get_object("filebeforebtn").get_filename()
 			closestlevel=0
 			closesti=0
@@ -1784,8 +1881,8 @@ class MyApp(object):
 			self.errorshow(self)
 			return 1
 
-	def pl1genlevelcancelbtnclicked(self,widget):
-		self.builder.get_object("pl1genleveldialog").hide()
+	def pl2genlevelcancelbtnclicked(self,widget):
+		self.builder.get_object("pl2genleveldialog").hide()
 
 	def getfebtnclicked(self, widget):
 		
@@ -1846,12 +1943,15 @@ class MyApp(object):
 		self.ddnlimit=float(self.builder.get_object("ddnwarnlevel").get_text())
 		if self.ironplottypebox.get_active()==0:
 				#Individual C values
-			self.builder.get_object("maptypelabel").set_label("<b>Individual C values</b>")
-		elif self.ironplottypebox.get_active()==1:
+			self.builder.get_object("maptypelabel").set_label("<b>Individual C values from generation levels and tau values</b>")		
+		if self.ironplottypebox.get_active()==1:
+				#Individual C values
+			self.builder.get_object("maptypelabel").set_label("<b>Individual C values from QSSPC fits</b>")
+		elif self.ironplottypebox.get_active()==2:
 				#C value from Generation Level
 			self.builder.get_object("maptypelabel").set_label("<b>C value from Generation Level</b>")
 
-		elif self.ironplottypebox.get_active()==2:
+		elif self.ironplottypebox.get_active()==3:
 			self.builder.get_object("maptypelabel").set_label("<b>Mean C value from given range</b>")
 
 		self.builder.get_object("editcolorbarwindow").hide()
@@ -1897,7 +1997,7 @@ class MyApp(object):
 			if self.curid!=None:
 				self.builder.get_object("statusbar").remove_message(self.plconid, self.curid)
 				
-			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, irongenlevelC=%.3g, ironindividualC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))
+			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, irongenlevelC=%.3g, ironindividualC=%.3g, ironlastmeanC=%.3g, ironindgen=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindgen[int(round(event.ydata))][int(round(event.xdata))]))
 
 	def showironvaluesbtnclicked(self, widget):
 		self.builder.get_object("ironviewwindow").show()
@@ -1975,29 +2075,45 @@ class MyApp(object):
 			self.compfigure1 = Figure(figsize=(6,4), dpi=72)  
 			self.compfigure2=Figure(figsize=(6,4), dpi=72)
 			self.compfigure3=Figure(figsize=(6,4), dpi=72)
-			self.compfigure4=Figure(figsize=(6,4), dpi=72)			
+			self.compfigure4=Figure(figsize=(6,4), dpi=72)
+			self.compfigure5=Figure(figsize=(6,4), dpi=72)			
+			self.compfigure6=Figure(figsize=(6,4), dpi=72)			
+			
 		if self.compcounter>0:
 			self.compaxis1.clear()
 			self.compaxis2.clear()
 			self.compaxis3.clear()
 			self.compaxis4.clear()
+			self.compaxis5.clear()
+			self.compaxis6.clear()			
 			self.compfigure1.clear()
 			self.compfigure2.clear()
 			self.compfigure3.clear()
 			self.compfigure4.clear()
+			self.compfigure5.clear()
+			self.compfigure6.clear()			
 			self.builder.get_object("individualcompare").remove(self.compcanvas1)
 			self.builder.get_object("differencescompare").remove(self.compcanvas2)
 			self.builder.get_object("genlevelcompare").remove(self.compcanvas3)
-			self.builder.get_object("meanrangecompare").remove(self.compcanvas4)			
+			self.builder.get_object("meanrangecompare").remove(self.compcanvas4)
+			self.builder.get_object("indgencompare").remove(self.compcanvas5)
+			self.builder.get_object("differencescompareindgen").remove(self.compcanvas6)
+			
+			
 
 		self.compaxis1=self.compfigure1.add_subplot(111, aspect='equal')
 		self.compaxis2=self.compfigure2.add_subplot(111, aspect='equal')
 		self.compaxis3=self.compfigure3.add_subplot(111, aspect='equal')
-		self.compaxis4=self.compfigure4.add_subplot(111, aspect='equal')		
+		self.compaxis4=self.compfigure4.add_subplot(111, aspect='equal')
+		self.compaxis5=self.compfigure5.add_subplot(111, aspect='equal')
+		self.compaxis6=self.compfigure6.add_subplot(111, aspect='equal')
+		
 				
 		if self.ironmaptype=="linear":
 			imageironindividual=self.compaxis1.imshow(self.ironconcmatrixindividual, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
 			cbarindividual=self.compfigure1.colorbar(imageironindividual, fraction=0.045, extend='both')
+			imageironindgen=self.compaxis5.imshow(self.ironconcmatrixindgen, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
+			cbarindgen=self.compfigure5.colorbar(imageironindgen, fraction=0.045, extend='both')			
 			imageirongenlevel=self.compaxis3.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
 			cbargenlevel=self.compfigure3.colorbar(imageirongenlevel, fraction=0.045, extend='both')
 			imageironmeanC=self.compaxis4.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, vmin=self.ironmin, vmax=self.ironmax)
@@ -2006,6 +2122,8 @@ class MyApp(object):
 		elif self.ironmaptype=="logarithmic":
 			imageironindividual=self.compaxis1.imshow(self.ironconcmatrixindividual, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
 			cbarindividual=self.compfigure1.colorbar(imageironindividual, format=l_f,fraction=0.045, extend='both')
+			imageironindgen=self.compaxis5.imshow(self.ironconcmatrixindgen, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
+			cbarindgen=self.compfigure5.colorbar(imageironindgen, format=l_f,fraction=0.045, extend='both')			
 			imageirongenlevel=self.compaxis3.imshow(self.ironconcmatrixgenlevel, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
 			cbargenlevel=self.compfigure3.colorbar(imageirongenlevel, format=l_f,fraction=0.045, extend='both')
 			imageironmeanC=self.compaxis4.imshow(self.ironconcmatrixmeanC, cmap=self.cmap, norm=LogNorm(vmin=self.ironmin, vmax=self.ironmax))
@@ -2013,12 +2131,16 @@ class MyApp(object):
 
 
 		cbarindividual.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
+		cbarindgen.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')		
 		cbargenlevel.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
 		cbarmeanC.set_label(r'[Fe$_{i}$]  (cm$^{-3})$')
 
 		imagedifferences=self.compaxis2.imshow(self.diffmatrix, cmap=self.cmap, vmin=0, vmax=self.ddnlimit)
 		cbardifferences=self.compfigure2.colorbar(imagedifferences, fraction=0.045, extend='both')
 		cbardifferences.set_label(r'Difference in injection levels')
+		imagedifferencesindgen=self.compaxis6.imshow(self.diffmatrixindgen, cmap=self.cmap, vmin=0, vmax=self.ddnlimit)
+		cbardifferencesindgen=self.compfigure6.colorbar(imagedifferencesindgen, fraction=0.045, extend='both')
+		cbardifferencesindgen.set_label(r'Difference in injection levels')		
 		self.compcanvas1=FigureCanvasGTKAgg(self.compfigure1)
 		self.compcanvas1.show()
 		self.compcanvas2=FigureCanvasGTKAgg(self.compfigure2)
@@ -2026,7 +2148,11 @@ class MyApp(object):
 		self.compcanvas3=FigureCanvasGTKAgg(self.compfigure3)
 		self.compcanvas3.show()
 		self.compcanvas4=FigureCanvasGTKAgg(self.compfigure4)
-		self.compcanvas4.show()		
+		self.compcanvas4.show()
+		self.compcanvas5=FigureCanvasGTKAgg(self.compfigure5)
+		self.compcanvas5.show()
+		self.compcanvas6=FigureCanvasGTKAgg(self.compfigure6)
+		self.compcanvas6.show()			
 		
 		self.compaxis1.set_xlim(left=0, right=1000)
 		self.compaxis1.set_ylim(top=0, bottom=1000)
@@ -2036,18 +2162,23 @@ class MyApp(object):
 		self.compaxis3.set_ylim(top=0, bottom=1000)
 		self.compaxis4.set_xlim(left=0, right=1000)
 		self.compaxis4.set_ylim(top=0, bottom=1000)
+		self.compaxis5.set_xlim(left=0, right=1000)
+		self.compaxis5.set_ylim(top=0, bottom=1000)
+		self.compaxis6.set_xlim(left=0, right=1000)
+		self.compaxis6.set_ylim(top=0, bottom=1000)		
 		
 		self.builder.get_object("individualcompare").pack_start(self.compcanvas1, True, True)
 		self.builder.get_object("differencescompare").pack_start(self.compcanvas2, True, True)
 		self.builder.get_object("genlevelcompare").pack_start(self.compcanvas3, True, True)
 		self.builder.get_object("meanrangecompare").pack_start(self.compcanvas4, True, True)
-
+		self.builder.get_object("indgencompare").pack_start(self.compcanvas5, True, True)
+		self.builder.get_object("differencescompareindgen").pack_start(self.compcanvas6, True, True)
 		self.compcanvas1.mpl_connect('motion_notify_event', self.graphscrollcomp)
 		self.compcanvas2.mpl_connect('motion_notify_event', self.graphscrollcomp)
 		self.compcanvas3.mpl_connect('motion_notify_event', self.graphscrollcomp)
 		self.compcanvas4.mpl_connect('motion_notify_event', self.graphscrollcomp)		
-
-		
+		self.compcanvas5.mpl_connect('motion_notify_event', self.graphscrollcomp)
+		self.compcanvas6.mpl_connect('motion_notify_event', self.graphscrollcomp)		
 		#self.builder.get_object("pltoolbar").set_sensitive(True)
 		#self.builder.get_object("editcolorbarbtn").set_sensitive(True)
 		self.compcounter+=1
@@ -2174,7 +2305,7 @@ class MyApp(object):
 			if self.curid2!=None:
 				self.builder.get_object("comparestatusbar").remove_message(self.plconid2, self.curid2)
 				
-			self.curid2=self.builder.get_object("comparestatusbar").push(self.plconid2, 'x=%d, y=%d, taub=%.3g, taua=%.3g, ironindividualC=%.3g, deltandifference=%.3g, irongenlevelC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrix[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))		
+			self.curid2=self.builder.get_object("comparestatusbar").push(self.plconid2, 'x=%d, y=%d, taub=%.3g, taua=%.3g, ironindividualCfits=%.3g, deltandifferencefits=%.3g, ironindividualCtaugen=%.3g, deltandifferencetaugen=%.3g, irongenlevelC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrix[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindgen[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrixindgen[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))		
 
 if __name__ == "__main__":
 	app = MyApp()

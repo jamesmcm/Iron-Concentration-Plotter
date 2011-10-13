@@ -2378,26 +2378,14 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="n_rows">4</property>
-            <property name="n_columns">2</property>
+            <property name="n_columns">3</property>
             <child>
               <object class="GtkLabel" id="label113">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Individual Prefactor map                                 </property>
+                <property name="label" translatable="yes">Individual Prefactor map from QSSPC fits           </property>
               </object>
               <packing>
-                <property name="y_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label114">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Differences in Delta N levels map</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
                 <property name="y_options">GTK_FILL</property>
               </packing>
             </child>
@@ -2415,7 +2403,114 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               </packing>
             </child>
             <child>
+              <object class="GtkLabel" id="label115">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Prefactor from Generation Level map                     </property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="y_options">GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="genlevelcompare">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label114">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Differences in Delta N levels map (QSSPC fits)</property>
+              </object>
+              <packing>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="y_options">GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkVBox" id="differencescompare">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label116">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Prefactor from mean range map</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="y_options">GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="meanrangecompare">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label127">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Individual Prefactor map from tau values and generation levels  </property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="y_options">GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label128">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Differences in Delta N levels (tau values and generation levels)</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+                <property name="y_options">GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="indgencompare">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
@@ -2430,46 +2525,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label115">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Prefactor from Generation Level map</property>
-              </object>
-              <packing>
-                <property name="top_attach">2</property>
-                <property name="bottom_attach">3</property>
-                <property name="y_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label116">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Prefactor from mean range map</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">2</property>
-                <property name="bottom_attach">3</property>
-                <property name="y_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="genlevelcompare">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <child>
-                  <placeholder/>
-                </child>
-              </object>
-              <packing>
-                <property name="top_attach">3</property>
-                <property name="bottom_attach">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="meanrangecompare">
+              <object class="GtkVBox" id="differencescompareindgen">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
@@ -3145,6 +3201,32 @@ differences in &#x394;n levels:</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
+              <object class="GtkLabel" id="label123">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Number of valid points:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">5</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="validpointstxt">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="padding">5</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkLabel" id="label117">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -3154,7 +3236,7 @@ differences in &#x394;n levels:</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">4</property>
-                <property name="position">0</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -3167,7 +3249,7 @@ differences in &#x394;n levels:</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">4</property>
-                <property name="position">1</property>
+                <property name="position">3</property>
               </packing>
             </child>
             <child>
@@ -3180,7 +3262,7 @@ differences in &#x394;n levels:</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">5</property>
-                <property name="position">2</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
@@ -3193,7 +3275,7 @@ differences in &#x394;n levels:</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">4</property>
-                <property name="position">3</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -3206,7 +3288,7 @@ differences in &#x394;n levels:</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">4</property>
-                <property name="position">4</property>
+                <property name="position">6</property>
               </packing>
             </child>
             <child>
@@ -3219,7 +3301,7 @@ differences in &#x394;n levels:</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="padding">4</property>
-                <property name="position">5</property>
+                <property name="position">7</property>
               </packing>
             </child>
           </object>
@@ -3994,8 +4076,8 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label88">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Fitting range 
-for before fit:</property>
+                <property name="label" translatable="yes">Fitting range for before
+illumination fit:</property>
               </object>
             </child>
             <child>
@@ -4069,8 +4151,8 @@ for before fit:</property>
               <object class="GtkLabel" id="label91">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Fitting range 
-for after fit:</property>
+                <property name="label" translatable="yes">Fitting range for after
+illumination fit:</property>
               </object>
             </child>
             <child>
@@ -4167,7 +4249,7 @@ the fitting range&lt;/b&gt;: </property>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="padding">4</property>
+                <property name="padding">10</property>
                 <property name="position">0</property>
               </packing>
             </child>
@@ -4679,10 +4761,10 @@ the fitting range&lt;/b&gt;: </property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label57">
+          <object class="GtkLabel" id="label124">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">&lt;b&gt;Mean of spatially resolved Interstitial Iron Concentration map using individual C values:&lt;/b&gt;</property>
+            <property name="label" translatable="yes">&lt;b&gt;Spatially resolved Iron Concentration map using individual C values from tau values and generation levels:&lt;/b&gt;</property>
             <property name="use_markup">True</property>
           </object>
           <packing>
@@ -4690,6 +4772,105 @@ the fitting range&lt;/b&gt;: </property>
             <property name="fill">True</property>
             <property name="padding">8</property>
             <property name="position">7</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox24">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label125">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Mean</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label126">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Standard Deviation</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">8</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox25">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkEntry" id="meanironplindgen">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x25CF;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="padding">8</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="stdironplindgen">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="invisible_char">&#x2022;</property>
+                <property name="xalign">0.5</property>
+                <property name="invisible_char_set">True</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">True</property>
+                <property name="secondary_icon_sensitive">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">9</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label57">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Mean of spatially resolved Interstitial Iron Concentration map using individual C values from QSSPC fits:</property>
+            <property name="use_markup">True</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="padding">8</property>
+            <property name="position">10</property>
           </packing>
         </child>
         <child>
@@ -4724,7 +4905,7 @@ the fitting range&lt;/b&gt;: </property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">8</property>
+            <property name="position">11</property>
           </packing>
         </child>
         <child>
@@ -4773,7 +4954,7 @@ the fitting range&lt;/b&gt;: </property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">9</property>
+            <property name="position">12</property>
           </packing>
         </child>
         <child>
@@ -4786,7 +4967,7 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">10</property>
+            <property name="position">13</property>
           </packing>
         </child>
         <child>
@@ -4821,7 +5002,7 @@ the fitting range&lt;/b&gt;: </property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">11</property>
+            <property name="position">14</property>
           </packing>
         </child>
         <child>
@@ -4870,7 +5051,7 @@ the fitting range&lt;/b&gt;: </property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">12</property>
+            <property name="position">15</property>
           </packing>
         </child>
         <child>
@@ -4883,7 +5064,7 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">13</property>
+            <property name="position">16</property>
           </packing>
         </child>
         <child>
@@ -4918,7 +5099,7 @@ the fitting range&lt;/b&gt;: </property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">14</property>
+            <property name="position">17</property>
           </packing>
         </child>
         <child>
@@ -4967,7 +5148,7 @@ the fitting range&lt;/b&gt;: </property>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">15</property>
+            <property name="position">18</property>
           </packing>
         </child>
         <child>
@@ -4994,7 +5175,7 @@ the fitting range&lt;/b&gt;: </property>
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="padding">8</property>
-            <property name="position">16</property>
+            <property name="position">19</property>
           </packing>
         </child>
       </object>
@@ -5275,6 +5456,161 @@ the fitting range&lt;/b&gt;: </property>
       <action-widget response="0">pl1genlevelcancelbtn</action-widget>
     </action-widgets>
   </object>
+  <object class="GtkDialog" id="pl2genleveldialog">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Please enter the Generation Level</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-always</property>
+    <property name="type_hint">dialog</property>
+    <property name="urgency_hint">True</property>
+    <property name="deletable">False</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox31">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area31">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="pl2genlevelokbtn">
+                <property name="label" translatable="yes">Ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <signal handler="pl2genlevelokbtnclicked" name="clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="pl2genlevelcancelbtn">
+                <property name="label" translatable="yes">Cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <signal handler="pl2genlevelcancelbtnclicked" name="clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label118">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Please enter the LED Photon Flux for the PL image before illumination:</property>
+            <property name="use_markup">True</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="pl2pfluxb">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+            <signal handler="numbify" name="changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label120">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Please enter the LED Photon Flux for the PL image after illumination:</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="pl2pfluxa">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+            <signal handler="numbify" name="changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label122">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Please enter the Reflectivity of the sample:</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="pl2reflectivity">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+            <signal handler="numbify" name="changed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">6</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">pl2genlevelokbtn</action-widget>
+      <action-widget response="0">pl2genlevelcancelbtn</action-widget>
+    </action-widgets>
+  </object>
   <object class="GtkFileChooserDialog" id="plotfilesavedialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -5471,8 +5807,8 @@ the fitting range&lt;/b&gt;: </property>
     <property name="deletable">False</property>
     <property name="message_type">warning</property>
     <property name="buttons">close</property>
-    <property name="text" translatable="yes">Warning: Individual C Factor calculation may be incorrect! </property>
-    <property name="secondary_text" translatable="yes">There were significant differences between the injection levels obtained for the same positions on the before illumination and after illumination PL map. This means the calculation of the individual prefactors may be incorrect.</property>
+    <property name="text" translatable="yes">Possible differences in injection values</property>
+    <property name="secondary_text" translatable="yes">There may be significant differences between the injection levels obtained for the same positions on the before illumination and after illumination PL map. This could mean the calculation of the individual prefactors may be incorrect. Please review the information below:</property>
     <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox11">
