@@ -107,7 +107,15 @@ class MyApp(object):
 	    self.builder.get_object("usefitcombospace").show_all()
 	    self.fitusebox.append_text('Use fits')
 	    self.fitusebox.append_text('Use interpolation')
+	    self.fitusebox.connect("changed", self.fituseboxchanged)
 	    self.fitusebox.set_active(0)
+
+	    self.delimbox = gtk.combo_box_new_text()
+	    self.builder.get_object("delimvbox").add(self.delimbox)
+	    self.builder.get_object("delimvbox").show_all()
+	    self.delimbox.append_text('Periods .')
+	    self.delimbox.append_text('Commas ,')
+	    self.delimbox.set_active(0)
 
 
 	    #iron radio buttons
@@ -152,7 +160,9 @@ class MyApp(object):
 	    self.fitplotlimit=0
 	    self.compcounter=0
 
-	    
+	def fituseboxchanged(self, widget):
+		self.plotgraph1(widget)
+	
 	def plotgraph1(self, widget):
 		befile=self.builder.get_object("filebeforebtn")
 		affile=self.builder.get_object("fileafterbtn")
@@ -802,15 +812,15 @@ class MyApp(object):
 		#Iron concentration data
 		self.builder.get_object("datafilesavedialog").hide()
 		textfile=open(self.currentfilename, "w")
-		textfile.write("Constants: vthermal: %.4g, sigmani: %.4g, p1i: %.4g, sigmapi: %.4g, sigmanb: %.4g, n1b: %.4g, sigmapb: %.4g\n" % (self.constants[0],self.constants[1],self.constants[2],self.constants[3],self.constants[4],self.constants[5],self.constants[6]))
+		textfile.write("Constants: vthermal: %.4g\tsigmani: %.4g\tp1i: %.4g\tsigmapi: %.4g\tsigmanb: %.4g\tn1b: %.4g\tsigmapb: %.4g\n" % (self.constants[0],self.constants[1],self.constants[2],self.constants[3],self.constants[4],self.constants[5],self.constants[6]))
 		textfile.write("QSSPC Data:\n")
-		textfile.write("Before Illumination, Resistivity=%.4g:\n" % self.bqsspclife[0])
+		textfile.write("Before Illumination: Resistivity=%.4g:\n" % self.bqsspclife[0])
 		textfile.write("deltaN(cm^-3)\tTau before(s)\n")
 		i=0
 		while i<len(self.bqsspclife[2]):
 			textfile.write("%.4g\t%.4g\n" % (self.bqsspclife[2][i], self.bqsspclife[1][i]))
 			i+=1
-		textfile.write("\nAfter Illumination, Resistivity=%.4g:\n" % self.aqsspclife[0])
+		textfile.write("\nAfter Illumination: Resistivity=%.4g:\n" % self.aqsspclife[0])
 		i=0
 		while i<len(self.aqsspclife[2]):
 			textfile.write("%.4g\t%.4g\n" % (self.aqsspclife[2][i], self.aqsspclife[1][i]))
@@ -820,13 +830,13 @@ class MyApp(object):
 		textfile.write("Fitting equation: (((taup*n1)+(taup*deltaN)+(taun*p1)+(taun*NA)+(taun*deltaN))/(NA+deltaN))\n")
 		taup, taun, n1, p1, NA=self.beforefitparams
 		textfile.write("Before Illumination Fit data:\n")
-		textfile.write("Before Illumination Fitting range (in deltaN): Minimum: %.4g, Maximum %.4g\n" % (self.bfitrmin, self.bfitrmax) )
-		textfile.write("Before Illumination Fit parameters: taup: %.4g, taun: %.4g, n1: %.4g, p1: %.4g, NA: %.4g\n" % (taup, taun, n1, p1, NA))
+		textfile.write("Before Illumination Fitting range (in deltaN): Minimum: %.4g\tMaximum: %.4g\n" % (self.bfitrmin, self.bfitrmax) )
+		textfile.write("Before Illumination Fit parameters: taup: %.4g\ttaun: %.4g\tn1: %.4g\tp1: %.4g\tNA: %.4g\n" % (taup, taun, n1, p1, NA))
 		textfile.write("Square root of the sum of the squared differences within the fitting range for the Before Illumination fit: %.4g\n" % self.bsquarediff)
 		textfile.write("After Illumination Fit data:\n")
-		textfile.write("After Illumination Fitting range (in deltaN): Minimum: %.4g, Maximum %.4g\n" % (self.afitrmin, self.afitrmax) )
+		textfile.write("After Illumination Fitting range (in deltaN): Minimum: %.4g\tMaximum: %.4g\n" % (self.afitrmin, self.afitrmax) )
 		taup, taun, n1, p1, NA=self.afterfitparams
-		textfile.write("After Illumination Fit parameters: taup: %.4g, taun: %.4g, n1: %.4g, p1: %.4g, NA: %.4g\n" % (taup, taun, n1, p1, NA))
+		textfile.write("After Illumination Fit parameters: taup: %.4g\ttaun: %.4g\tn1: %.4g\tp1: %.4g\tNA: %.4g\n" % (taup, taun, n1, p1, NA))
 		textfile.write("Square root of the sum of the squared differences within the fitting range for the Before Illumination fit: %.4g\n" % self.asquarediff)
 		textfile.write("Plotted fit values for Before and After Illumination:\n")
 		textfile.write("deltaN(cm^-3)\tTau before (s)\tTau after(s)\tPrefactor value\tInterstitial Iron Concentration (cm^-3)\n")
@@ -843,6 +853,16 @@ class MyApp(object):
 			textfile.write("%.4g\t%.4g\t%.4g\n" % (self.irondata[0][i], self.irondata[2][i], self.irondata[1][i]))
 			i+=1
 		textfile.close()
+
+		if self.delimbox.get_active()==1:
+			textfile=open(self.currentfilename, "r")
+			buffer=textfile.read()
+			textfile.close()
+			buffer=buffer.replace(".",",")
+			textfile=open(self.currentfilename, "w")
+			textfile.write(buffer)
+			textfile.close()
+
 
 		
 	def cfactorbtnclicked(self, widget):
@@ -1878,7 +1898,7 @@ class MyApp(object):
 			
 		except:
 			#change this to a proper error message later
-			self.errorshow(self)
+			self.builder.get_object("ErrorWindow2").show()
 			return 1
 
 	def pl2genlevelcancelbtnclicked(self,widget):

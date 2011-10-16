@@ -37,6 +37,50 @@
       </object>
     </child>
   </object>
+  <object class="GtkMessageDialog" id="ErrorWindow2">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Error</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-always</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="urgency_hint">True</property>
+    <property name="deletable">False</property>
+    <property name="message_type">error</property>
+    <property name="buttons">close</property>
+    <property name="text">Error: Could not operate with given Generation Levels</property>
+    <property name="secondary_text">The operations could not be completed with the given Generation Levels, this might be because they are out of range of the QSSPC data.</property>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox33">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area33">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="MainWindow">
     <property name="width_request">1200</property>
     <property name="height_request">900</property>
@@ -1637,7 +1681,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <signal name="clicked" handler="compareplmapsbtnclicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">3</property>
                   </packing>
@@ -2809,7 +2853,42 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkHBox" id="hbox26">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="label129">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Delimiter:</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="delimvbox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
         </child>
       </object>
     </child>
