@@ -15,13 +15,13 @@ def getValues(filename):
         #Want to cut off effects from trapping, so cut off at minimum tau value
         for row in ws.range('L15:L131'):
             for cell in row:
-                tauvalues.append(cell.value)
+                tauvalues.append(float(cell.value))
         if printing == 1:
             print "-----"
         #delta n values
         for row in ws.range('S15:S131'):
             for cell in row:
-                deltanvalues.append(cell.value)
+                deltanvalues.append(float(cell.value))
         #cannot use global minimum as want to find first local minimum
         limit=getlocalmin(tauvalues)
 

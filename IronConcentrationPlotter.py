@@ -218,6 +218,8 @@ class MyApp(object):
 
 		if deltan[0]>self.fitplotlimit:
 			self.fitplotlimit=deltan[0]
+		#print self.fitplotlimit
+		#print isinstance( self.fitplotlimit, ( int, long, float ) )
 
 		#limit = excel.getlocalmin(datalist[1])
 		self.axis1.plot(deltan,tauvalues, pointcol, label=mylabel)
