@@ -636,7 +636,7 @@ class MyApp(object):
 			self.axis2.clear()
 			graphview.remove(self.canvas2)
 			self.builder.get_object("toolbar2").remove(self.toolbar2)
-		self.axis2.plot(sortedbkeylist,ironvalues, "ro")
+
 		#self.axis2.plot(sortedbkeylist, ironvalues, "b-") #maybe make this within limit later		
 		if self.fitusebox.get_active()==0:
 			i=0
@@ -650,6 +650,8 @@ class MyApp(object):
 				i+=1
 			self.axis2.plot(self.beforefitplot[0], ironvals, "b-")
 			self.associron=ironvals
+		else:
+			self.axis2.plot(sortedbkeylist,ironvalues, "ro")
 					   
 					   
 		self.irondata=[sortedbkeylist, ironvalues, qsspccvals]
