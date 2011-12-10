@@ -107,8 +107,19 @@ class MyApp(object):
 	    self.builder.get_object("usefitcombospace").show_all()
 	    self.fitusebox.append_text('Use fits')
 	    self.fitusebox.append_text('Use interpolation')
+    	    self.fitusebox.set_active(0)
 	    self.fitusebox.connect("changed", self.fituseboxchanged)
-	    self.fitusebox.set_active(0)
+
+
+	    self.pointusebox = gtk.combo_box_new_text()
+	    self.builder.get_object("pointusebox").add(self.pointusebox)
+	    self.builder.get_object("pointusebox").show_all()
+	    self.pointusebox.append_text('Use points from fits')
+	    self.pointusebox.append_text('Use points from data interpolation')
+	    self.pointusebox.set_active(0)	    
+	    self.pointusebox.connect("changed", self.pointuseboxchanged)
+	   
+	    
 
 	    self.delimbox = gtk.combo_box_new_text()
 	    self.builder.get_object("delimvbox").add(self.delimbox)
@@ -162,6 +173,12 @@ class MyApp(object):
 
 	def fituseboxchanged(self, widget):
 		self.plotgraph1(widget)
+		#self.ironcalcbtnclicked(widget)
+
+	def pointuseboxchanged(self, widget):
+		#self.plotgraph1(widget)
+		self.ironcalcbtnclicked(widget)	
+		
 	
 	def plotgraph1(self, widget):
 		befile=self.builder.get_object("filebeforebtn")
@@ -572,55 +589,32 @@ class MyApp(object):
 		
 		self.bqsspclife=beforelist
 		self.aqsspclife=afterlist
-		if self.fitusebox.get_active()==0:
-			bdict=dict(zip(beforelist[2], beforelist[1]))
-			adict=dict(zip(afterlist[2], afterlist[1]))
-			i=0
-			tafterfitdict={}
-			tbeforefitdict={}
-			while i<len(beforelist[2]):
-				taup, taun, n1, p1, NA=self.afterfitparams
-				tafterfitdict[beforelist[2][i]]=(((taup*n1)+(taup*beforelist[2][i])+(taun*p1)+(taun*NA)+(taun*beforelist[2][i]))/(NA+beforelist[2][i]))
-				taup, taun, n1, p1, NA=self.beforefitparams
-				tbeforefitdict[afterlist[2][i]]=(((taup*n1)+(taup*afterlist[2][i])+(taun*p1)+(taun*NA)+(taun*afterlist[2][i]))/(NA+afterlist[2][i]))
-				i+=1
-			totalbeforeplotdict=dict(tbeforefitdict.items()+bdict.items())
-			totalafterplotdict=dict(tafterfitdict.items()+adict.items())
-			dictlist=[totalbeforeplotdict, totalafterplotdict]
+		#if self.fitusebox.get_active()==0:
+		bdict=dict(zip(beforelist[2], beforelist[1]))
+		adict=dict(zip(afterlist[2], afterlist[1]))
+		i=0
+		tafterfitdict={}
+		tbeforefitdict={}
+		while i<len(beforelist[2]):
+			taup, taun, n1, p1, NA=self.afterfitparams
+			tafterfitdict[beforelist[2][i]]=(((taup*n1)+(taup*beforelist[2][i])+(taun*p1)+(taun*NA)+(taun*beforelist[2][i]))/(NA+beforelist[2][i]))
+			taup, taun, n1, p1, NA=self.beforefitparams
+			tbeforefitdict[afterlist[2][i]]=(((taup*n1)+(taup*afterlist[2][i])+(taun*p1)+(taun*NA)+(taun*afterlist[2][i]))/(NA+afterlist[2][i]))
+			i+=1
+		totalbeforeplotdict=dict(tbeforefitdict.items()+bdict.items())
+		totalafterplotdict=dict(tafterfitdict.items()+adict.items())
+		dictlist=[totalbeforeplotdict, totalafterplotdict]
 				
-		elif self.fitusebox.get_active()==1:
-			dictlist=concentration.interpolation(beforelist, afterlist)
+		#elif self.fitusebox.get_active()==1:
+		interpdictlist=concentration.interpolation(beforelist, afterlist)
 		#dictlist[0] is before, dictlist[1] is after values
 
-		for key in dictlist[0].keys():
-			if dictlist[1].has_key(key)!=True:
-				del dictlist[0][key]
-
-		for key in dictlist[1].keys():
-			if dictlist[0].has_key(key)!=True:
-				del dictlist[1][key]
-
-		if len(dictlist[0])!=len(dictlist[1]):
-			print "dict lengths not equal"
-			#add proper error handling later
-			#difference is expected but must be handled
-		
 		ironvalues=[]
 		qsspccvals=[]
-
-
-		sortedbkeylist=sorted(dictlist[0].iterkeys())
-		sortedakeylist=sorted(dictlist[1].iterkeys())
-		self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
-
-		for bkey in sortedbkeylist:
-			C=concentration.calcPrefactor(self.constants, self.dope, bkey)
-			iron=1E-6*(concentration.calcFeConc(C, dictlist[0][bkey], dictlist[1][bkey]))
-			ironvalues.append(iron)
-			qsspccvals.append(C)
-			#print "iron: %.4g, tn0: %.4g, tp0: %.4g, doping: %.4g, tbefore: %.4g, tafter: %.4g, deltan: %.4g \n" % (iron, tn0, tp0, self.dope, dictlist[0][bkey], dictlist[1][bkey], bkey)
-
-
+		sortedbkeylist=[]
+		[ironvalues, qsspccvals, sortedbkeylist]=self.dictlisthandle(dictlist)
+		[interpironvalues, interpqsspccvals, interpsortedbkeylist]=self.dictlisthandle(interpdictlist)
+		
 		xlim=self.axis1.get_xlim()
 		ylim=self.axis1.get_ylim()
 
@@ -637,7 +631,8 @@ class MyApp(object):
 			graphview.remove(self.canvas2)
 			self.builder.get_object("toolbar2").remove(self.toolbar2)
 
-		#self.axis2.plot(sortedbkeylist, ironvalues, "b-") #maybe make this within limit later		
+			#self.axis2.plot(sortedbkeylist, ironvalues, "b-") #maybe make this within limit later
+			#self.axis2.plot(sortedbkeylist,ironvalues, "ro")
 		if self.fitusebox.get_active()==0:
 			i=0
 			ironvals=[]
@@ -649,9 +644,14 @@ class MyApp(object):
 				ironvals.append(iron)
 				i+=1
 			self.axis2.plot(self.beforefitplot[0], ironvals, "b-")
+			#add conditions here
+			if self.pointusebox.get_active()==0:
+				self.axis2.plot(sortedbkeylist,ironvalues, "ro")
+			elif self.pointusebox.get_active()==1:
+				self.axis2.plot(interpsortedbkeylist,interpironvalues, "ro")				
 			self.associron=ironvals
 		else:
-			self.axis2.plot(sortedbkeylist,ironvalues, "ro")
+			self.axis2.plot(interpsortedbkeylist,interpironvalues, "ro")
 					   
 					   
 		self.irondata=[sortedbkeylist, ironvalues, qsspccvals]
@@ -672,8 +672,6 @@ class MyApp(object):
 		self.builder.get_object("savedatabtn").set_sensitive(True)
 		self.builder.get_object("getfebtn").set_sensitive(True)
 	
-
-
 		#don't delete just change default view
 		ironmean=np.mean(ironvalues[-10:-1])
 		ironmin=max(ironvalues)
@@ -709,6 +707,35 @@ class MyApp(object):
 		self.builder.get_object("meanlabel").set_label("Mean of the interstitial\nIron Concentration in\nthe range given (cm<sup>-3</sup>): ")
 		self.builder.get_object("meancalcbtn").set_label("Calculate mean Iron Concentration\n              in the range given")
 		self.calculatemeanrangeclicked(widget)
+
+	def dictlisthandle(self, dictlist):
+		#dictlist[0] is before, dictlist[1] is after values
+	    for key in dictlist[0].keys():
+		if dictlist[1].has_key(key)!=True:
+			del dictlist[0][key]
+	    for key in dictlist[1].keys():
+		if dictlist[0].has_key(key)!=True:
+			del dictlist[1][key]
+	    if len(dictlist[0])!=len(dictlist[1]):
+		    print "dict lengths not equal"
+		    #add proper error handling later
+		    #difference is expected but must be handled
+	    ironvalues=[]
+	    qsspccvals=[]
+	    sortedbkeylist=sorted(dictlist[0].iterkeys())
+	    sortedakeylist=sorted(dictlist[1].iterkeys())
+	    self.constants=[float(self.builder.get_object("vthermaltxt").get_text()), float(self.builder.get_object("sigmanitxt").get_text()), float(self.builder.get_object("p1itxt").get_text()), float(self.builder.get_object("sigmapitxt").get_text()), float(self.builder.get_object("sigmanbtxt").get_text()), float(self.builder.get_object("n1btxt").get_text()), float(self.builder.get_object("sigmapbtxt").get_text())]
+	    for bkey in sortedbkeylist:
+		    C=concentration.calcPrefactor(self.constants, self.dope, bkey)
+		    iron=1E-6*(concentration.calcFeConc(C, dictlist[0][bkey], dictlist[1][bkey]))
+		    ironvalues.append(iron)
+		    qsspccvals.append(C)
+		    #print "iron: %.4g, tn0: %.4g, tp0: %.4g, doping: %.4g, tbefore: %.4g, tafter: %.4g, deltan: %.4g \n" % (iron, tn0, tp0, self.dope, dictlist[0][bkey], dictlist[1][bkey], bkey)
+	    returnlist=[]
+	    returnlist.append(ironvalues)
+	    returnlist.append(C)
+    	    returnlist.append(sortedbkeylist)
+	    return returnlist
 
 	def calculatemeanrangeclicked(self, widget):
 		try:

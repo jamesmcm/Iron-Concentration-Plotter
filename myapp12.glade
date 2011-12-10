@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-naming-policy project-wide -->
+  <requires lib="gtk+" version="2.24"/>
   <object class="GtkMessageDialog" id="ErrorWindow">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -15,13 +15,13 @@
     <property name="buttons">close</property>
     <property name="text">Error: File could not be loaded</property>
     <property name="secondary_text">The file was formatted incorrectly and could not be loaded. Please  check the file type and formatting.</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox">
+      <object class="GtkBox" id="dialog-vbox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area">
+          <object class="GtkButtonBox" id="dialog-action_area">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -50,13 +50,13 @@
     <property name="buttons">close</property>
     <property name="text">Error: Could not operate with given Generation Levels</property>
     <property name="secondary_text">The operations could not be completed with the given Generation Levels, this might be because they are out of range of the QSSPC data.</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox33">
+      <object class="GtkBox" id="dialog-vbox33">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area33">
+          <object class="GtkButtonBox" id="dialog-action_area33">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -86,7 +86,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Iron Concentration Plotter</property>
-    <signal handler="on_MainWindow_destroy" name="destroy" swapped="no"/>
+    <signal name="destroy" handler="on_MainWindow_destroy" swapped="no"/>
     <child>
       <object class="GtkNotebook" id="notebook2">
         <property name="visible">True</property>
@@ -115,7 +115,7 @@
                   <object class="GtkFileChooserButton" id="filebeforebtn">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <signal handler="on_filebeforebtn_file_set" name="file-set" swapped="no"/>
+                    <signal name="file-set" handler="on_filebeforebtn_file_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="top_attach">1</property>
@@ -139,7 +139,7 @@
                   <object class="GtkFileChooserButton" id="fileafterbtn">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <signal handler="on_filebeforebtn_file_set" name="file-set" swapped="no"/>
+                    <signal name="file-set" handler="on_filebeforebtn_file_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -266,7 +266,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_action_appearance">False</property>
-                        <signal handler="changefitparamsbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="changefitparamsbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -298,14 +298,12 @@
                           <object class="GtkEntry" id="ymin1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="scaletxtedit" name="changed" swapped="no"/>
+                            <signal name="changed" handler="scaletxtedit" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -329,14 +327,12 @@
                           <object class="GtkEntry" id="ymax1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="scaletxtedit" name="changed" swapped="no"/>
+                            <signal name="changed" handler="scaletxtedit" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">3</property>
@@ -353,7 +349,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
-                            <signal handler="scalebtnclicked" name="clicked" swapped="no"/>
+                            <signal name="clicked" handler="scalebtnclicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">4</property>
@@ -370,7 +366,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
-                            <signal handler="resetbtnclicked" name="clicked" swapped="no"/>
+                            <signal name="clicked" handler="resetbtnclicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">4</property>
@@ -400,14 +396,12 @@
                           <object class="GtkEntry" id="xmax1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="scaletxtedit" name="changed" swapped="no"/>
+                            <signal name="changed" handler="scaletxtedit" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">3</property>
@@ -435,14 +429,12 @@
                           <object class="GtkEntry" id="xmin1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="scaletxtedit" name="changed" swapped="no"/>
+                            <signal name="changed" handler="scaletxtedit" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -476,7 +468,7 @@
                       <object class="GtkLabel" id="label7">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Resistivity (&#x3A9; cm):</property>
+                        <property name="label" translatable="yes">Resistivity (Ω cm):</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -488,14 +480,12 @@
                       <object class="GtkEntry" id="resistivity">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char">●</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
-                        <signal handler="numbify" name="changed" swapped="no"/>
+                        <signal name="changed" handler="numbify" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -511,7 +501,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_action_appearance">False</property>
-                        <signal handler="calcdopefromresbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="calcdopefromresbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -536,14 +526,12 @@
                       <object class="GtkEntry" id="doping">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char">●</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
-                        <signal handler="numbify" name="changed" swapped="no"/>
+                        <signal name="changed" handler="numbify" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -559,7 +547,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_action_appearance">False</property>
-                        <signal handler="recalccopbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="recalccopbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -576,7 +564,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_action_appearance">False</property>
-                        <signal handler="restoredopingbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="restoredopingbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -604,13 +592,11 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char">●</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -744,7 +730,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="ironcalcbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="ironcalcbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -760,7 +746,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="cfactorbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="cfactorbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -804,14 +790,12 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="ymin2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -837,14 +821,12 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="ymax2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">3</property>
@@ -861,7 +843,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
-                            <signal handler="scalebtn2clicked" name="clicked" swapped="no"/>
+                            <signal name="clicked" handler="scalebtn2clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">4</property>
@@ -886,14 +868,12 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="xmin2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -921,14 +901,12 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="xmax2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">3</property>
@@ -946,7 +924,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
-                            <signal handler="resetbtn2clicked" name="clicked" swapped="no"/>
+                            <signal name="clicked" handler="resetbtn2clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="left_attach">4</property>
@@ -982,27 +960,28 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Points to plot:</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkVBox" id="pointusebox">
+                      <object class="GtkBox" id="pointusebox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="orientation">vertical</property>
                         <child>
                           <placeholder/>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
                         <property name="position">3</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkHSeparator" id="hseparator94">
+                      <object class="GtkSeparator" id="separator1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
@@ -1017,7 +996,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                       <object class="GtkLabel" id="label16">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Estimate of &#x394;n of crossover point from
+                        <property name="label" translatable="yes">Estimate of Δn of crossover point from
  discontinuity on graph (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="use_markup">True</property>
                       </object>
@@ -1032,13 +1011,11 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char">●</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1066,7 +1043,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkLabel" id="deltanlabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">&#x394;n (cm&lt;sup&gt;-3&lt;/sup&gt;): </property>
+                            <property name="label" translatable="yes">Δn (cm&lt;sup&gt;-3&lt;/sup&gt;): </property>
                             <property name="use_markup">True</property>
                           </object>
                           <packing>
@@ -1080,14 +1057,12 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="deltangettxt">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1103,7 +1078,7 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="use_action_appearance">False</property>
-                            <signal handler="getfebtnclicked" name="clicked" swapped="no"/>
+                            <signal name="clicked" handler="getfebtnclicked" swapped="no"/>
                             <child>
                               <object class="GtkLabel" id="getfebtnlabel">
                                 <property name="visible">True</property>
@@ -1150,14 +1125,12 @@ Doping Concentration (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="editable">False</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">8</property>
                             <property name="invisible_char_set">True</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1223,13 +1196,11 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="meanmin">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">9</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1254,13 +1225,11 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                           <object class="GtkEntry" id="meanmax">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="invisible_char">●</property>
                             <property name="width_chars">9</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
-                            <property name="primary_icon_sensitive">True</property>
-                            <property name="secondary_icon_sensitive">True</property>
-                            <signal handler="numbify" name="changed" swapped="no"/>
+                            <signal name="changed" handler="numbify" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1284,7 +1253,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_action_appearance">False</property>
-                        <signal handler="calculatemeanrangeclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="calculatemeanrangeclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -1298,13 +1267,11 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                        <property name="invisible_char">&#x25CF;</property>
+                        <property name="invisible_char">●</property>
                         <property name="width_chars">8</property>
                         <property name="invisible_char_set">True</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1333,7 +1300,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="use_action_appearance">False</property>
-                        <signal handler="savedatabtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="savedatabtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1446,7 +1413,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
                     <property name="can_focus">False</property>
-                    <signal handler="plfileset" name="file-set" swapped="no"/>
+                    <signal name="file-set" handler="plfileset" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -1462,7 +1429,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="sensitive">False</property>
                     <property name="can_focus">False</property>
                     <property name="title" translatable="yes">Open PL data before illumination</property>
-                    <signal handler="plfileset" name="file-set" swapped="no"/>
+                    <signal name="file-set" handler="plfileset" swapped="no"/>
                   </object>
                   <packing>
                     <property name="top_attach">1</property>
@@ -1498,14 +1465,12 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="width_chars">11</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="plfileset" name="changed" swapped="no"/>
+                    <signal name="changed" handler="plfileset" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1556,14 +1521,12 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkEntry" id="injectionleveltxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="width_chars">11</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1615,14 +1578,12 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkEntry" id="pldopingtxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="width_chars">11</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="plfileset" name="changed" swapped="no"/>
+                    <signal name="changed" handler="plfileset" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1665,7 +1626,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="plcalcbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="plcalcbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1682,7 +1643,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="editcolorbarbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="editcolorbarbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1698,7 +1659,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="showironvaluesbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="showironvaluesbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1715,7 +1676,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="compareplmapsbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="compareplmapsbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1787,7 +1748,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Pan Left</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-go-back</property>
-                        <signal handler="panleftbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="panleftbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1802,7 +1763,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Pan Right</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-go-forward</property>
-                        <signal handler="panrightbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="panrightbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1817,7 +1778,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Pan Up</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-go-up</property>
-                        <signal handler="panupbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="panupbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1832,7 +1793,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Pan Down</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-go-down</property>
-                        <signal handler="pandownbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="pandownbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1847,7 +1808,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Zoom In</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-zoom-in</property>
-                        <signal handler="zoominbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="zoominbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1862,7 +1823,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Zoom Out</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-zoom-out</property>
-                        <signal handler="zoomoutbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="zoomoutbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1877,7 +1838,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Reset</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-refresh</property>
-                        <signal handler="plplotallbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="plplotallbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1903,7 +1864,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                         <property name="label" translatable="yes">Save Files</property>
                         <property name="use_underline">True</property>
                         <property name="stock_id">gtk-floppy</property>
-                        <signal handler="savefemapbtnclicked" name="clicked" swapped="no"/>
+                        <signal name="clicked" handler="savefemapbtnclicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1968,7 +1929,6 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="spacing">2</property>
-                <property name="has_resize_grip">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2018,14 +1978,12 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                   <object class="GtkEntry" id="vthermaltxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">1.1E7</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -2054,7 +2012,7 @@ the range given (cm&lt;sup&gt;-3&lt;/sup&gt;):</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_action_appearance">False</property>
-                    <signal handler="restoredefaultsbtnclicked" name="clicked" swapped="no"/>
+                    <signal name="clicked" handler="restoredefaultsbtnclicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -2097,7 +2055,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label27">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;n_1&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;n_1&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2109,14 +2067,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmanitxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">1.3E-14</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -2151,14 +2107,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="p1itxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">1.28E13</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">5</property>
@@ -2181,7 +2135,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label33">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;p_1&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;p_1&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2193,14 +2147,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmapitxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">7E-17</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">8</property>
@@ -2242,7 +2194,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label37">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;n_2&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;n_2&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2256,14 +2208,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmanbtxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">5E-15</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -2304,14 +2254,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="n1btxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">1.22571E15</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">5</property>
@@ -2338,7 +2286,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkLabel" id="label41">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;&#x3C3;&lt;sub&gt;p_2&lt;/sub&gt;&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;σ&lt;sub&gt;p_2&lt;/sub&gt;&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -2352,14 +2300,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                   <object class="GtkEntry" id="sigmapbtxt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="text" translatable="yes">3E-15</property>
                     <property name="invisible_char_set">True</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">8</property>
@@ -2423,14 +2369,14 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="buttons">close</property>
     <property name="text">Warning: Resistivity values do not match</property>
     <property name="secondary_text">The resistivity values in the Excel spreadsheets are not equal. This may mean the results are not from the same sample or it was entered incorrectly in the spreadsheet. Please correct this before continuing as the theoretical crossover point value will be based upon the value in the "Before illumination" spreadsheet.</property>
-    <signal handler="resistivityresponse" name="response" swapped="no"/>
+    <signal name="response" handler="resistivityresponse" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox3">
+      <object class="GtkBox" id="dialog-vbox3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area3">
+          <object class="GtkButtonBox" id="dialog-action_area3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -2641,7 +2587,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Pan Left</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-go-back</property>
-                <signal handler="panleftcomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="panleftcomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2656,7 +2602,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Pan Right</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-go-forward</property>
-                <signal handler="panrightcomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="panrightcomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2671,7 +2617,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Pan Up</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-go-up</property>
-                <signal handler="panupcomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="panupcomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2686,7 +2632,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Pan Down</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-go-down</property>
-                <signal handler="pandowncomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="pandowncomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2701,7 +2647,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Zoom In</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-zoom-in</property>
-                <signal handler="zoomincomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="zoomincomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2716,7 +2662,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Zoom Out</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-zoom-out</property>
-                <signal handler="zoomoutcomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="zoomoutcomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2731,7 +2677,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="label" translatable="yes">Reset</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-refresh</property>
-                <signal handler="refreshcomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="refreshcomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2769,7 +2715,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="closecomparebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="closecomparebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2798,14 +2744,14 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Warning: The PL images may be offset</property>
     <property name="secondary_text" translatable="yes">There was a significant difference between the loaded PL images, this means there may have been a change in the position of the sample between the taking of the images.</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox6">
+      <object class="GtkBox" id="dialog-vbox6">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area4">
+          <object class="GtkButtonBox" id="dialog-action_area4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -2838,12 +2784,12 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
     <property name="do_overwrite_confirmation">True</property>
     <property name="preview_widget_active">False</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox7">
+      <object class="GtkBox" id="dialog-vbox7">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area7">
+          <object class="GtkButtonBox" id="dialog-action_area7">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -2858,7 +2804,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="datadialogsavebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="datadialogsavebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2873,7 +2819,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="datadialogcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="datadialogcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2990,13 +2936,11 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="lifemaxtxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -3009,7 +2953,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkLabel" id="label50">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Maximum (&#xB5;s): </property>
+                <property name="label" translatable="yes">Maximum (µs): </property>
               </object>
               <packing>
                 <property name="x_options">GTK_FILL</property>
@@ -3037,13 +2981,11 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="femaxtxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -3057,7 +2999,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkLabel" id="label51">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Minimum (&#xB5;s): </property>
+                <property name="label" translatable="yes">Minimum (µs): </property>
               </object>
               <packing>
                 <property name="top_attach">1</property>
@@ -3071,13 +3013,11 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="lifemintxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -3109,13 +3049,11 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
               <object class="GtkEntry" id="femintxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -3273,7 +3211,7 @@ Programmed by James McMurray (jamesmcm03@gmail.com)</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">Warning level for the 
-differences in &#x394;n levels:</property>
+differences in Δn levels:</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -3289,12 +3227,10 @@ differences in &#x394;n levels:</property>
               <object class="GtkEntry" id="ddnwarnlevel">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -3440,7 +3376,7 @@ differences in &#x394;n levels:</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="editcolorbarokbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="editcolorbarokbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -3456,7 +3392,7 @@ differences in &#x394;n levels:</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="editcolorbarcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="editcolorbarcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -3521,7 +3457,7 @@ differences in &#x394;n levels:</property>
                   <object class="GtkLabel" id="label64">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
+                    <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -3529,7 +3465,7 @@ differences in &#x394;n levels:</property>
                   <object class="GtkLabel" id="label66">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
+                    <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                   <packing>
@@ -3577,12 +3513,10 @@ differences in &#x394;n levels:</property>
                   <object class="GtkEntry" id="taupb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="top_attach">1</property>
@@ -3593,12 +3527,10 @@ differences in &#x394;n levels:</property>
                   <object class="GtkEntry" id="taunb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -3611,12 +3543,10 @@ differences in &#x394;n levels:</property>
                   <object class="GtkEntry" id="n1b">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -3629,12 +3559,10 @@ differences in &#x394;n levels:</property>
                   <object class="GtkEntry" id="p1b">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">3</property>
@@ -3647,12 +3575,10 @@ differences in &#x394;n levels:</property>
                   <object class="GtkEntry" id="NAb">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="invisible_char">&#x25CF;</property>
+                    <property name="invisible_char">●</property>
                     <property name="primary_icon_activatable">False</property>
                     <property name="secondary_icon_activatable">False</property>
-                    <property name="primary_icon_sensitive">True</property>
-                    <property name="secondary_icon_sensitive">True</property>
-                    <signal handler="numbify" name="changed" swapped="no"/>
+                    <signal name="changed" handler="numbify" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">4</property>
@@ -3708,7 +3634,7 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label65">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>
@@ -3716,7 +3642,7 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label67">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -3764,13 +3690,11 @@ differences in &#x394;n levels:</property>
               <object class="GtkEntry" id="taupa">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="top_attach">1</property>
@@ -3781,13 +3705,11 @@ differences in &#x394;n levels:</property>
               <object class="GtkEntry" id="tauna">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -3800,13 +3722,11 @@ differences in &#x394;n levels:</property>
               <object class="GtkEntry" id="n1a">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -3819,13 +3739,11 @@ differences in &#x394;n levels:</property>
               <object class="GtkEntry" id="p1a">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -3838,13 +3756,11 @@ differences in &#x394;n levels:</property>
               <object class="GtkEntry" id="NAa">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -3894,7 +3810,7 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label75">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>
@@ -3902,7 +3818,7 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label76">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -4045,7 +3961,7 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label81">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;p&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">τ&lt;sub&gt;p&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
             </child>
@@ -4053,7 +3969,7 @@ differences in &#x394;n levels:</property>
               <object class="GtkLabel" id="label82">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">&#x3C4;&lt;sub&gt;n&lt;/sub&gt;</property>
+                <property name="label" translatable="yes">τ&lt;sub&gt;n&lt;/sub&gt;</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -4212,12 +4128,10 @@ illumination fit:</property>
               <object class="GtkEntry" id="bfitrmin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -4239,12 +4153,10 @@ illumination fit:</property>
               <object class="GtkEntry" id="bfitrmax">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -4287,13 +4199,11 @@ illumination fit:</property>
               <object class="GtkEntry" id="afitrmin">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -4315,13 +4225,11 @@ illumination fit:</property>
               <object class="GtkEntry" id="afitrmax">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -4450,7 +4358,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="fitdefaultsbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="fitdefaultsbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -4465,7 +4373,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="editfitokbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="editfitokbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -4480,7 +4388,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="editfitcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="editfitcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -4510,14 +4418,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="text" translatable="yes">Error: Fit could not be produced</property>
     <property name="secondary_text" translatable="yes">There was an error producing the fit, this may be because the data is not good enough, i.e. if the lifetime does not increase with injection level. &lt;b&gt; Do not attempt to plot an Individual C values plot!&lt;/b&gt;</property>
     <property name="secondary_use_markup">True</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox10">
+      <object class="GtkBox" id="dialog-vbox10">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area9">
+          <object class="GtkButtonBox" id="dialog-action_area9">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -4590,7 +4498,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="attemptcorrectionbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="attemptcorrectionbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -4605,7 +4513,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="donothingbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="donothingbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -4636,14 +4544,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Error: Value outside of interpolation range</property>
     <property name="secondary_text" translatable="yes">The value provided was outside of the interpolation range. Note only values to the right of the Cross-Over Point can be used.</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox4">
+      <object class="GtkBox" id="dialog-vbox4">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area2">
+          <object class="GtkButtonBox" id="dialog-action_area2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -4746,13 +4654,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -4837,13 +4743,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -4857,12 +4761,10 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x2022;</property>
+                <property name="invisible_char">•</property>
                 <property name="xalign">0.5</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -4935,13 +4837,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -4955,13 +4855,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x2022;</property>
+                <property name="invisible_char">•</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5034,13 +4932,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5054,12 +4950,10 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x2022;</property>
+                <property name="invisible_char">•</property>
                 <property name="xalign">0.5</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5131,13 +5025,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5151,12 +5043,10 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x2022;</property>
+                <property name="invisible_char">•</property>
                 <property name="xalign">0.5</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5228,13 +5118,11 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="xalign">0.5</property>
                 <property name="invisible_char_set">True</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5248,12 +5136,10 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
-                <property name="invisible_char">&#x2022;</property>
+                <property name="invisible_char">•</property>
                 <property name="xalign">0.5</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -5279,7 +5165,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="ironviewclosebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="ironviewclosebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5307,14 +5193,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">ok</property>
     <property name="text" translatable="yes">Image Matching complete</property>
     <property name="secondary_text" translatable="yes">Label to be set when called</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox9">
+      <object class="GtkBox" id="dialog-vbox9">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area8">
+          <object class="GtkButtonBox" id="dialog-action_area8">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5339,7 +5225,7 @@ the fitting range&lt;/b&gt;: </property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_action_appearance">False</property>
-            <signal handler="saveadjusteddatabtnclicked" name="clicked" swapped="no"/>
+            <signal name="clicked" handler="saveadjusteddatabtnclicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -5361,14 +5247,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Error: Range was set wrong</property>
     <property name="secondary_text" translatable="yes">The range was set wrong, this may be caused by the minimum and maximum being swapped or the values being out of range of the experimental values.</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox12">
+      <object class="GtkBox" id="dialog-vbox12">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area11">
+          <object class="GtkButtonBox" id="dialog-action_area11">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5403,14 +5289,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Warning: The calculated Iron Concentration is negative</property>
     <property name="secondary_text" translatable="yes">The calculated Iron Concentration is negative, this means the before and after illumination files may have been loaded in the wrong order.</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox8">
+      <object class="GtkBox" id="dialog-vbox8">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area6">
+          <object class="GtkButtonBox" id="dialog-action_area6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5447,14 +5333,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">yes-no</property>
     <property name="text" translatable="yes">Confim file overwrite?</property>
     <property name="secondary_text" translatable="yes">A file of this name already exists, should it be overwritten?</property>
-    <signal handler="overwriteresponseclicked" name="response" swapped="no"/>
+    <signal name="response" handler="overwriteresponseclicked" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox2">
+      <object class="GtkBox" id="dialog-vbox2">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="overwritebuttons">
+          <object class="GtkButtonBox" id="overwritebuttons">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5488,12 +5374,12 @@ the fitting range&lt;/b&gt;: </property>
     <property name="urgency_hint">True</property>
     <property name="deletable">False</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox16">
+      <object class="GtkBox" id="dialog-vbox16">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area16">
+          <object class="GtkButtonBox" id="dialog-action_area16">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5504,7 +5390,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="pl1genlevelokbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="pl1genlevelokbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5519,7 +5405,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="pl1genlevelcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="pl1genlevelcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5552,13 +5438,11 @@ the fitting range&lt;/b&gt;: </property>
           <object class="GtkEntry" id="pl1genleveltxt">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char">●</property>
             <property name="text" translatable="yes">1.92E17</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
-            <signal handler="numbify" name="changed" swapped="no"/>
+            <signal name="changed" handler="numbify" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -5583,12 +5467,12 @@ the fitting range&lt;/b&gt;: </property>
     <property name="urgency_hint">True</property>
     <property name="deletable">False</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox31">
+      <object class="GtkBox" id="dialog-vbox31">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area31">
+          <object class="GtkButtonBox" id="dialog-action_area31">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5599,7 +5483,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="pl2genlevelokbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="pl2genlevelokbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5614,7 +5498,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="pl2genlevelcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="pl2genlevelcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5647,13 +5531,11 @@ the fitting range&lt;/b&gt;: </property>
           <object class="GtkEntry" id="pl2pfluxb">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char">●</property>
             <property name="invisible_char_set">True</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
-            <signal handler="numbify" name="changed" swapped="no"/>
+            <signal name="changed" handler="numbify" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -5677,13 +5559,11 @@ the fitting range&lt;/b&gt;: </property>
           <object class="GtkEntry" id="pl2pfluxa">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char">●</property>
             <property name="invisible_char_set">True</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
-            <signal handler="numbify" name="changed" swapped="no"/>
+            <signal name="changed" handler="numbify" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -5707,13 +5587,11 @@ the fitting range&lt;/b&gt;: </property>
           <object class="GtkEntry" id="pl2reflectivity">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="invisible_char">&#x25CF;</property>
+            <property name="invisible_char">●</property>
             <property name="invisible_char_set">True</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
-            <signal handler="numbify" name="changed" swapped="no"/>
+            <signal name="changed" handler="numbify" swapped="no"/>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -5740,12 +5618,12 @@ the fitting range&lt;/b&gt;: </property>
     <property name="do_overwrite_confirmation">True</property>
     <property name="preview_widget_active">False</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox5">
+      <object class="GtkBox" id="dialog-vbox5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area5">
+          <object class="GtkButtonBox" id="dialog-action_area5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5760,7 +5638,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="plotdialogsavebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="plotdialogsavebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5775,7 +5653,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="plotdialogcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="plotdialogcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5809,14 +5687,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Warning: Plot flipped from axes limits</property>
     <property name="secondary_text" translatable="yes">The plot has been flipped because the minimum limit is greater than the maximum limit for a co-ordinate.</property>
-    <signal handler="plotflippeddialogclose" name="response" swapped="no"/>
+    <signal name="response" handler="plotflippeddialogclose" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5855,12 +5733,12 @@ the fitting range&lt;/b&gt;: </property>
     <property name="do_overwrite_confirmation">True</property>
     <property name="preview_widget_active">False</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox13">
+      <object class="GtkBox" id="dialog-vbox13">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area13">
+          <object class="GtkButtonBox" id="dialog-action_area13">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -5875,7 +5753,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="plplotdialogsavebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="plplotdialogsavebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5890,7 +5768,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="plplotdialogcancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="plplotdialogcancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -5926,14 +5804,14 @@ the fitting range&lt;/b&gt;: </property>
     <property name="buttons">close</property>
     <property name="text" translatable="yes">Possible differences in injection values</property>
     <property name="secondary_text" translatable="yes">There may be significant differences between the injection levels obtained for the same positions on the before illumination and after illumination PL map. This could mean the calculation of the individual prefactors may be incorrect. Please review the information below:</property>
-    <signal handler="on_ErrorWindow_close" name="response" swapped="no"/>
+    <signal name="response" handler="on_ErrorWindow_close" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox11">
+      <object class="GtkBox" id="dialog-vbox11">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area10">
+          <object class="GtkButtonBox" id="dialog-action_area10">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -6021,12 +5899,10 @@ the fitting range&lt;/b&gt;: </property>
               <object class="GtkEntry" id="myrestxt">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">&#x25CF;</property>
+                <property name="invisible_char">●</property>
                 <property name="primary_icon_activatable">False</property>
                 <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
-                <signal handler="numbify" name="changed" swapped="no"/>
+                <signal name="changed" handler="numbify" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -6041,7 +5917,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="resbeforevalbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="resbeforevalbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="top_attach">1</property>
@@ -6056,7 +5932,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="resaftervalbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="resaftervalbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -6073,7 +5949,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="resmyvalbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="resmyvalbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -6128,7 +6004,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="whichsavelifebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="whichsavelifebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -6143,7 +6019,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="whichsavefebtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="whichsavefebtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -6158,7 +6034,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="saveirondatabtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="saveirondatabtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -6173,7 +6049,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="saveadjusteddatabtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="saveadjusteddatabtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -6200,7 +6076,7 @@ the fitting range&lt;/b&gt;: </property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
-                <signal handler="whichsavecancelbtnclicked" name="clicked" swapped="no"/>
+                <signal name="clicked" handler="whichsavecancelbtnclicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
