@@ -770,7 +770,6 @@ class MyApp(object):
 				self.builder.get_object("meanconctxt").set_text("%.4g" % cmean)
 		except (ValueError, ZeroDivisionError, IndexError):
 			self.builder.get_object("meanrangeerror").show()
-			
 
 	def plotdialogcancelbtnclicked(self,widget):
 		self.builder.get_object("plotfilesavedialog").hide()
@@ -996,9 +995,9 @@ class MyApp(object):
 		self.builder.get_object("meancalcbtn").set_sensitive(True)
 		self.meanmode="C"
 		self.builder.get_object("meanlabel").set_label("Mean of the Prefactor value\n   in the given range: ")	
-		if self.builder.get_object("meanmin").get_text()==None or self.builder.get_object("meanmin").get_text()=="" or self.builder.get_object("meanmax").get_text()==None or self.builder.get_object("meanmin").get_text()=="":
-			self.builder.get_object("meanmin").set_text("%.4g" % self.cvaluedn[-10])
-			self.builder.get_object("meanmax").set_text("%.4g" % self.cvaluedn[-1])
+		# if self.builder.get_object("meanmin").get_text()==None or self.builder.get_object("meanmin").get_text()=="" or self.builder.get_object("meanmax").get_text()==None or self.builder.get_object("meanmin").get_text()=="":
+		self.builder.get_object("meanmin").set_text("%.4g" % self.cvaluedn[-10])
+		self.builder.get_object("meanmax").set_text("%.4g" % self.cvaluedn[-1])
 		self.builder.get_object("meancalcbtn").set_label("Calculate mean Prefactor value\n      in the range given")
 		self.calculatemeanrangeclicked(widget)
 
@@ -1070,6 +1069,11 @@ class MyApp(object):
 			self.tauafter=self.tauafter/1E6
 			a=a/1E6
 		# 1E6 factor is necessary to put in microseconds
+		indicesb=[]
+		indicesa=[]
+		zeroarray=[]
+		self.negarrayb=[]
+		self.negarraya=[]		
 		if np.min(self.taubefore)<0:
 			indicesb=[]
 			zeroarray=[]
@@ -1898,7 +1902,6 @@ class MyApp(object):
 					if curdiff<abs(genlevelaim-closestlevel):
 						closestlevel=float(cell.value)
 						closesti=i
-
 					i+=1
 
 			injectionlevelaim=float(ws1.cell('S'+str(closesti)).value)
@@ -1916,7 +1919,6 @@ class MyApp(object):
 					if curdiff<abs(injectionlevelaim-closestlevel):
 						closestlevel=float(cell.value)
 						closesti=i
-
 					i+=1
 
 			wantedilevel=float(ws2.cell('K'+str(closesti)).value)
@@ -1924,7 +1926,6 @@ class MyApp(object):
 			self.builder.get_object("plgenleveltxt").set_text("%.4g" % wantedilevel)
 			self.builder.get_object("injectionleveltxt").set_text("%.4g" % injectionlevelaim)
 			self.builder.get_object("plafterfile").set_property("title", "Open PL data after illumination, G~%.3g" % wantedilevel)
-
 			self.builder.get_object("plafterfile").set_sensitive(True)
 			
 		except:
