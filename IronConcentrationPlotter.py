@@ -1164,7 +1164,7 @@ class MyApp(object):
 		self.deltanaindgen=self.genlevelafter*1E-6*self.tauafter
 		#worry about warning level shit later
 		self.diffmatrixindgen=np.abs(self.deltanaindgen-self.deltanbindgen)
-		print np.mean(self.diffmatrixindgen[100:-100,100:-100])
+		#print np.mean(self.diffmatrixindgen[100:-100,100:-100])
 		nmean=(self.deltanaindgen+self.deltanbindgen)/2.0
 		
 		C=concentration.calcPrefactor(self.constants, float(self.builder.get_object("pldopingtxt").get_text()), nmean)				
@@ -1278,6 +1278,9 @@ class MyApp(object):
 
 
 		
+		#print len(b)
+		#print len(b[500])
+		#print str(np.shape(b))
 
 		a1 = a[500]
 		b1 = b[500]
@@ -1288,10 +1291,10 @@ class MyApp(object):
 		#Must make 0 tau values red
 		self.taubmin=0
 		self.tauamin=0
-		self.taubmax = b1[int(0.99*len(b))]
-		self.tauamax = a1[int(0.99*len(a))]
+		self.taubmax = b1[int(0.99*(len(b1)-1))]
+		self.tauamax = a1[int(0.99*(len(a1)-1))]
 		self.ironmin=1E8
-		self.ironmax = e1[int(0.97*len(e))]
+		self.ironmax = e1[int(0.97*(len(e1)-1))]
 		
 
 
@@ -1361,8 +1364,9 @@ class MyApp(object):
 		j=0
 		n=0
 		total=0
-		while i<800:
-			while j<800:
+		blim=min(np.shape(cutborders))-1
+		while i<blim:
+			while j<blim:
 				if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 					total+=cutborders[i][j]
 					n+=1
@@ -1375,8 +1379,8 @@ class MyApp(object):
 		j=0
 		n=0
 		total=0
-		while i<800:
-			while j<800:
+		while i<blim:
+			while j<blim:
 				if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 					total+=pow((cutborders[i][j]-mean),2)
 					n+=1
@@ -1398,8 +1402,8 @@ class MyApp(object):
 				j=0
 				n=0
 				total=0
-				while i<800:
-					while j<800:
+				while i<blim:
+					while j<blim:
 						if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 							total+=cutborders[i][j]
 							n+=1
@@ -1412,8 +1416,8 @@ class MyApp(object):
 				j=0
 				n=0
 				total=0
-				while i<800:
-					while j<800:
+				while i<blim:
+					while j<blim:
 						if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 							total+=pow((cutborders[i][j]-mean),2)
 							n+=1
@@ -1437,8 +1441,8 @@ class MyApp(object):
 			j=0
 			n=0
 			total=0
-			while i<800:
-				while j<800:
+			while i<blim:
+				while j<blim:
 					if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 						total+=cutborders[i][j]
 						n+=1
@@ -1451,8 +1455,8 @@ class MyApp(object):
 			j=0
 			n=0
 			total=0
-			while i<800:
-				while j<800:
+			while i<blim:
+				while j<blim:
 					if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 						total+=pow((cutborders[i][j]-mean),2)
 						n+=1
@@ -1471,8 +1475,8 @@ class MyApp(object):
 			j=0
 			n=0
 			total=0
-			while i<800:
-				while j<800:
+			while i<blim:
+				while j<blim:
 					if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 						total+=cutborders[i][j]
 						n+=1
@@ -1485,8 +1489,8 @@ class MyApp(object):
 			j=0
 			n=0
 			total=0
-			while i<800:
-				while j<800:
+			while i<blim:
+				while j<blim:
 					if cutborders[i][j]!=np.Inf and cutborders[i][j]!=-np.Inf and cutborders[i][j]!=np.NaN and cutborders[i][j]>0:
 						total+=pow((cutborders[i][j]-mean),2)
 						n+=1
@@ -2048,8 +2052,10 @@ class MyApp(object):
 
 			if self.curid!=None:
 				self.builder.get_object("statusbar").remove_message(self.plconid, self.curid)
-				
-			self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, irongenlevelC=%.3g, ironindividualC=%.3g, ironlastmeanC=%.3g, ironindgen=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindgen[int(round(event.ydata))][int(round(event.xdata))]))
+			try:
+				self.curid=self.builder.get_object("statusbar").push(self.plconid, 'x=%d, y=%d, taub=%.3g, taua=%.3g, irongenlevelC=%.3g, ironindividualC=%.3g, ironlastmeanC=%.3g, ironindgen=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindgen[int(round(event.ydata))][int(round(event.xdata))]))
+			except:
+				self.curid=self.builder.get_object("statusbar").push(self.plconid, 'Out of range.')				
 
 	def showironvaluesbtnclicked(self, widget):
 		self.builder.get_object("ironviewwindow").show()
@@ -2357,7 +2363,10 @@ class MyApp(object):
 			if self.curid2!=None:
 				self.builder.get_object("comparestatusbar").remove_message(self.plconid2, self.curid2)
 				
-			self.curid2=self.builder.get_object("comparestatusbar").push(self.plconid2, 'x=%d, y=%d, taub=%.3g, taua=%.3g, ironindividualCfits=%.3g, deltandifferencefits=%.3g, ironindividualCtaugen=%.3g, deltandifferencetaugen=%.3g, irongenlevelC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrix[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindgen[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrixindgen[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))		
+			try:
+				self.curid2=self.builder.get_object("comparestatusbar").push(self.plconid2, 'x=%d, y=%d, taub=%.3g, taua=%.3g, ironindividualCfits=%.3g, deltandifferencefits=%.3g, ironindividualCtaugen=%.3g, deltandifferencetaugen=%.3g, irongenlevelC=%.3g, ironlastmeanC=%.3g'%(int(round(event.xdata)), int(round(event.ydata)), self.taubefore[int(round(event.ydata))][int(round(event.xdata))], self.tauafter[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindividual[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrix[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixindgen[int(round(event.ydata))][int(round(event.xdata))], self.diffmatrixindgen[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixgenlevel[int(round(event.ydata))][int(round(event.xdata))], self.ironconcmatrixmeanC[int(round(event.ydata))][int(round(event.xdata))]))		
+			except:
+				self.curid2=self.builder.get_object("comparestatusbar").push(self.plconid2, 'Out of range.')
 
 if __name__ == "__main__":
 	app = MyApp()
